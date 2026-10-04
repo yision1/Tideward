@@ -1,0 +1,23 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="ARM64" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+  </Folder>
+  <Project Path="src/Tideward.Core/Tideward.Core.csproj" />
+  <Project Path="src/Tideward.Language/Tideward.Language.csproj" />
+  <Project Path="src/Tideward.Launcher/Tideward.Launcher.vcxproj" Id="bc2fb0e5-f79e-4ea0-8380-73f96ecb6f2e" />
+  <Project Path="src/Tideward.RPC/Tideward.RPC.csproj" />
+  <Project Path="src/Tideward.Setup.Core/Tideward.Setup.Core.csproj" />
+  <Project Path="src/Tideward.Setup/Tideward.Setup.csproj" />
+  <Project Path="src/Tideward/Tideward.csproj">
+    <Platform Solution="*|Any CPU" Project="x64" />
+    <Platform Solution="*|ARM64" Project="ARM64" />
+    <Platform Solution="*|x64" Project="x64" />
+    <Platform Solution="*|x86" Project="x86" />
+  </Project>
+</Solution>

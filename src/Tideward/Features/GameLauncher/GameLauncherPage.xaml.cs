@@ -1,0 +1,848 @@
+﻿using Tideward.Core.Games;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using Microsoft.Extensions.Logging;
+using Microsoft.UI.Dispatching;
+using Microsoft.UI.Xaml;
+using Tideward.Core;
+using Tideward.Core.Games.Models;
+using Tideward.Features.Background;
+using Tideward.Features.GameInstall;
+using Tideward.Features.Games;
+using Tideward.Features.Overlay;
+using Tideward.Features.ViewHost;
+using Tideward.Frameworks;
+using Tideward.Helpers;
+using Tideward.RPC.GameInstall;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
+using System.Timers;
+using Windows.ApplicationModel.DataTransfer;
+using Windows.Storage;
+using Windows.System;
+
+namespace Tideward.Features.GameLauncher;
+
+public sealed partial class GameLauncherPage : PageBase
+{
+
+    private readonly ILogger<GameLauncherPage> _logger = AppConfig.GetLogger<GameLauncherPage>();
+
+    private readonly GameLauncherService _gameLauncherService = AppConfig.GetService<GameLauncherService>();
+
+    private readonly GamePackageService _gamePackageService = AppConfig.GetService<GamePackageService>();
+
+    private readonly BackgroundService _backgroundService = AppConfig.GetService<BackgroundService>();
+
+    private readonly GameInstallService _gameInstallService = AppConfig.GetService<GameInstallService>();
+
+    private readonly GameCatalogService _gameCatalogService = AppConfig.GetService<GameCatalogService>();
+
+    private readonly Microsoft.UI.Dispatching.DispatcherQueueTimer _dispatchTimer;
+
+    public GameLauncherPage()
+    {
+        this.InitializeComponent();
+        _dispatchTimer = DispatcherQueue.CreateTimer();
+        _dispatchTimer.Interval = TimeSpan.FromMilliseconds(100);
+        _dispatchTimer.Tick += UpdateGameInstallTaskProgress;
+    }
+
+    protected override void OnLoaded()
+    {
+        InitializeGameFeature();
+        CheckGameVersion();
+        UpdateGameInstallTask();
+        _ = InitializeBackgameImageSwitcherAsync();
+        WeakReferenceMessenger.Default.Register<GameInstallPathChangedMessage>(this, OnGameInstallPathChanged);
+        WeakReferenceMessenger.Default.Register<MainWindowStateChangedMessage>(this, OnMainWindowStateChanged);
+        WeakReferenceMessenger.Default.Register<RemovableStorageDeviceChangedMessage>(this, OnRemovableStorageDeviceChanged);
+        WeakReferenceMessenger.Default.Register<GameInstallTaskStartedMessage>(this, OnGameInstallTaskStarted);
+        WeakReferenceMessenger.Default.Register<BackgroundChangedMessage>(this, OnBackgroundChanged);
+    }
+
+    protected override void OnUnloaded()
+    {
+        WeakReferenceMessenger.Default.UnregisterAll(this);
+        _dispatchTimer.Tick -= UpdateGameInstallTaskProgress;
+        _dispatchTimer.Stop();
+        BackgroundImages = null!;
+    }
+
+    private void InitializeGameFeature()
+    {
+        GameFeatureConfig feature = GameFeatureConfig.FromGameId(CurrentGameId);
+
+        EnableGameAccountSwitcher = feature.SupportGameAccountSwitcher && AppConfig.EnableGameAccountSwitcher;
+    }
+
+    public bool EnableGameAccountSwitcher { get; set => SetProperty(ref field, value); }
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(InstalledLocateGameEnabled))]
+    public partial GameState GameState { get; set; }
+
+    [RelayCommand]
+    private async Task ClickStartGameButtonAsync()
+    {
+        await Task.Delay(1);
+        switch (GameState)
+        {
+            case GameState.None:
+                break;
+            case GameState.StartGame:
+                await StartGameAsync();
+                break;
+            case GameState.GameIsRunning:
+            case GameState.InstallGame:
+                await InstallGameAsync();
+                break;
+            case GameState.Installing:
+                await ChangeGameInstallTaskStateAsync();
+                break;
+            case GameState.UpdateGame:
+                await UpdateGameAsync();
+                break;
+            case GameState.UpdatePlugin:
+            case GameState.ResumeDownload:
+                await ResumeDownloadAsync();
+                break;
+            case GameState.ComingSoon:
+                break;
+            default:
+                break;
+        }
+    }
+
+    #region Game Version
+
+    public string? GameInstallPath { get; set => SetProperty(ref field, value); }
+
+        public bool IsInstallPathRemovableTipEnabled { get; set => SetProperty(ref field, value); }
+
+        public bool InstalledLocateGameEnabled => GameState is GameState.InstallGame && !IsInstallPathRemovableTipEnabled;
+
+        public bool IsPredownloadButtonEnabled { get; set => SetProperty(ref field, value); }
+
+        public bool IsPredownloadFinished { get; set => SetProperty(ref field, value); }
+
+    private Version? localGameVersion;
+
+    private Version? latestGameVersion;
+
+    private Version? predownloadGameVersion;
+
+    private bool isGameExeExists;
+
+        public bool IsDX11OptionVisible { get; set => SetProperty(ref field, value); }
+
+        public bool EnableDX11
+    {
+        get;
+        set
+        {
+            if (SetProperty(ref field, value))
+            {
+                AppConfig.SetEnableDX11(CurrentGameBiz, value);
+            }
+        }
+    }
+
+    private async void CheckGameVersion()
+    {
+        try
+        {
+            GameInstallPath = GameLauncherService.GetGameInstallPath(CurrentGameId, out bool storageRemoved);
+            IsInstallPathRemovableTipEnabled = storageRemoved;
+            if (GameInstallPath is null || storageRemoved)
+            {
+                GameState = GameState.InstallGame;
+                return;
+            }
+            isGameExeExists = await _gameLauncherService.IsGameExeExistsAsync(CurrentGameId);
+            localGameVersion = await _gameLauncherService.GetLocalGameVersionAsync(CurrentGameId);
+            if (isGameExeExists && localGameVersion != null)
+            {
+                GameState = GameState.StartGame;
+            }
+            else
+            {
+                GameState = GameState.ResumeDownload;
+                return;
+            }
+            await CheckGameRunningAsync();
+            (latestGameVersion, predownloadGameVersion) = await _gameLauncherService.GetLatestGameVersionAsync(CurrentGameId);
+            if (latestGameVersion > localGameVersion)
+            {
+                GameState = GameState.UpdateGame;
+                return;
+            }
+            if (predownloadGameVersion > localGameVersion)
+            {
+                IsPredownloadButtonEnabled = true;
+                IsPredownloadFinished = await _gamePackageService.CheckPreDownloadFinishedAsync(CurrentGameId);
+            }
+            _ = CheckDX11ConfigAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Check game version");
+        }
+    }
+
+    private Task CheckDX11ConfigAsync()
+    {
+        EnableDX11 = AppConfig.GetEnableDX11(CurrentGameBiz);
+        IsDX11OptionVisible = CurrentGameBiz.IsKnown();
+        return Task.CompletedTask;
+    }
+
+    private async void Hyperlink_DX11Intro_Click(Microsoft.UI.Xaml.Documents.Hyperlink sender, Microsoft.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+    {
+        try
+        {
+            await new DX11IntroDialog { XamlRoot = XamlRoot }.ShowAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Show Wuthering Waves DX11 introduction");
+            InAppToast.MainWindow?.Error(ex);
+        }
+    }
+
+        private async Task LocateGameAsync()
+    {
+        try
+        {
+            string? folder = await FileDialogHelper.PickFolderAsync(this.XamlRoot);
+            if (!string.IsNullOrWhiteSpace(folder))
+            {
+                if (!await _gameLauncherService.IsGameExeExistsAsync(CurrentGameId, folder))
+                {
+                    InAppToast.MainWindow?.Warning(null, "所选文件夹中没有 Wuthering Waves.exe，请选择鸣潮游戏目录。", 0);
+                    return;
+                }
+                if (DriveHelper.GetDriveType(folder) is DriveType.Network && !new Uri(folder).IsUnc)
+                {
+                    InAppToast.MainWindow?.Warning(null, Lang.InstallGameDialog_MappedNetworkDrivesAreNotSupportedPleaseUseANetworkSharePathStartingWithDoubleBackslashes, 0);
+                }
+                else
+                {
+                    GameLauncherService.ChangeGameInstallPath(CurrentGameId, folder);
+                    CheckGameVersion();
+                    WeakReferenceMessenger.Default.Send(new GameInstallPathChangedMessage());
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Locate game");
+            InAppToast.MainWindow?.Error(ex);
+        }
+    }
+
+        private async void Hyperlink_LocateGame_Click(Microsoft.UI.Xaml.Documents.Hyperlink sender, Microsoft.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+    {
+        await LocateGameAsync();
+    }
+
+    private void OnGameInstallPathChanged(object _, GameInstallPathChangedMessage message)
+    {
+        CheckGameVersion();
+    }
+
+    private void OnMainWindowStateChanged(object _, MainWindowStateChangedMessage message)
+    {
+        try
+        {
+            if (message.Activate && (message.ElapsedOver(TimeSpan.FromMinutes(10)) || message.IsCrossingHour))
+            {
+                CheckGameVersion();
+            }
+        }
+        catch { }
+    }
+
+    private void OnRemovableStorageDeviceChanged(object _, RemovableStorageDeviceChangedMessage message)
+    {
+        try
+        {
+            CheckGameVersion();
+        }
+        catch { }
+    }
+
+    #endregion
+
+    #region Start Game
+
+    private Timer processTimer;
+
+    [ObservableProperty]
+    private partial Process? GameProcess { get; set; }
+    partial void OnGameProcessChanged(Process? oldValue, Process? newValue)
+    {
+        processTimer?.Stop();
+        if (processTimer is null)
+        {
+            processTimer = new(1000);
+            processTimer.Elapsed += (_, _) => CheckGameExited();
+        }
+        if (newValue != null)
+        {
+            processTimer?.Start();
+            RunningGameInfo = $"{newValue.ProcessName}.exe ({newValue.Id})";
+            RunningGameService.AddRuninngGame(CurrentGameBiz, newValue);
+        }
+        else
+        {
+            RunningGameInfo = null;
+            _logger.LogInformation("Game process exited");
+        }
+    }
+
+    public string? RunningGameInfo { get; set => SetProperty(ref field, value); }
+
+    public string? RunningGameTime { get; set => SetProperty(ref field, value); }
+
+    private async Task<bool> CheckGameRunningAsync()
+    {
+        try
+        {
+            GameProcess = await _gameLauncherService.GetGameProcessAsync(CurrentGameId);
+            if (GameProcess != null)
+            {
+                GameState = GameState.GameIsRunning;
+                RunningGameTime = TimeSpanToString(DateTime.Now - GameProcess.StartTime);
+                _logger.LogInformation("Game is running ({name}, {pid})", GameProcess.ProcessName, GameProcess.Id);
+                return true;
+            }
+        }
+        catch { }
+        return false;
+    }
+
+    private void CheckGameExited()
+    {
+        try
+        {
+            if (GameProcess != null)
+            {
+                if (GameProcess.HasExited)
+                {
+                    DispatcherQueue.TryEnqueue(() => RunningGameTime = null);
+                    DispatcherQueue.TryEnqueue(CheckGameVersion);
+                    GameProcess = null;
+                }
+                else
+                {
+                    DispatcherQueue?.TryEnqueue(() => RunningGameTime = TimeSpanToString(DateTime.Now - GameProcess.StartTime));
+                }
+            }
+        }
+        catch { }
+    }
+
+    private static string TimeSpanToString(TimeSpan value)
+    {
+        return $"{value.Days * 24 + value.Hours:D2}:{value.Minutes:D2}:{value.Seconds:D2}";
+    }
+
+    [RelayCommand]
+    private async Task StartGameAsync()
+    {
+        try
+        {
+            var process = await _gameLauncherService.StartGameAsync(CurrentGameId);
+            if (process is not null)
+            {
+                GameState = GameState.GameIsRunning;
+                GameProcess = process;
+                WeakReferenceMessenger.Default.Send(new GameStartedMessage());
+            }
+        }
+        catch (FileNotFoundException)
+        {
+            CheckGameVersion();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Start game");
+        }
+    }
+
+    #endregion
+
+    #region Install Game
+
+    private async Task InstallGameAsync()
+    {
+        try
+        {
+            WutheringWavesCatalog.Require(CurrentGameId);
+            if (_gameInstallTask is null)
+                await new InstallGameDialog { CurrentGameId = CurrentGameId, XamlRoot = this.XamlRoot }.ShowAsync();
+            else
+                await ChangeGameInstallTaskStateAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Install game {GameBiz}", CurrentGameBiz);
+            InAppToast.MainWindow?.Error(ex);
+        }
+    }
+
+    private async Task ResumeDownloadAsync()
+    {
+        try
+        {
+            if (!Directory.Exists(GameInstallPath))
+            {
+                CheckGameVersion();
+                return;
+            }
+            AudioLanguage audio = await _gamePackageService.GetAudioLanguageAsync(CurrentGameId, GameInstallPath);
+            var task = await _gameInstallService.StartInstallAsync(CurrentGameId, GameInstallPath, audio);
+            if (task is not null)
+            {
+                _gameInstallTask = task;
+                _dispatchTimer.Start();
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Resume download {GameBiz}", CurrentGameBiz);
+        }
+    }
+
+    #endregion
+
+    #region Predownload
+
+    [RelayCommand]
+    private async Task PredownloadAsync()
+    {
+        try
+        {
+            if (_gameInstallTask is null)
+            {
+                await new PreDownloadDialog { CurrentGameId = this.CurrentGameId, XamlRoot = this.XamlRoot }.ShowAsync();
+            }
+            else if (_gameInstallTask.Operation is GameInstallOperation.Predownload)
+            {
+                if (_gameInstallTask.State is GameInstallState.Stop or GameInstallState.Paused or GameInstallState.Error or GameInstallState.Queueing)
+                {
+                    await _gameInstallService.ContinueTaskAsync(_gameInstallTask);
+                    _dispatchTimer.Start();
+                }
+                else if (_gameInstallTask.State is GameInstallState.Waiting or GameInstallState.Downloading or GameInstallState.Decompressing or GameInstallState.Merging or GameInstallState.Verifying)
+                {
+                    await _gameInstallService.PauseTaskAsync(_gameInstallTask);
+                    _dispatchTimer.Start();
+                }
+                else
+                {
+
+                    CheckGameVersion();
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, nameof(PredownloadAsync));
+            if (_gameInstallTask?.Operation is GameInstallOperation.Predownload)
+            {
+                _gameInstallTask.State = GameInstallState.Error;
+                _gameInstallTask.ErrorMessage = ex.Message;
+            }
+        }
+    }
+
+    #endregion
+
+    #region Update
+
+    private async Task UpdateGameAsync()
+    {
+        try
+        {
+            if (localGameVersion is not null && latestGameVersion > localGameVersion)
+            {
+                AudioLanguage audio = await _gamePackageService.GetAudioLanguageAsync(CurrentGameId, GameInstallPath);
+                GameInstallContext? task = await _gameInstallService.StartUpdateAsync(CurrentGameId, GameInstallPath!, audio);
+                if (task is not null)
+                {
+                    _gameInstallTask = task;
+                    _dispatchTimer.Start();
+                }
+            }
+            else
+            {
+                CheckGameVersion();
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Update game {GameBiz}", CurrentGameBiz);
+        }
+    }
+
+    #endregion
+
+    #region Game Install Task
+
+    private GameInstallContext? _gameInstallTask;
+
+    private async Task ChangeGameInstallTaskStateAsync()
+    {
+        try
+        {
+            if (_gameInstallTask is null)
+            {
+                CheckGameVersion();
+            }
+            else if (_gameInstallTask.Operation is not GameInstallOperation.Predownload)
+            {
+                if (_gameInstallTask.State is GameInstallState.Stop or GameInstallState.Paused or GameInstallState.Error or GameInstallState.Queueing)
+                {
+                    await _gameInstallService.ContinueTaskAsync(_gameInstallTask);
+                    _dispatchTimer.Start();
+                }
+                else if (_gameInstallTask.State is GameInstallState.Waiting or GameInstallState.Downloading or GameInstallState.Decompressing or GameInstallState.Merging or GameInstallState.Verifying)
+                {
+                    await _gameInstallService.PauseTaskAsync(_gameInstallTask);
+                    _dispatchTimer.Start();
+                }
+                else
+                {
+
+                    CheckGameVersion();
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Change game install task state {GameBiz}", CurrentGameBiz);
+        }
+    }
+
+    private void UpdateGameInstallTask()
+    {
+        try
+        {
+            _gameInstallTask ??= _gameInstallService.GetGameInstallTask(CurrentGameId);
+            if (_gameInstallTask is not null)
+            {
+                if (_gameInstallTask.Operation is GameInstallOperation.Predownload)
+                {
+                    IsPredownloadButtonEnabled = true;
+                }
+                _dispatchTimer.Start();
+            }
+        }
+        catch { }
+    }
+
+    private void OnGameInstallTaskStarted(object _, GameInstallTaskStartedMessage message)
+    {
+        if (message.InstallTask.GameId == CurrentGameId)
+        {
+            _gameInstallTask = message.InstallTask;
+            _dispatchTimer.Start();
+        }
+    }
+
+    private void UpdateGameInstallTaskProgress(Microsoft.UI.Dispatching.DispatcherQueueTimer sender, object args)
+    {
+        if (_gameInstallTask is null)
+        {
+            _dispatchTimer.Stop();
+            return;
+        }
+        try
+        {
+            if (_gameInstallTask.Operation is GameInstallOperation.Predownload)
+            {
+                Button_Predownload.UpdateGameInstallTaskState(_gameInstallTask);
+            }
+            else
+            {
+                GameState = GameState.Installing;
+                Button_StartGame.UpdateGameInstallTaskState(_gameInstallTask);
+            }
+            if (_gameInstallTask.State is GameInstallState.Error)
+            {
+                _dispatchTimer.Stop();
+            }
+            else if (_gameInstallTask.State is GameInstallState.Stop or GameInstallState.Finish)
+            {
+                _dispatchTimer.Stop();
+                _gameInstallTask = null;
+                CheckGameVersion();
+            }
+        }
+        catch { }
+    }
+
+    #endregion
+
+    #region Drop Background File
+
+    private void RootGrid_DragOver(object sender, Microsoft.UI.Xaml.DragEventArgs e)
+    {
+        if (e.DataView.Contains(StandardDataFormats.StorageItems))
+        {
+            e.AcceptedOperation = DataPackageOperation.Copy;
+            Border_BackgroundDragIn.Opacity = 1;
+        }
+    }
+
+    private async void RootGrid_Drop(object sender, Microsoft.UI.Xaml.DragEventArgs e)
+    {
+        Border_BackgroundDragIn.Opacity = 0;
+        var defer = e.GetDeferral();
+        try
+        {
+            if ((await e.DataView.GetStorageItemsAsync()).FirstOrDefault() is StorageFile file)
+            {
+                string? name = await BackgroundService.ChangeCustomBackgroundFileAsync(file);
+                if (string.IsNullOrWhiteSpace(name))
+                {
+                    return;
+                }
+                AppConfig.SetCustomBg(CurrentGameBiz, name);
+                AppConfig.SetEnableCustomBg(CurrentGameBiz, true);
+                WeakReferenceMessenger.Default.Send(new BackgroundChangedMessage());
+            }
+        }
+        catch (COMException ex)
+        {
+            InAppToast.MainWindow?.Error(Lang.GameLauncherSettingDialog_CannotDecodeFile);
+            _logger.LogError(ex, "Change custom background failed");
+        }
+        catch (Exception ex)
+        {
+            InAppToast.MainWindow?.Error(Lang.GameLauncherSettingDialog_AnUnknownErrorOccurredPleaseCheckTheLogs);
+            _logger.LogError(ex, "Change custom background failed");
+        }
+        defer.Complete();
+    }
+
+    private void RootGrid_DragLeave(object sender, Microsoft.UI.Xaml.DragEventArgs e)
+    {
+        Border_BackgroundDragIn.Opacity = 0;
+    }
+
+    #endregion
+
+    #region Game Setting
+
+    [RelayCommand]
+    private async Task OpenGameLauncherSettingDialogAsync()
+    {
+        await new GameLauncherSettingDialog { CurrentGameId = this.CurrentGameId, XamlRoot = this.XamlRoot }.ShowAsync();
+    }
+
+    #endregion
+
+    #region Switch Background Image
+
+    private const string PlayIcon = "\uF5B0";
+
+    private const string PauseIcon = "\uE62E";
+
+    public List<GameBackground> BackgroundImages { get; set => SetProperty(ref field, value); }
+
+    public bool CanStopVideo { get; set => SetProperty(ref field, value); }
+
+    public string StartStopButtonIcon { get; set => SetProperty(ref field, value); }
+
+    private int currentBackgroundImageIndex;
+    public int CurrentBackgroundImageIndex
+    {
+        get => currentBackgroundImageIndex;
+        set
+        {
+            if (SetProperty(ref currentBackgroundImageIndex, value))
+            {
+                ChangeBackgroundImageIndex(value);
+            }
+        }
+    }
+
+    private void OnBackgroundChanged(object _, BackgroundChangedMessage message)
+    {
+        if (message.GameBackground is null)
+        {
+            _ = InitializeBackgameImageSwitcherAsync();
+        }
+    }
+
+    private async Task InitializeBackgameImageSwitcherAsync()
+    {
+        try
+        {
+            CanStopVideo = false;
+            BackgroundImages = await _backgroundService.GetGameBackgroundsAsync(CurrentGameId);
+            if (BackgroundImages.Count > 0)
+            {
+                Border_SwitchBackgroundImage.Visibility = Visibility.Visible;
+                GameBackground? currentBackground = await _backgroundService.GetSuggestedGameBackgroundAsync(CurrentGameId);
+                if (currentBackground != null && BackgroundImages.FirstOrDefault(x => x.Id == currentBackground.Id) is GameBackground current)
+                {
+                    currentBackgroundImageIndex = Math.Clamp(BackgroundImages.IndexOf(current), 0, BackgroundImages.Count - 1);
+                    OnPropertyChanged(nameof(CurrentBackgroundImageIndex));
+                    CanStopVideo = current.Type is GameBackground.BACKGROUND_TYPE_VIDEO;
+                    if (CanStopVideo)
+                    {
+                        current.StopVideo = currentBackground.StopVideo;
+                        StartStopButtonIcon = current.StopVideo ? PlayIcon : PauseIcon;
+                    }
+                }
+            }
+            else
+            {
+                Border_SwitchBackgroundImage.Visibility = Visibility.Collapsed;
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Initialize background image switcher {GameBiz}", CurrentGameBiz);
+        }
+    }
+
+    private void ChangeBackgroundImageIndex(int index)
+    {
+        try
+        {
+            if (index < 0 || index >= BackgroundImages.Count)
+            {
+                return;
+            }
+            GameBackground current = BackgroundImages[index];
+            current.StopVideo = current.Type is GameBackground.BACKGROUND_TYPE_VIDEO && AppConfig.GetVideoBackgroundPaused(CurrentGameBiz);
+            WeakReferenceMessenger.Default.Send(new BackgroundChangedMessage(current));
+            CanStopVideo = current.Type is GameBackground.BACKGROUND_TYPE_VIDEO;
+            if (CanStopVideo)
+            {
+                StartStopButtonIcon = current.StopVideo ? PlayIcon : PauseIcon;
+            }
+        }
+        catch { }
+    }
+
+    private void Border_SwitchBackgroundImage_PointerEntered(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+    {
+        Border_SwitchBackgroundImage.Opacity = 1;
+    }
+
+    private void Border_SwitchBackgroundImage_PointerExited(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+    {
+        Border_SwitchBackgroundImage.Opacity = 0;
+    }
+
+    int _switchBackgroundTotalDelta = 0;
+
+    private void Border_SwitchBackgroundImage_PointerWheelChanged(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+    {
+        int delta = e.GetCurrentPoint(this).Properties.MouseWheelDelta;
+        _switchBackgroundTotalDelta += delta;
+        if (_switchBackgroundTotalDelta <= -120)
+        {
+            CurrentBackgroundImageIndex++;
+            _switchBackgroundTotalDelta = 0;
+        }
+        else if (_switchBackgroundTotalDelta >= 120)
+        {
+            CurrentBackgroundImageIndex--;
+            _switchBackgroundTotalDelta = 0;
+        }
+    }
+
+    [RelayCommand]
+    public void OpenBackgroundViewWindow()
+    {
+        try
+        {
+            new BackgroundViewWindow().Show();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Open background view window.");
+        }
+    }
+
+    [RelayCommand]
+    private async Task CopyCurrentBackgroundImageAsync()
+    {
+        try
+        {
+            string? path = BackgroundService.GetCachedBackgroundFile(CurrentGameId);
+            if (File.Exists(path))
+            {
+                var file = await StorageFile.GetFileFromPathAsync(path);
+                ClipboardHelper.SetStorageItems(DataPackageOperation.Copy, file);
+                InAppToast.MainWindow?.Information(Lang.Common_CopiedToClipboard);
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Copy current background image {GameBiz}", CurrentGameBiz);
+        }
+    }
+
+    [RelayCommand]
+    private async Task SaveCurrentBackgroundImageAsync()
+    {
+        try
+        {
+            string? path = BackgroundService.GetCachedBackgroundFile(CurrentGameId);
+            if (File.Exists(path))
+            {
+                var savePath = await FileDialogHelper.OpenSaveFileDialogAsync(this.XamlRoot, Path.GetFileName(path));
+                if (!string.IsNullOrWhiteSpace(savePath))
+                {
+                    File.Copy(path, savePath, true);
+                    var file = await StorageFile.GetFileFromPathAsync(savePath);
+                    var options = new FolderLauncherOptions();
+                    options.ItemsToSelect.Add(file);
+                    await Launcher.LaunchFolderAsync(await file.GetParentAsync(), options);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Save as current background image {GameBiz}", CurrentGameBiz);
+        }
+    }
+
+    [RelayCommand]
+    private void StartOrStopVideoBackground()
+    {
+        try
+        {
+            GameBackground current = BackgroundImages[CurrentBackgroundImageIndex];
+            if (current.Type is GameBackground.BACKGROUND_TYPE_VIDEO)
+            {
+                current.StopVideo = !current.StopVideo;
+                AppConfig.SetVideoBackgroundPaused(CurrentGameBiz, current.StopVideo);
+                StartStopButtonIcon = current.StopVideo ? PlayIcon : PauseIcon;
+                WeakReferenceMessenger.Default.Send(new BackgroundChangedMessage(current));
+            }
+        }
+        catch { }
+    }
+
+    #endregion
+
+    #region Cloud Game
+
+    #endregion
+
+}

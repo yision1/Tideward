@@ -1,0 +1,116 @@
+using CommunityToolkit.Mvvm.ComponentModel;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Documents;
+using Microsoft.UI.Xaml.Media;
+using System;
+using System.Diagnostics;
+using Windows.UI;
+
+namespace Tideward.Controls;
+
+[INotifyPropertyChanged]
+public sealed partial class ColorfulTextBlock : UserControl
+{
+
+    public ColorfulTextBlock()
+    {
+        this.InitializeComponent();
+    }
+
+    public TextWrapping TextWrapping
+    {
+        get { return (TextWrapping)GetValue(TextWrappingProperty); }
+        set { SetValue(TextWrappingProperty, value); }
+    }
+
+    public static readonly DependencyProperty TextWrappingProperty =
+        DependencyProperty.Register("TextWrapping", typeof(TextWrapping), typeof(ColorfulTextBlock), new PropertyMetadata(default));
+
+    [ObservableProperty]
+    public partial string Text { get; set; }
+    partial void OnTextChanged(string value)
+    {
+        try
+        {
+            var text = ThisTextBlock;
+            text.Inlines.Clear();
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                return;
+            }
+            var desc = value.AsSpan();
+            int lastIndex = 0;
+            for (int i = 0; i < desc.Length; i++)
+            {
+
+                if (desc[i] == '\\' && desc[i + 1] == 'n')
+                {
+                    text.Inlines.Add(new Run { Text = desc[lastIndex..i].ToString() });
+                    text.Inlines.Add(new LineBreak());
+                    i += 1;
+                    lastIndex = i + 1;
+                }
+
+                if (desc[i] == '<' && desc[i + 1] == 'c')
+                {
+                    text.Inlines.Add(new Run { Text = desc[lastIndex..i].ToString() });
+                    var colorLength = desc.Slice(i + 8).IndexOf('>');
+                    var colorString = desc.Slice(i + 8, colorLength);
+                    var color = Convert.FromHexString(colorString);
+                    var textLength = desc.Slice(i + 9 + colorLength).IndexOf('<');
+                    if (colorLength == 8)
+                    {
+                        text.Inlines.Add(new Run
+                        {
+                            Text = desc.Slice(i + 9 + colorLength, textLength).ToString(),
+                            Foreground = new SolidColorBrush(Color.FromArgb(color[3], color[0], color[1], color[2])),
+                        });
+                    }
+                    else if (colorLength == 6)
+                    {
+                        text.Inlines.Add(new Run
+                        {
+                            Text = desc.Slice(i + 9 + colorLength, textLength).ToString(),
+                            Foreground = new SolidColorBrush(Color.FromArgb(0xFF, color[0], color[1], color[2])),
+                        });
+                    }
+                    else
+                    {
+                        text.Inlines.Add(new Run
+                        {
+                            Text = desc.Slice(i + 9 + colorLength, textLength).ToString(),
+                        });
+                    }
+                    i += 16 + colorLength + textLength;
+                    lastIndex = i + 1;
+                }
+
+                if (desc[i] == '<' && desc[i + 1] == 'i')
+                {
+                    text.Inlines.Add(new Run { Text = desc[lastIndex..i].ToString() });
+                    var length = desc.Slice(i + 3).IndexOf('<');
+                    text.Inlines.Add(new Run
+                    {
+                        Text = desc.Slice(i + 3, length).ToString(),
+                        FontStyle = Windows.UI.Text.FontStyle.Italic,
+                    });
+                    i += length + 6;
+                    lastIndex = i + 1;
+                }
+
+                if (i == desc.Length - 1)
+                {
+                    text.Inlines.Add(new Run { Text = desc.Slice(lastIndex).ToString() });
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
+            ThisTextBlock.Inlines.Clear();
+            ThisTextBlock.Text = value;
+        }
+    }
+
+}

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sf:PageBase x:Class="Tideward.Features.Setting.FileManageSetting"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:lang="using:Tideward.Language"
+             xmlns:local="using:Tideward.Features.Setting"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:s="using:Tideward"
+             xmlns:sf="using:Tideward.Frameworks"
+             x:DefaultBindMode="OneWay"
+             mc:Ignorable="d">
+
+    <ScrollViewer>
+        <StackPanel>
+
+            <TextBlock FontSize="20" Text="{x:Bind lang:Lang.FileSettingPage_DataFolder}" />
+            <TextBlock Margin="0,12,0,0"
+                       Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                       Text="{x:Bind lang:Lang.FileSettingPage_DataFolderIsImportant}"
+                       TextWrapping="Wrap" />
+            <Grid Margin="0,12,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0"
+                        Height="40"
+                        Padding="16,0,16,0"
+                        BorderThickness="0"
+                        Command="{x:Bind ChangeUserDataFolderCommand}"
+                        CornerRadius="8,20,20,8"
+                        Style="{ThemeResource AccentButtonStyle}">
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <FontIcon Glyph="&#xE8DE;" />
+                        <TextBlock Text="{x:Bind lang:Lang.SettingPage_ReselectDataFolder}" />
+                    </StackPanel>
+                </Button>
+
+                <Button Grid.Column="1"
+                        Height="40"
+                        Margin="16,0,0,0"
+                        Padding="20,0,20,1"
+                        BorderThickness="0"
+                        Command="{x:Bind OpenUserDataFolderCommand}"
+                        CornerRadius="20">
+                    <Grid ColumnSpacing="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock VerticalAlignment="Center"
+                                   Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                   IsTextTrimmedChanged="TextBlock_IsTextTrimmedChanged"
+                                   MaxLines="2"
+                                   Text="{x:Bind s:AppConfig.UserDataFolder}"
+                                   TextTrimming="CharacterEllipsis"
+                                   TextWrapping="Wrap" />
+                        <FontIcon Grid.Column="1"
+                                  Margin="0,2,2,0"
+                                  FontSize="14"
+                                  Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                  Glyph="&#xE8A7;" />
+                    </Grid>
+                </Button>
+            </Grid>
+
+            <StackPanel Margin="0,8,0,0"
+                        Orientation="Horizontal"
+                        Spacing="16">
+                <Button Height="40"
+                        Margin="0,0,0,0"
+                        Padding="16,0,16,0"
+                        BorderThickness="0"
+                        Command="{x:Bind BackupDatabaseCommand}"
+                        CornerRadius="8,20,20,8"
+                        Style="{ThemeResource AccentButtonStyle}">
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <FontIcon Glyph="&#xF413;" />
+                        <TextBlock Text="{x:Bind lang:Lang.SettingPage_BackupDatabase}" />
+                    </StackPanel>
+                </Button>
+                <ProgressRing Width="28"
+                              Height="28"
+                              IsIndeterminate="{x:Bind BackupDatabaseCommand.IsRunning}"
+                              Visibility="{x:Bind BackupDatabaseCommand.IsRunning}" />
+                <Button Height="40"
+                        Padding="20,0,20,1"
+                        BorderThickness="0"
+                        Command="{x:Bind OpenLastBackupDatabaseCommand}"
+                        CornerRadius="20"
+                        Visibility="{x:Bind LastDatabaseBackupTime, Converter={StaticResource ObjectToVisibilityConverter}}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center"
+                                   Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                   Text="{x:Bind LastDatabaseBackupTime}" />
+                        <FontIcon Margin="8,2,2,0"
+                                  FontSize="16"
+                                  Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                  Glyph="&#xE8A7;" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+            <Button Height="40"
+                    Margin="0,8,0,0"
+                    Padding="16,0,16,0"
+                    BorderThickness="0"
+                    Command="{x:Bind DeleteAllSettingCommand}"
+                    CornerRadius="8,20,20,8"
+                    Style="{ThemeResource AccentButtonStyle}">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <FontIcon Glyph="&#xE74D;" />
+                    <TextBlock Text="{x:Bind lang:Lang.SettingPage_DeleteAllSettings}" />
+                </StackPanel>
+            </Button>
+
+            <TextBlock Margin="0,20,0,0"
+                       FontSize="20"
+                       Text="{x:Bind lang:Lang.FileSettingPage_Log}" />
+
+            <Button Height="40"
+                    Margin="0,8,0,0"
+                    Padding="16,0,16,0"
+                    BorderThickness="0"
+                    Command="{x:Bind OpenLogFolderCommand}"
+                    CornerRadius="8,20,20,8"
+                    Style="{ThemeResource AccentButtonStyle}">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <FontIcon Glyph="&#xE838;" />
+                    <TextBlock Text="{x:Bind lang:Lang.SettingPage_OpenLogFolder}" />
+                </StackPanel>
+            </Button>
+
+            <TextBlock Margin="0,20,0,0"
+                       FontSize="20"
+                       Text="{x:Bind lang:Lang.FileSettingPage_Cache}" />
+            <StackPanel Margin="0,8,0,0"
+                        Orientation="Horizontal"
+                        Spacing="20">
+                <TextBlock>
+                    <Run Foreground="{ThemeResource TextFillColorSecondaryBrush}" Text="{x:Bind lang:Lang.FileSettingPage_Log}" />
+                    <LineBreak />
+                    <Run Foreground="{ThemeResource TextFillColorSecondaryBrush}" Text="{x:Bind lang:Lang.FileSettingPage_Image}" />
+                    <LineBreak />
+                    <Run Foreground="{ThemeResource TextFillColorSecondaryBrush}" Text="{x:Bind lang:Lang.FileSettingPage_Browser}" />
+                    <LineBreak />
+                    <Run Foreground="{ThemeResource TextFillColorSecondaryBrush}" Text="{x:Bind lang:Lang.FileSettingPage_GameResource}" />
+                    <LineBreak />
+                    <Run Foreground="{ThemeResource TextFillColorSecondaryBrush}" Text="{x:Bind lang:Lang.FileManageSetting_LauncherBackground}" />
+                </TextBlock>
+                <TextBlock>
+                    <Run Text="{x:Bind LogCacheSize}" />
+                    <LineBreak />
+                    <Run Text="{x:Bind ImageCacheSize}" />
+                    <LineBreak />
+                    <Run Text="{x:Bind WebCacheSize}" />
+                    <LineBreak />
+                    <Run Text="{x:Bind GameCacheSize}" />
+                    <LineBreak />
+                    <Run Text="{x:Bind LauncherBackgroundSize}" />
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel Margin="0,12,0,0"
+                        Orientation="Horizontal"
+                        Spacing="16">
+                <Button Height="40"
+                        Padding="16,0,16,0"
+                        BorderThickness="0"
+                        Command="{x:Bind ClearCacheCommand}"
+                        CornerRadius="8,20,20,8"
+                        Style="{ThemeResource AccentButtonStyle}">
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <FontIcon Glyph="&#xEA99;" />
+                        <TextBlock Text="{x:Bind lang:Lang.FileSettingPage_ClearCache}" />
+                    </StackPanel>
+                </Button>
+                <ProgressRing Width="28"
+                              Height="28"
+                              VerticalAlignment="Center"
+                              IsIndeterminate="{x:Bind ClearCacheCommand.IsRunning}"
+                              Visibility="{x:Bind ClearCacheCommand.IsRunning}" />
+            </StackPanel>
+
+            <CheckBox Margin="0,4,0,0"
+                      Content="{x:Bind lang:Lang.FileManageSetting_CleanUpLauncherBackgroundFiles}"
+                      IsChecked="{x:Bind ClearLauncherBackground, Mode=TwoWay}" />
+
+        </StackPanel>
+    </ScrollViewer>
+
+</sf:PageBase>

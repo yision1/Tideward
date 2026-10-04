@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sf:WindowEx x:Class="Tideward.Features.ViewHost.WelcomeWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:lang="using:Tideward.Language"
+             xmlns:local="using:Tideward.Features.ViewHost"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:sf="using:Tideward.Frameworks"
+             xmlns:sh="using:Tideward.Helpers"
+             Title="Tideward"
+             x:DefaultBindMode="OneWay"
+             mc:Ignorable="d">
+
+    <Grid Loaded="Grid_Loaded" Background="#182A34">
+
+        <Rectangle HorizontalAlignment="Stretch"
+                   VerticalAlignment="Stretch"
+                   Fill="{ThemeResource ControlOnImageFillColorDefaultBrush}" />
+
+        <StackPanel Margin="48,0,48,0" VerticalAlignment="Center">
+
+            <TextBlock FontSize="24"
+                       Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                       IsTextScaleFactorEnabled="False"
+                       Text="欢迎使用 Tideward" />
+            <TextBlock Margin="0,20,0,0"
+                       FontSize="16"
+                       Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                       IsTextScaleFactorEnabled="False"
+                       Text="{x:Bind lang:Lang.WelcomeView_WelcomeToTidewardDescription}"
+                       TextWrapping="Wrap" />
+
+            <TextBlock Margin="0,28,0,0"
+                       FontSize="16"
+                       Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                       IsTextScaleFactorEnabled="False"
+                       Text="{x:Bind lang:Lang.WelcomeView_SelectUserDataFolderDescription}"
+                       TextWrapping="Wrap" />
+            <StackPanel Margin="0,12,0,0"
+                        Orientation="Horizontal"
+                        Spacing="8">
+                <FontIcon FontSize="16"
+                          Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                          Glyph="&#xE838;"
+                          IsTextScaleFactorEnabled="False" />
+                <TextBlock VerticalAlignment="Center"
+                           Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                           IsTextScaleFactorEnabled="False"
+                           Text="{x:Bind UserDataFolder}" />
+            </StackPanel>
+
+            <StackPanel Margin="0,16,0,0"
+                        Orientation="Horizontal"
+                        Spacing="12">
+                <Button BorderThickness="0"
+                        Command="{x:Bind ChangeUserDataFolderCommand}"
+                        Content="{x:Bind lang:Lang.SelectDirectoryPage_SelectFolder}"
+                        IsTextScaleFactorEnabled="False"
+                        Style="{ThemeResource AccentButtonStyle}" />
+                <TextBlock VerticalAlignment="Center"
+                           FontSize="12"
+                           Foreground="{ThemeResource SystemFillColorCautionBrush}"
+                           IsTextScaleFactorEnabled="False"
+                           Text="{x:Bind UserDataFolderErrorMessage}"
+                           TextWrapping="Wrap" />
+            </StackPanel>
+
+            <TextBlock Margin="0,32,0,0"
+                       FontSize="16"
+                       Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                       IsTextScaleFactorEnabled="False"
+                       Text="{x:Bind lang:Lang.WelcomeView_BeforeStartingSomeNecessaryEnvironmentChecksAreRequired}" />
+
+            <StackPanel Height="32"
+                        Margin="0,8,0,0"
+                        Orientation="Horizontal"
+                        Spacing="12">
+                <FontIcon Margin="0,0,-4,0"
+                          FontSize="16"
+                          Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                          Glyph="&#xE774;"
+                          IsTextScaleFactorEnabled="False" />
+                <TextBlock VerticalAlignment="Center"
+                           Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                           IsTextScaleFactorEnabled="False"
+                           Text="WebView2 Runtime" />
+                <TextBlock VerticalAlignment="Center"
+                           Foreground="{ThemeResource SystemFillColorSuccessBrush}"
+                           IsTextScaleFactorEnabled="False"
+                           Text="{x:Bind WebView2Version}"
+                           Visibility="{x:Bind sh:BindConverter.ObjectToVisibility(WebView2Version)}" />
+                <TextBlock VerticalAlignment="Center"
+                           Foreground="{ThemeResource SystemFillColorCautionBrush}"
+                           IsTextScaleFactorEnabled="False"
+                           Text="{x:Bind lang:Lang.WelcomeView_NotInstalled}"
+                           Visibility="{x:Bind sh:BindConverter.ObjectToVisibilityReversed(WebView2Version)}" />
+                <HyperlinkButton Padding="8,4,8,4"
+                                 VerticalAlignment="Center"
+                                 Content="{x:Bind lang:Lang.WelcomeView_InstallNow}"
+                                 Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                 IsTextScaleFactorEnabled="False"
+                                 NavigateUri="https://developer.microsoft.com/microsoft-edge/webview2"
+                                 Visibility="{x:Bind sh:BindConverter.ObjectToVisibilityReversed(WebView2Version)}" />
+            </StackPanel>
+
+            <StackPanel Height="32"
+                        Margin="0,8,0,0"
+                        Orientation="Horizontal"
+                        Spacing="12">
+                <FontIcon Margin="0,0,-4,0"
+                          FontSize="16"
+                          Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                          Glyph="&#xE91B;"
+                          IsTextScaleFactorEnabled="False" />
+                <TextBlock VerticalAlignment="Center"
+                           Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                           IsTextScaleFactorEnabled="False"
+                           Text="WebP Decoder" />
+                <TextBlock VerticalAlignment="Center"
+                           Foreground="{ThemeResource SystemFillColorSuccessBrush}"
+                           IsTextScaleFactorEnabled="False"
+                           Text="{x:Bind lang:Lang.WelcomeView_Installed}"
+                           Visibility="{x:Bind WebpDecoderSupport}" />
+                <TextBlock VerticalAlignment="Center"
+                           Foreground="{ThemeResource SystemFillColorCautionBrush}"
+                           IsTextScaleFactorEnabled="False"
+                           Text="{x:Bind lang:Lang.WelcomeView_NotInstalled}"
+                           Visibility="{x:Bind sh:BindConverter.BoolToVisibilityReversed(WebpDecoderSupport)}" />
+                <HyperlinkButton Padding="8,4,8,4"
+                                 VerticalAlignment="Center"
+                                 Content="{x:Bind lang:Lang.WelcomeView_InstallNow}"
+                                 Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                 IsTextScaleFactorEnabled="False"
+                                 NavigateUri="https://apps.microsoft.com/detail/9pg2dk419drg"
+                                 Visibility="{x:Bind sh:BindConverter.BoolToVisibilityReversed(WebpDecoderSupport)}" />
+            </StackPanel>
+
+            <TextBlock Margin="0,32,0,0"
+                       HorizontalAlignment="Left"
+                       Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                       Text="{x:Bind lang:Lang.SettingPage_ForABetterExperiencePleaseEnableTheFollowingFeaturesInSystemSettings}"
+                       TextWrapping="Wrap" />
+            <TextBlock Margin="0,12,0,0" HorizontalAlignment="Left">
+                <Hyperlink Click="Hyperlink_Click"
+                           NavigateUri="ms-settings:easeofaccess-visualeffects"
+                           UnderlineStyle="None">
+                    <Run Text="{x:Bind lang:Lang.AppearanceSettingPage_TransparencyEffects}" />
+                </Hyperlink>
+                <Run Text="" />
+                <Run Text="" />
+                <Hyperlink Click="Hyperlink_Click"
+                           NavigateUri="ms-settings:easeofaccess-visualeffects"
+                           UnderlineStyle="None">
+                    <Run Text="{x:Bind lang:Lang.AppearanceSettingPage_AnimationEffects}" />
+                </Hyperlink>
+            </TextBlock>
+
+            <TextBlock Margin="0,20,0,0"
+                       HorizontalAlignment="Left"
+                       Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                       Text="{x:Bind lang:Lang.WelcomeView_IfTidewardTakesALongTimeToStartItIsRecommendedToDisableSmartAppControlInWindowsSecurity}"
+                       TextWrapping="Wrap"
+                       Visibility="{x:Bind IsWin11}" />
+            <TextBlock Margin="0,12,0,0"
+                       HorizontalAlignment="Left"
+                       Visibility="{x:Bind IsWin11}">
+                <Hyperlink Click="Hyperlink_Click"
+                           NavigateUri="windowsdefender://smartapp"
+                           UnderlineStyle="None">
+                    <Run Text="{x:Bind lang:Lang.WelcomeView_OpenWindowsSecurity}" />
+                </Hyperlink>
+                <Run Text="" />
+                <Run Text="" />
+                <Hyperlink Click="Hyperlink_Click"
+                           NavigateUri="https://github.com/Scighost/Starward/issues/1388"
+                           UnderlineStyle="None">
+                    <Run Text="{x:Bind lang:Lang.WelcomeView_LearnMore}" />
+                </Hyperlink>
+            </TextBlock>
+
+        </StackPanel>
+
+        <Button Height="40"
+                Margin="0,0,80,48"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                BorderThickness="0"
+                Command="{x:Bind StartCommand}"
+                CornerRadius="8,20,20,8"
+                IsEnabled="{x:Bind CanStartTideward}"
+                Style="{ThemeResource AccentButtonStyle}">
+            <TextBlock Margin="4,0,8,0"
+                       FontSize="14"
+                       IsTextScaleFactorEnabled="False"
+                       Text="{x:Bind lang:Lang.WelcomeView_TidewardStart}" />
+        </Button>
+
+    </Grid>
+
+</sf:WindowEx>

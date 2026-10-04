@@ -1,0 +1,13 @@
+<sf:WindowEx x:Class="Tideward.Features.KuroGameRecord.KuroBattleChronicleWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:sf="using:Tideward.Frameworks">
+    <Grid x:Name="RootGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="RootGrid_Loaded">
+        <Grid.RowDefinitions><RowDefinition Height="32" /><RowDefinition /></Grid.RowDefinitions>
+        <TextBlock x:Name="PageTitle" Margin="24,0,144,0" VerticalAlignment="Center" FontSize="14"
+                   IsTextScaleFactorEnabled="False" Text="库街区战绩" TextTrimming="CharacterEllipsis" />
+        <WebView2 x:Name="webview" Grid.Row="1" />
+        <TextBlock x:Name="StatusText" Grid.Row="1" Margin="24" HorizontalAlignment="Center" VerticalAlignment="Center"
+                   TextWrapping="Wrap" TextAlignment="Center" Visibility="Collapsed" />
+    </Grid>
+</sf:WindowEx>

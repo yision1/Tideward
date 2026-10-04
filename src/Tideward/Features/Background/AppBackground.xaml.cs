@@ -1,0 +1,667 @@
+using Tideward.Core.Games;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Messaging;
+using CommunityToolkit.WinUI.Helpers;
+using Microsoft.Extensions.Logging;
+using Microsoft.Graphics.Canvas;
+using Microsoft.Graphics.Canvas.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Imaging;
+using Tideward.Core.Games.Models;
+using Tideward.Features.Codec;
+using Tideward.Features.ViewHost;
+using Tideward.Helpers;
+using System;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Threading;
+using System.Threading.Tasks;
+using Windows.Foundation;
+using Windows.Graphics.Imaging;
+using Windows.Media.Core;
+using Windows.Media.Playback;
+using Windows.System;
+using Windows.UI;
+using WinRT;
+
+namespace Tideward.Features.Background;
+
+[INotifyPropertyChanged]
+public sealed partial class AppBackground : UserControl
+{
+
+    public static AppBackground Current { get; private set; }
+
+    private readonly ILogger<AppBackground> _logger = AppConfig.GetLogger<AppBackground>();
+
+    private readonly BackgroundService _backgroundService = AppConfig.GetService<BackgroundService>();
+
+    public AppBackground()
+    {
+        Current = this;
+        this.InitializeComponent();
+        this.Loaded += AppBackground_Loaded;
+        this.Unloaded += AppBackground_Unloaded;
+    }
+
+    private async void AppBackground_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        WeakReferenceMessenger.Default.Register<BackgroundChangedMessage>(this, OnBackgroundChanged);
+        WeakReferenceMessenger.Default.Register<MainWindowStateChangedMessage>(this, OnMainWindowStateChanged);
+        WeakReferenceMessenger.Default.Register<VideoBgVolumeChangedMessage>(this, OnVideoBgVolumeChanged);
+        this.XamlRoot.Changed -= XamlRoot_Changed;
+        this.XamlRoot.Changed += XamlRoot_Changed;
+        await UpdateBackgroundAsync();
+    }
+
+    private void AppBackground_Unloaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        updateBackgroundCts?.Cancel();
+        DisposeVideoResource();
+        _lastBackgroundFile = null;
+        CurrentGameBackground = null;
+        this.XamlRoot?.Changed -= XamlRoot_Changed;
+        WeakReferenceMessenger.Default.UnregisterAll(this);
+    }
+
+    private void XamlRoot_Changed(Microsoft.UI.Xaml.XamlRoot sender, Microsoft.UI.Xaml.XamlRootChangedEventArgs args)
+    {
+        SynchronizeVideoVisibility();
+        if (_lastScale != sender.RasterizationScale)
+        {
+            if (IsLoaded) _ = UpdateBackgroundAsync();
+        }
+    }
+
+    public GameId CurrentGameId
+    {
+        get; set
+        {
+            if (field is null)
+            {
+                field = value;
+                InitializeBackgroundImage();
+            }
+            field = value;
+            _ = UpdateBackgroundAsync();
+        }
+    }
+
+    public ImageSource? PlacehoderImageSource { get; set => SetProperty(ref field, value); }
+
+    public ImageSource? BackgroundImageSource
+    {
+        get; set
+        {
+            if (value is null && field is not null)
+            {
+                PlacehoderImageSource = field;
+            }
+            SetProperty(ref field, value);
+        }
+    }
+
+    public bool IsUpdateBackgroundRunning { get; set => SetProperty(ref field, value); }
+
+    public GameBackground? CurrentGameBackground { get; private set; }
+
+    private string? _lastBackgroundFile;
+
+    private double _lastScale = 1;
+
+    private void InitializeBackgroundImage()
+    {
+        try
+        {
+            var file = BackgroundService.GetCachedBackgroundFile(CurrentGameId);
+            if (file != null)
+            {
+                if (!BackgroundService.FileIsSupportedVideo(file))
+                {
+                    BackgroundImageSource = new BitmapImage(new Uri(file));
+                }
+                try
+                {
+                    string? hex = AppConfig.AccentColor;
+                    if (!string.IsNullOrWhiteSpace(hex))
+                    {
+                        Color color = ColorHelper.ToColor(hex);
+                        AccentColorHelper.ChangeAppAccentColor(color);
+                    }
+                }
+                catch { }
+            }
+            else
+            {
+                BackgroundImageSource = null;
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Initialize background image");
+        }
+
+    }
+
+    private CancellationTokenSource? updateBackgroundCts;
+
+    public async Task UpdateBackgroundAsync(GameBackground? background = null)
+    {
+        if (!IsLoaded || XamlRoot is null) return;
+        string? imageFilePath = null;
+        try
+        {
+            IsUpdateBackgroundRunning = true;
+
+            updateBackgroundCts?.Cancel();
+            updateBackgroundCts = new();
+            CancellationToken cancellationToken = updateBackgroundCts.Token;
+
+            if (CurrentGameId is null)
+            {
+                DisposeVideoResource();
+                BackgroundImageSource = null;
+                return;
+            }
+
+            for (int i = 0; i < 2; i++)
+            {
+                bool apiCancelled = false;
+                string? filePath = null;
+                GameBackground? gameBackground = null;
+                try
+                {
+                    bool timeout = i == 0 && background is null;
+                    CancellationToken apiCancellationToken = timeout ? new CancellationTokenSource(1000).Token : CancellationToken.None;
+                    CancellationToken downloadCancellationToken = timeout ? new CancellationTokenSource(3000).Token : CancellationToken.None;
+                    gameBackground = background ?? await _backgroundService.GetSuggestedGameBackgroundAsync(CurrentGameId, apiCancellationToken);
+                    if (gameBackground is null)
+                    {
+                        filePath = BackgroundService.GetFallbackBackgroundImage(CurrentGameId);
+                    }
+                    else if (gameBackground.Type is GameBackground.BACKGROUND_TYPE_CUSTOM)
+                    {
+                        filePath = gameBackground.Background.Url;
+                    }
+                    else if (gameBackground.Type is GameBackground.BACKGROUND_TYPE_VIDEO && !gameBackground.StopVideo)
+                    {
+                        if (BackgroundImageSource is null)
+                        {
+                            string poster = await _backgroundService.GetBackgroundFileAsync(gameBackground.Background.Url, downloadCancellationToken);
+                            await ChangeBackgroundImageAsync(poster, cancellationToken);
+                        }
+                        filePath = await _backgroundService.GetBackgroundFileAsync(gameBackground.Video.Url, downloadCancellationToken);
+                    }
+                    else
+                    {
+                        filePath = await _backgroundService.GetBackgroundFileAsync(gameBackground.Background.Url, downloadCancellationToken);
+                    }
+                }
+                catch (OperationCanceledException)
+                {
+                    apiCancelled = true;
+                    gameBackground = null;
+                    filePath = BackgroundService.GetFallbackBackgroundImage(CurrentGameId);
+                }
+                catch (Exception ex)
+                {
+                    apiCancelled = true;
+                    gameBackground = null;
+                    filePath = BackgroundService.GetFallbackBackgroundImage(CurrentGameId);
+                    _logger.LogError(ex, "Update background image");
+                }
+                if (cancellationToken.IsCancellationRequested)
+                {
+                    return;
+                }
+                if (filePath == _lastBackgroundFile)
+                {
+                    if (BackgroundService.FileIsSupportedVideo(filePath) && _mediaPlayer is not null)
+                    {
+                        CurrentGameBackground = gameBackground ?? CurrentGameBackground;
+                        SynchronizeVideoVisibility();
+                        RememberBackgroundSelection(gameBackground, filePath);
+                        if (!apiCancelled) break;
+                        continue;
+                    }
+                    if (!BackgroundService.FileIsSupportedVideo(filePath) && _lastScale == this.XamlRoot.GetUIScaleFactor())
+                    {
+                        CurrentGameBackground = gameBackground ?? CurrentGameBackground;
+                        RememberBackgroundSelection(gameBackground, filePath);
+                        if (!apiCancelled) break;
+                        continue;
+                    }
+                }
+                DisposeVideoResource();
+                BackgroundImageSource = null;
+                if (filePath != null)
+                {
+                    if (gameBackground?.Type is GameBackground.BACKGROUND_TYPE_VIDEO
+                        || gameBackground?.Type is GameBackground.BACKGROUND_TYPE_POSTER && !string.IsNullOrWhiteSpace(gameBackground.Theme?.Url))
+                    {
+                        await SetVideoBackgroundAsync(gameBackground, filePath, cancellationToken);
+                    }
+                    else if (BackgroundService.FileIsSupportedVideo(filePath))
+                    {
+                        StartMediaPlayer(filePath);
+                    }
+                    else
+                    {
+                        imageFilePath = filePath;
+                        await ChangeBackgroundImageAsync(filePath, cancellationToken);
+                    }
+                    cancellationToken.ThrowIfCancellationRequested();
+                    _lastBackgroundFile = filePath;
+                    _lastScale = this.XamlRoot.GetUIScaleFactor();
+                    CurrentGameBackground = gameBackground;
+                    if (!apiCancelled && gameBackground is not null && gameBackground.Type is not GameBackground.BACKGROUND_TYPE_CUSTOM)
+                    {
+                        var list = await _backgroundService.GetGameBackgroundsAsync(CurrentGameId, cancellationToken);
+                        cancellationToken.ThrowIfCancellationRequested();
+                        RememberBackgroundSelection(gameBackground, filePath);
+                        AppConfig.SetGameBackgroundIds(CurrentGameId.GameBiz, string.Join(',', list.Select(x => x.Id)));
+                    }
+                }
+                if (!apiCancelled) break;
+            }
+        }
+        catch (OperationCanceledException) { }
+        catch (COMException ex) when (ex.HResult == -2003292277)
+        {
+
+            if (Path.GetExtension(imageFilePath)?.Equals(".webp", StringComparison.OrdinalIgnoreCase) ?? false)
+            {
+                InAppToast.MainWindow?.ShowWithButton(InfoBarSeverity.Warning,
+                                                      Lang.AppBackground_ImageDecodingFailed,
+                                                      Lang.AppBackground_PleaseInstallTheWebPImageExtension,
+                                                      Lang.SettingPage_Download,
+                                                      async () => await Launcher.LaunchUriAsync(new("https://apps.microsoft.com/detail/9pg2dk419drg")));
+            }
+            else
+            {
+                InAppToast.MainWindow?.Warning(Lang.AppBackground_ImageDecodingFailed);
+            }
+            _logger.LogError(ex, "Cannot decode image: '{path}'", imageFilePath);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Update background image");
+        }
+        finally
+        {
+            IsUpdateBackgroundRunning = false;
+        }
+    }
+
+    private void RememberBackgroundSelection(GameBackground? background, string? file)
+    {
+        if (background is null || background.Type is GameBackground.BACKGROUND_TYPE_CUSTOM || file is null) return;
+        AppConfig.SetBg(CurrentGameId.GameBiz, Path.GetFileName(file));
+        AppConfig.SetSelectedBackgroundId(CurrentGameId.GameBiz, background.Id);
+    }
+
+    private async Task ChangeBackgroundImageAsync(string file, CancellationToken cancellationToken)
+    {
+        cancellationToken.ThrowIfCancellationRequested();
+
+        using var fs = File.OpenRead(file);
+        var decoder = await BitmapDecoder.CreateAsync(fs.AsRandomAccessStream());
+
+        double scale = this.XamlRoot.GetUIScaleFactor();
+        int decodeWidth = 0, decodeHeight = 0;
+        double windowWidth = ActualWidth * scale, windowHeight = ActualHeight * scale;
+
+        if (decoder.PixelWidth <= windowWidth || decoder.PixelHeight <= windowHeight)
+        {
+            decodeWidth = (int)decoder.PixelWidth;
+            decodeHeight = (int)decoder.PixelHeight;
+            var writeableBitmap = new WriteableBitmap(decodeWidth, decodeHeight);
+            fs.Position = 0;
+            await writeableBitmap.SetSourceAsync(fs.AsRandomAccessStream());
+            cancellationToken.ThrowIfCancellationRequested();
+            Color? color = AccentColorHelper.GetAccentColor(writeableBitmap.PixelBuffer, decodeWidth, decodeHeight);
+            AccentColorHelper.ChangeAppAccentColor(color);
+            AppConfig.AccentColor = color?.ToHex() ?? null;
+            BackgroundImageSource = writeableBitmap;
+        }
+        else
+        {
+            if (windowWidth * decoder.PixelHeight > windowHeight * decoder.PixelWidth)
+            {
+                decodeWidth = (int)windowWidth;
+                decodeHeight = (int)(windowWidth * decoder.PixelHeight / decoder.PixelWidth);
+            }
+            else
+            {
+                decodeHeight = (int)windowHeight;
+                decodeWidth = (int)(windowHeight * decoder.PixelWidth / decoder.PixelHeight);
+            }
+            using var soft = await decoder.GetSoftwareBitmapAsync(BitmapPixelFormat.Bgra8,
+                                                                  BitmapAlphaMode.Premultiplied,
+                                                                  new BitmapTransform
+                                                                  {
+                                                                      ScaledWidth = (uint)decodeWidth,
+                                                                      ScaledHeight = (uint)decodeHeight,
+                                                                      InterpolationMode = BitmapInterpolationMode.Fant
+                                                                  },
+                                                                  ExifOrientationMode.IgnoreExifOrientation,
+                                                                  ColorManagementMode.DoNotColorManage);
+            var softwareBitmapSource = new SoftwareBitmapSource();
+            await softwareBitmapSource.SetBitmapAsync(soft);
+
+            cancellationToken.ThrowIfCancellationRequested();
+
+            using BitmapBuffer bitmapBuffer = soft.LockBuffer(BitmapBufferAccessMode.Read);
+            using IMemoryBufferReference memoryBufferReference = bitmapBuffer.CreateReference();
+            memoryBufferReference.As<AccentColorHelper.IMemoryBufferByteAccess>().GetBuffer(out nint bufferPtr, out uint capacity);
+            Color? color = AccentColorHelper.GetAccentColor(bufferPtr, capacity, decodeWidth, decodeHeight);
+            AccentColorHelper.ChangeAppAccentColor(color);
+            AppConfig.AccentColor = color?.ToHex() ?? null;
+            BackgroundImageSource = softwareBitmapSource;
+        }
+    }
+
+    #region Video
+
+    private MediaPlayer? _mediaPlayer;
+    private int _videoFrameCount;
+    private bool _videoFrameFailureLogged;
+
+    private CanvasRenderTarget? _videoSurface;
+
+    private CanvasBitmap? _videoOverlayImage;
+
+    private CanvasImageSource? _videoImageSource;
+
+    private int videoBgVolume = AppConfig.VideoBgVolume;
+
+    private SemaphoreSlim _videoSemaphore = new SemaphoreSlim(1, 1);
+
+    private void StartMediaPlayer(string file)
+    {
+        if (Path.GetExtension(file).Equals(".webm", StringComparison.OrdinalIgnoreCase))
+        {
+            bool decoderInstalled = VP9Helper.IsVP9DecoderInstalled();
+            bool vp8 = VP9Helper.IsVP8VideoFile(file);
+            if (vp8)
+            {
+                if (!decoderInstalled)
+                {
+                    _needToInstallVp9VideoExtension = true;
+                }
+            }
+            else
+            {
+                bool highProfileOrRgb = VP9Helper.IsVP9HighProfileOrRGB(file);
+                if (!decoderInstalled || highProfileOrRgb)
+                {
+                    VP9Helper.RegisterVP9Decoder(true);
+                }
+                if (!decoderInstalled && !highProfileOrRgb)
+                {
+                    SuggestToInstallVP9Decoder();
+                }
+            }
+        }
+        VP9Helper.RegisterVorbisDecoder();
+        _mediaPlayer = new MediaPlayer
+        {
+            IsLoopingEnabled = true,
+            Volume = videoBgVolume / 100.0,
+            IsMuted = false,
+            IsVideoFrameServerEnabled = true,
+            Source = MediaSource.CreateFromUri(new Uri(file))
+        };
+        _mediaPlayer.CommandManager.IsEnabled = false;
+        _mediaPlayer.SystemMediaTransportControls.IsEnabled = false;
+        _mediaPlayer.VideoFrameAvailable += MediaPlayer_VideoFrameAvailable;
+        _mediaPlayer.MediaFailed += MediaPlayer_MediaFailed;
+        _mediaPlayer.MediaOpened += MediaPlayer_MediaOpened;
+        _videoFrameCount = 0;
+        _videoFrameFailureLogged = false;
+        _logger.LogInformation("Opening background video: {file}", Path.GetFileName(file));
+        _mediaPlayer.Play();
+    }
+
+    private void MediaPlayer_MediaOpened(MediaPlayer sender, object args)
+    {
+        DispatcherQueue.TryEnqueue(() =>
+        {
+            if (ReferenceEquals(sender, _mediaPlayer)) SynchronizeVideoVisibility();
+        });
+    }
+
+    private void SynchronizeVideoVisibility()
+    {
+        if (_mediaPlayer is null || !IsLoaded || XamlRoot is null) return;
+        if (XamlRoot.IsHostVisible && CurrentGameBackground?.StopVideo != true) _mediaPlayer.Play();
+        else _mediaPlayer.Pause();
+    }
+
+    private async Task SetVideoBackgroundAsync(GameBackground gameBackground, string filePath, CancellationToken cancellationToken = default)
+    {
+        cancellationToken.ThrowIfCancellationRequested();
+        if (BackgroundService.FileIsSupportedVideo(filePath))
+        {
+            StartMediaPlayer(filePath);
+            _ = PrepareVideoOverlayImageAsync(gameBackground.Theme.Url, cancellationToken);
+            _ = ChangeAccentColorToImageFileAsync(gameBackground.Background.Url, cancellationToken);
+        }
+        else
+        {
+            string overlayPath = await _backgroundService.GetBackgroundFileAsync(gameBackground.Theme.Url, cancellationToken);
+            using var fs1 = File.OpenRead(filePath);
+            using var bitmap = await CanvasBitmap.LoadAsync(CanvasDevice.GetSharedDevice(), fs1.AsRandomAccessStream(), 96);
+            using var fs2 = File.OpenRead(overlayPath);
+            using var overlay = await CanvasBitmap.LoadAsync(CanvasDevice.GetSharedDevice(), fs2.AsRandomAccessStream(), 96);
+            var imageSource = new CanvasImageSource(CanvasDevice.GetSharedDevice(), bitmap.SizeInPixels.Width, bitmap.SizeInPixels.Height, 96);
+            using (var ds = imageSource.CreateDrawingSession(Microsoft.UI.Colors.Transparent))
+            {
+                ds.DrawImage(bitmap);
+                Rect source = new Rect(0, 0, overlay.SizeInPixels.Width, overlay.SizeInPixels.Height);
+                Rect dest = new Rect(0, 0, imageSource.SizeInPixels.Width, imageSource.SizeInPixels.Height);
+                ds.DrawImage(overlay, dest, source, 1, CanvasImageInterpolation.HighQualityCubic);
+            }
+            BackgroundImageSource = imageSource;
+            if (bitmap.Format is Windows.Graphics.DirectX.DirectXPixelFormat.B8G8R8A8UIntNormalized)
+            {
+                try
+                {
+                    Color? color = await Task.Run(() =>
+                    {
+                        Color? color = AccentColorHelper.GetAccentColor(bitmap.GetPixelBytes(), (int)bitmap.SizeInPixels.Width, (int)bitmap.SizeInPixels.Height);
+                        return color;
+                    });
+                    if (color is not null)
+                    {
+                        AccentColorHelper.ChangeAppAccentColor(color);
+                        AppConfig.AccentColor = color?.ToHex() ?? null;
+                    }
+                }
+                catch { }
+            }
+
+        }
+    }
+
+    private bool _needToInstallVp9VideoExtension;
+
+    private void MediaPlayer_MediaFailed(MediaPlayer sender, MediaPlayerFailedEventArgs args)
+    {
+        _logger.LogError(args.ExtendedErrorCode, "Media player failed.");
+        if (_needToInstallVp9VideoExtension)
+        {
+            InAppToast.MainWindow?.ShowWithButton(InfoBarSeverity.Warning, null, Lang.AppBackground_VideoDecodingFailedPleaseInstallTheVP9VideoExtensions, Lang.SettingPage_Download, async () => await Launcher.LaunchUriAsync(new("https://apps.microsoft.com/detail/9n4d0msmp0pt")));
+            _needToInstallVp9VideoExtension = false;
+        }
+        else
+        {
+            InAppToast.MainWindow?.Warning(Lang.AppBackground_VideoDecodingFailed);
+        }
+    }
+
+    private void MediaPlayer_VideoFrameAvailable(MediaPlayer sender, object args)
+    {
+        if (!ReferenceEquals(sender, _mediaPlayer) || !_videoSemaphore.Wait(0))
+        {
+            return;
+        }
+        if (!DispatcherQueue.TryEnqueue(() =>
+        {
+            try
+            {
+                if (!ReferenceEquals(sender, _mediaPlayer) || !IsLoaded) return;
+                if (_videoSurface is null || _videoImageSource is null)
+                {
+                    _videoSurface?.Dispose();
+                    int width = (int)sender.PlaybackSession.NaturalVideoWidth;
+                    int height = (int)sender.PlaybackSession.NaturalVideoHeight;
+                    if (width <= 0 || height <= 0) return;
+                    _videoSurface = new CanvasRenderTarget(CanvasDevice.GetSharedDevice(), width, height, 96);
+                    _videoImageSource = new CanvasImageSource(CanvasDevice.GetSharedDevice(), width, height, 96);
+                    BackgroundImageSource = _videoImageSource;
+                }
+                sender.CopyFrameToVideoSurface(_videoSurface);
+                using var ds = _videoImageSource.CreateDrawingSession(Microsoft.UI.Colors.Transparent);
+                ds.DrawImage(_videoSurface);
+                if (_videoOverlayImage is not null)
+                {
+                    Rect source = new Rect(0, 0, _videoOverlayImage.SizeInPixels.Width, _videoOverlayImage.SizeInPixels.Height);
+                    Rect dest = new Rect(0, 0, _videoImageSource.SizeInPixels.Width, _videoImageSource.SizeInPixels.Height);
+                    ds.DrawImage(_videoOverlayImage, dest, source, 1, CanvasImageInterpolation.HighQualityCubic);
+                }
+                if (++_videoFrameCount is 1 or 60)
+                    _logger.LogInformation("Background video rendered {frames} frames; playback={state}", _videoFrameCount, sender.PlaybackSession.PlaybackState);
+            }
+            catch (Exception ex)
+            {
+                if (!_videoFrameFailureLogged)
+                {
+                    _videoFrameFailureLogged = true;
+                    _logger.LogError(ex, "Render background video frame");
+                }
+            }
+            finally
+            {
+                _videoSemaphore.Release();
+            }
+        })) _videoSemaphore.Release();
+    }
+
+    private async Task PrepareVideoOverlayImageAsync(string url, CancellationToken cancellationToken = default)
+    {
+        try
+        {
+            string filePath = await _backgroundService.GetBackgroundFileAsync(url, cancellationToken);
+            if (cancellationToken.IsCancellationRequested)
+            {
+                return;
+            }
+            _videoOverlayImage?.Dispose();
+            using var fs = File.OpenRead(filePath);
+            _videoOverlayImage = await CanvasBitmap.LoadAsync(CanvasDevice.GetSharedDevice(), fs.AsRandomAccessStream(), 96);
+        }
+        catch (OperationCanceledException) { }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Prepare video overlay image");
+        }
+    }
+
+    private async Task ChangeAccentColorToImageFileAsync(string url, CancellationToken cancellationToken = default)
+    {
+        try
+        {
+            Color? color = await Task.Run(async () =>
+            {
+                string filePath = await _backgroundService.GetBackgroundFileAsync(url, cancellationToken);
+                if (cancellationToken.IsCancellationRequested)
+                {
+                    return null;
+                }
+                using var fs = File.OpenRead(filePath);
+                var decoder = await BitmapDecoder.CreateAsync(fs.AsRandomAccessStream());
+                var pixelData = await decoder.GetPixelDataAsync(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Premultiplied, new BitmapTransform(), ExifOrientationMode.IgnoreExifOrientation, ColorManagementMode.DoNotColorManage);
+                Color? color = AccentColorHelper.GetAccentColor(pixelData.DetachPixelData(), (int)decoder.PixelWidth, (int)decoder.PixelHeight);
+                return color;
+            });
+            if (color is not null)
+            {
+                AccentColorHelper.ChangeAppAccentColor(color);
+                AppConfig.AccentColor = color?.ToHex() ?? null;
+            }
+        }
+        catch (OperationCanceledException) { }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Prepare video overlay image");
+        }
+    }
+
+    private void DisposeVideoResource()
+    {
+        _mediaPlayer?.Dispose();
+        _mediaPlayer = null;
+        _videoSurface?.Dispose();
+        _videoSurface = null;
+        _videoImageSource = null;
+        _videoOverlayImage?.Dispose();
+        _videoOverlayImage = null;
+        VP9Helper.UnregisterVP9Decoder(true);
+        VP9Helper.UnregisterVorbisDecoder();
+    }
+
+    #endregion
+
+    private void OnBackgroundChanged(object _, BackgroundChangedMessage message)
+    {
+        if (message.GameBackground is { } background
+            && (background.StopVideo || background.Type == GameBackground.BACKGROUND_TYPE_POSTER))
+            _mediaPlayer?.Pause();
+        _ = UpdateBackgroundAsync(message.GameBackground);
+    }
+
+    private void OnMainWindowStateChanged(object _, MainWindowStateChangedMessage message)
+    {
+        try
+        {
+            if (_mediaPlayer is not null)
+            {
+                var state = _mediaPlayer.PlaybackSession.PlaybackState;
+                if (message.Activate && state is not MediaPlaybackState.Playing && CurrentGameBackground?.StopVideo != true)
+                {
+                    _mediaPlayer.Play();
+                }
+                else if (message.Hide || message.SessionLock)
+                {
+                    _mediaPlayer.Pause();
+                }
+            }
+        }
+        catch { }
+    }
+
+    private void OnVideoBgVolumeChanged(object _, VideoBgVolumeChangedMessage message)
+    {
+        try
+        {
+            videoBgVolume = message.Volume;
+            _mediaPlayer?.Volume = message.Volume / 100d;
+        }
+        catch { }
+    }
+
+    private bool _vp9DecoderSuggested;
+
+    private void SuggestToInstallVP9Decoder()
+    {
+        if (!_vp9DecoderSuggested)
+        {
+            InAppToast.MainWindow?.ShowWithButton(InfoBarSeverity.Warning, null, Lang.ItIsRecommendedToInstallTheVP9VideoExtensionsToReduceCPUUsage, Lang.SettingPage_Download, async () => await Launcher.LaunchUriAsync(new("https://apps.microsoft.com/detail/9n4d0msmp0pt")));
+            _vp9DecoderSuggested = true;
+        }
+    }
+
+}

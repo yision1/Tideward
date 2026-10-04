@@ -1,0 +1,1428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DownloadGameDialog_PackageSize" xml:space="preserve">
+    <value>Размер</value>
+  </data>
+  <data name="Language_Chinese" xml:space="preserve">
+    <value>Китайский</value>
+  </data>
+  <data name="Language_English" xml:space="preserve">
+    <value>Английский</value>
+  </data>
+  <data name="Language_Japanese" xml:space="preserve">
+    <value>Японский</value>
+  </data>
+  <data name="Language_Korean" xml:space="preserve">
+    <value>Корейский</value>
+  </data>
+  <data name="GachaStatsCard_Pity" xml:space="preserve">
+    <value>Откручено</value>
+  </data>
+  <data name="GachaStatsCard_Average" xml:space="preserve">
+    <value>Ср. значение</value>
+  </data>
+  <data name="GachaStatsCard_Stats" xml:space="preserve">
+    <value>Статистика</value>
+  </data>
+  <data name="SelectDirectoryPage_SelectFolder" xml:space="preserve">
+    <value>Выбрать папку</value>
+  </data>
+  <data name="SelectDirectoryPage_AutoDeleteAfterUpdate" xml:space="preserve">
+    <value>Эта папка будет автоматически удалена после обновления приложения</value>
+  </data>
+  <data name="SelectDirectoryPage_NoWritePermission" xml:space="preserve">
+    <value>Нет разрешения на запись</value>
+  </data>
+  <data name="DownloadGamePage_Close" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="Common_Cancel" xml:space="preserve">
+    <value>Отменить</value>
+  </data>
+  <data name="Common_Confirm" xml:space="preserve">
+    <value>Подтвердить</value>
+  </data>
+  <data name="DownloadGamePage_Downloading" xml:space="preserve">
+    <value>Скачивание</value>
+  </data>
+  <data name="DownloadGamePage_Verifying" xml:space="preserve">
+    <value>Проверка</value>
+  </data>
+  <data name="DownloadGamePage_Decompressing" xml:space="preserve">
+    <value>Распаковка</value>
+  </data>
+  <data name="DownloadGamePage_SomethingError" xml:space="preserve">
+    <value>Что-то пошло не так</value>
+  </data>
+  <data name="DownloadGamePage_Retry" xml:space="preserve">
+    <value>Повторить</value>
+  </data>
+  <data name="DownloadGamePage_UnknownError" xml:space="preserve">
+    <value>Неизвестная ошибка</value>
+  </data>
+  <data name="DownloadGamePage_Finished" xml:space="preserve">
+    <value>Завершено</value>
+  </data>
+  <data name="DownloadGamePage_Pause" xml:space="preserve">
+    <value>Приостановить</value>
+  </data>
+  <data name="DownloadGamePage_Stop" xml:space="preserve">
+    <value>Остановить</value>
+  </data>
+  <data name="GachaLogPage_NoGachaRecords" xml:space="preserve">
+    <value>Нет записей о гаче</value>
+  </data>
+  <data name="GachaLogPage_UpdateRecords" xml:space="preserve">
+    <value>Обновить записи</value>
+  </data>
+  <data name="GachaLogPage_UpdateSavedURL" xml:space="preserve">
+    <value>Обновить (сохраненный URL)</value>
+  </data>
+  <data name="GachaLogPage_UpdateAll" xml:space="preserve">
+    <value>Обновить (Всё)</value>
+  </data>
+  <data name="GachaLogPage_InputURL" xml:space="preserve">
+    <value>Входной URL-адрес</value>
+  </data>
+  <data name="Common_Setting" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="GachaLogPage_OtherSettings" xml:space="preserve">
+    <value>Другие настройки</value>
+  </data>
+  <data name="GachaLogPage_CopyURL" xml:space="preserve">
+    <value>Копировать URL-адрес</value>
+  </data>
+  <data name="GachaLogPage_ExportAs" xml:space="preserve">
+    <value>Экспорт как</value>
+  </data>
+  <data name="GachaLogPage_ImportFrom0" xml:space="preserve">
+    <value>Импорт из {0}</value>
+  </data>
+  <data name="GachaLogPage_DeleteRecords" xml:space="preserve">
+    <value>Удалить записи гачи</value>
+  </data>
+  <data name="GachaLogPage_Language" xml:space="preserve">
+    <value>Язык</value>
+  </data>
+  <data name="GachaLogPage_CannotFindSavedURLOfUid" xml:space="preserve">
+    <value>Не удается найти сохраненный URL uid {0}.</value>
+    <comment>{0} = {uid}</comment>
+  </data>
+  <data name="GachaLogPage_OperationCanceled" xml:space="preserve">
+    <value>Операция отменена</value>
+  </data>
+  <data name="Common_Warning" xml:space="preserve">
+    <value>Внимание</value>
+  </data>
+  <data name="Common_Delete" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="GachaLogPage_DeletedGachaRecordsOfUid" xml:space="preserve">
+    <value>Удалены записи {0} гачи Uid {1}.</value>
+    <comment>{0} = {count} ,  {1} = {uid}</comment>
+  </data>
+  <data name="GachaLogPage_DeleteGachaRecordsWarning" xml:space="preserve">
+    <value>Все записи гачи Uid {0} будут удалены, и эта операция необратима.</value>
+    <comment>{0} = {uid}</comment>
+  </data>
+  <data name="UpdateService_CannotUpdateAutomatically" xml:space="preserve">
+    <value>Не удается обновить автоматически</value>
+  </data>
+  <data name="GameSettingPage_Medium" xml:space="preserve">
+    <value>Средние</value>
+  </data>
+  <data name="GameSettingPage_High" xml:space="preserve">
+    <value>Высокое</value>
+  </data>
+  <data name="GameSettingPage_FullScreen" xml:space="preserve">
+    <value>Во весь экран</value>
+  </data>
+  <data name="LauncherPage_InstallGame" xml:space="preserve">
+    <value>Установить игру</value>
+  </data>
+  <data name="LauncherPage_UpdateGame" xml:space="preserve">
+    <value>Обновить игру</value>
+  </data>
+  <data name="Common_Refresh" xml:space="preserve">
+    <value>Обновить</value>
+  </data>
+  <data name="LauncherPage_PreInstall" xml:space="preserve">
+    <value>Предварительная установка</value>
+  </data>
+  <data name="LauncherPage_SwitchAccount" xml:space="preserve">
+    <value>Сменить аккаунт</value>
+  </data>
+  <data name="LauncherPage_AccountInformation" xml:space="preserve">
+    <value>Информация об аккаунте</value>
+  </data>
+  <data name="LauncherPage_Nickname" xml:space="preserve">
+    <value>Псевдоним</value>
+  </data>
+  <data name="Common_Save" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="LauncherPage_GameSetting" xml:space="preserve">
+    <value>Настройки игры</value>
+  </data>
+  <data name="LauncherPage_Locate" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="LauncherPage_RepairGame" xml:space="preserve">
+    <value>Восстановить игру</value>
+  </data>
+  <data name="LauncherPage_CustomStartExecutable" xml:space="preserve">
+    <value>Пользовательский исполняемый файл запуска</value>
+  </data>
+  <data name="Common_Select" xml:space="preserve">
+    <value>Выбрать</value>
+  </data>
+  <data name="LauncherPage_ShowGameAnnouncement" xml:space="preserve">
+    <value>Показывать объявления игры</value>
+  </data>
+  <data name="SettingPage_BgSizeTip" xml:space="preserve">
+    <value>Выберите изображение, размер которого в пикселях соответствует окну приложения; изображения слишком большого размера снижают производительность.</value>
+  </data>
+  <data name="LauncherPage_StartGame" xml:space="preserve">
+    <value>Запустить игру</value>
+  </data>
+  <data name="LauncherPage_GameIsRunning" xml:space="preserve">
+    <value>Игра уже запущена</value>
+  </data>
+  <data name="Common_Continue" xml:space="preserve">
+    <value>Продолжить</value>
+  </data>
+  <data name="MainPage_Launcer" xml:space="preserve">
+    <value>Лаунчер</value>
+  </data>
+  <data name="MainPage_GameScreenshot" xml:space="preserve">
+    <value>Скриншоты</value>
+  </data>
+  <data name="ScreenshotPage_GameScreenshot" xml:space="preserve">
+    <value>Скриншоты</value>
+  </data>
+  <data name="ScreenshotPage_OpenFolder" xml:space="preserve">
+    <value>Открыть папку</value>
+  </data>
+  <data name="SettingPage_AppSettings" xml:space="preserve">
+    <value>Настройки приложения</value>
+  </data>
+  <data name="SettingPage_OpenLogFolder" xml:space="preserve">
+    <value>Открыть папку журнала</value>
+  </data>
+  <data name="SettingPage_CustomBackgroundSupportVideo" xml:space="preserve">
+    <value>Настраиваемый фон (Можно видеофоны)</value>
+  </data>
+  <data name="SettingPage_CurrentVersion" xml:space="preserve">
+    <value>Текущая версия:</value>
+  </data>
+  <data name="SettingPage_ReselectDataFolder" xml:space="preserve">
+    <value>Перевыбрать папку с данными</value>
+  </data>
+  <data name="SettingPage_DeleteAllSettings" xml:space="preserve">
+    <value>Удалить все настройки</value>
+  </data>
+  <data name="SettingPage_About" xml:space="preserve">
+    <value>О лаунчере</value>
+  </data>
+  <data name="SettingPage_TheCurrentLocationOfTheDataFolderIs" xml:space="preserve">
+    <value>Текущее расположение папки с данными:</value>
+  </data>
+  <data name="SettingPage_WouldLikeToReselectDataFolder" xml:space="preserve">
+    <value>Хотите перевыбрать? (Перед выбором необходимо вручную перенести файлы данных)</value>
+  </data>
+  <data name="Common_Yes" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="SettingPage_AfterDeletingTheSoftwareWillBeRestartedAutomatically" xml:space="preserve">
+    <value>После удаления, программа будет перезапущена автоматически.</value>
+  </data>
+  <data name="UpdatePage_NewVersion" xml:space="preserve">
+    <value>Новая версия!</value>
+  </data>
+  <data name="UpdatePage_Links" xml:space="preserve">
+    <value>Ссылки:</value>
+  </data>
+  <data name="UpdatePage_BuiltTime" xml:space="preserve">
+    <value>Время сборки:</value>
+  </data>
+  <data name="UpdatePage_ReleaseChannel" xml:space="preserve">
+    <value>Канал релиза:</value>
+  </data>
+  <data name="UpdatePage_Architecture" xml:space="preserve">
+    <value>Архитектура:</value>
+  </data>
+  <data name="UpdatePage_RemindLatter" xml:space="preserve">
+    <value>Напомнить позже</value>
+  </data>
+  <data name="UpdatePage_IgnoreThisVersion" xml:space="preserve">
+    <value>Игнорировать эту версию</value>
+  </data>
+  <data name="UpdatePage_UpdateNow" xml:space="preserve">
+    <value>Обновить сейчас</value>
+  </data>
+  <data name="UpdatePage_YouNeedToManuallyDownloadTheNewVersionPackage" xml:space="preserve">
+    <value>Вам нужно вручную скачать новую версию пакета</value>
+  </data>
+  <data name="UpdatePage_PreviewChannel" xml:space="preserve">
+    <value>Предварительный канала</value>
+  </data>
+  <data name="UpdatePage_StableChannel" xml:space="preserve">
+    <value>Стабильный канал</value>
+  </data>
+  <data name="UpdatePage_DevChannel" xml:space="preserve">
+    <value>Канал разработчика</value>
+  </data>
+  <data name="UpdatePage_ReleasePage" xml:space="preserve">
+    <value>Страница релиза</value>
+  </data>
+  <data name="GachaLogPage_GachaLanguageDesc" xml:space="preserve">
+    <value>Укажите язык записей гачи, например ru-ru.</value>
+    <comment>Replace en-us with the target language when translating</comment>
+  </data>
+  <data name="SettingPage_Language" xml:space="preserve">
+    <value>Язык</value>
+  </data>
+  <data name="SettingPage_FollowSystem" xml:space="preserve">
+    <value>Как в системе</value>
+  </data>
+  <data name="ScreenshotPage_ScreenshotFolderDoesNotExist" xml:space="preserve">
+    <value>Папка снимков не существует</value>
+  </data>
+  <data name="SettingPage_PrivacyPolicy" xml:space="preserve">
+    <value>Политика конфиденциальности</value>
+  </data>
+  <data name="SelectGamePage_SelectGameServer" xml:space="preserve">
+    <value>Выбрать сервер</value>
+  </data>
+  <data name="Common_Exit" xml:space="preserve">
+    <value>Выход</value>
+  </data>
+  <data name="ScreenshotPage_BackupScreenshots" xml:space="preserve">
+    <value>Резервное копирование скриншотов</value>
+  </data>
+  <data name="SettingPage_LastBackup" xml:space="preserve">
+    <value>Последняя резервная копия</value>
+  </data>
+  <data name="SettingPage_BackupDatabase" xml:space="preserve">
+    <value>Резервная копия базы данных</value>
+  </data>
+  <data name="ScreenshotPage_BackedUpNewScreenshots" xml:space="preserve">
+    <value>Резервное копирование сохранило {0} новых скриншотов.</value>
+  </data>
+  <data name="MainPage_GameNotices" xml:space="preserve">
+    <value>Игровые уведомления</value>
+  </data>
+  <data name="DownloadGamePage_Merging" xml:space="preserve">
+    <value>Объединить</value>
+  </data>
+  <data name="LauncherPage_ConfirmDelete" xml:space="preserve">
+    <value>Подтвердить удаление</value>
+  </data>
+  <data name="Common_Attention" xml:space="preserve">
+    <value>Внимание</value>
+  </data>
+  <data name="LauncherPage_Replace" xml:space="preserve">
+    <value>Заменить</value>
+  </data>
+  <data name="LauncherPage_SaveNew" xml:space="preserve">
+    <value>Сохранить как новую</value>
+    <comment>Account with uid {0} already exists, replace it or save new?</comment>
+  </data>
+  <data name="LauncherPage_AccountSaveNew" xml:space="preserve">
+    <value>Учётная запись с uid {0} уже существует, заменить её или сохранить как новую?</value>
+  </data>
+  <data name="LauncherPage_UninstallGame" xml:space="preserve">
+    <value>Удалить игру</value>
+  </data>
+  <data name="SettingPage_URLProtocolExperimental" xml:space="preserve">
+    <value>Протокол URL (Экспериментально)</value>
+  </data>
+  <data name="SettingPage_URLProtocolDesc" xml:space="preserve">
+    <value>Другие программы могут использовать некоторые функции Tideward через протокол URL.</value>
+  </data>
+  <data name="SettingPage_RegisterURLProtocol" xml:space="preserve">
+    <value>Зарегистрировать URL протокол</value>
+  </data>
+  <data name="SettingPage_TestURLProtocol" xml:space="preserve">
+    <value>Тест протокола URL</value>
+  </data>
+  <data name="ImageViewPage_ZoomOut" xml:space="preserve">
+    <value>Отдалить</value>
+  </data>
+  <data name="ImageViewPage_ZoomIn" xml:space="preserve">
+    <value>Приблизить</value>
+  </data>
+  <data name="ImageViewPage_Rotate" xml:space="preserve">
+    <value>Повернуть</value>
+  </data>
+  <data name="Common_Copy" xml:space="preserve">
+    <value>Копировать</value>
+  </data>
+  <data name="Common_Open" xml:space="preserve">
+    <value>Открыть</value>
+  </data>
+  <data name="FileSettingPage_DataFolder" xml:space="preserve">
+    <value>Папка с данными</value>
+  </data>
+  <data name="SettingPage_FileManagement" xml:space="preserve">
+    <value>Управление файлами</value>
+  </data>
+  <data name="AboutSettingPage_Links" xml:space="preserve">
+    <value>Ссылки</value>
+  </data>
+  <data name="SettingPage_Advanced" xml:space="preserve">
+    <value>Дополнительно</value>
+  </data>
+  <data name="ExperienceSettingPage_CloseWindowOption" xml:space="preserve">
+    <value>Опция закрытия окна</value>
+  </data>
+  <data name="ExperienceSettingPage_MinimizeToSystemTray" xml:space="preserve">
+    <value>Свернуть в область уведомлений</value>
+  </data>
+  <data name="ExperienceSettingPage_ExitCompletely" xml:space="preserve">
+    <value>Выйти полностью</value>
+  </data>
+  <data name="CloseWindowDialog_YouCouldChangeTheOptionAgainInSettingPage" xml:space="preserve">
+    <value>Вы можете изменить этот параметр на странице настроек.</value>
+  </data>
+  <data name="FileSettingPage_DataFolderIsImportant" xml:space="preserve">
+    <value>Ваши личные данные хранятся в папке ниже. Это очень важно, пожалуйста, не удаляйте их случайно.</value>
+  </data>
+  <data name="ExperienceSettingPage_DisableRedDotReminderForGameNotices" xml:space="preserve">
+    <value>Отключить красной точке для новых игровых уведомлений</value>
+  </data>
+  <data name="ExperienceSettingPage_MinimizeToTaskbar" xml:space="preserve">
+    <value>Свернуть в панель задач</value>
+  </data>
+  <data name="ExperienceSettingPage_DoNothing" xml:space="preserve">
+    <value>Ничего не делать</value>
+  </data>
+  <data name="ExperienceSettingPage_AfterStartingGame" xml:space="preserve">
+    <value>После запуска игры</value>
+  </data>
+  <data name="FileSettingPage_Cache" xml:space="preserve">
+    <value>Кэш</value>
+  </data>
+  <data name="FileSettingPage_Log" xml:space="preserve">
+    <value>Логи</value>
+  </data>
+  <data name="FileSettingPage_Image" xml:space="preserve">
+    <value>Изображение</value>
+  </data>
+  <data name="FileSettingPage_Browser" xml:space="preserve">
+    <value>Браузер</value>
+  </data>
+  <data name="FileSettingPage_ClearCache" xml:space="preserve">
+    <value>Очистить Кэш</value>
+  </data>
+  <data name="DownloadGamePage_TheFolderDoesNotExist" xml:space="preserve">
+    <value>Эта папка не существует.</value>
+  </data>
+  <data name="LauncherPage_PleaseDoNotSelectTheRootDirectoryOfADrive" xml:space="preserve">
+    <value>Не выбирайте корневой каталог диска.</value>
+  </data>
+  <data name="AppearanceSettingPage_TransparencyEffects" xml:space="preserve">
+    <value>Эффекты прозрачности</value>
+  </data>
+  <data name="AppearanceSettingPage_AnimationEffects" xml:space="preserve">
+    <value>Эффекты анимации</value>
+  </data>
+  <data name="FileSettingPage_GameResource" xml:space="preserve">
+    <value>Игровой ресурс</value>
+  </data>
+  <data name="GameResourcePage_LatestVersion" xml:space="preserve">
+    <value>Последняя Версия</value>
+  </data>
+  <data name="GameResourcePage_FullPackages" xml:space="preserve">
+    <value>Полный Пакет</value>
+  </data>
+  <data name="GameResourcePage_DiffPackages" xml:space="preserve">
+    <value>Различные Пакеты</value>
+  </data>
+  <data name="UpdateContentWindow_RecentlyUpdatedContent" xml:space="preserve">
+    <value>Недавно обновленный контент</value>
+  </data>
+  <data name="GameBizSelector_AutoSearch" xml:space="preserve">
+    <value>Авто поиск</value>
+  </data>
+  <data name="InstallGameDialog_SelectInstallationPath" xml:space="preserve">
+    <value>Выберите путь установки</value>
+  </data>
+  <data name="Common_Change" xml:space="preserve">
+    <value>Изменить</value>
+  </data>
+  <data name="InstallGameDialog_SpaceRequiredToUnzip" xml:space="preserve">
+    <value>Место, необходимое для распаковки</value>
+  </data>
+  <data name="InstallGameDialog_SpaceAvailable" xml:space="preserve">
+    <value>Доступное место</value>
+  </data>
+  <data name="InstallGameDialog_Installed" xml:space="preserve">
+    <value>Установлен?</value>
+  </data>
+  <data name="InstallGameDialog_LocateGame" xml:space="preserve">
+    <value>Найти игру</value>
+  </data>
+  <data name="InstallGameDialog_StartInstallation" xml:space="preserve">
+    <value>Начать установку</value>
+  </data>
+  <data name="DownloadSettingPage_DefaultGameInstallationPath" xml:space="preserve">
+    <value>Путь для установки игры по умолчанию</value>
+  </data>
+  <data name="DownloadSettingPage_DefaultGameInstallationPathDescription" xml:space="preserve">
+    <value>Игры будут установлены в разные подпапки, изменение пути по умолчанию не приведет к перемещению установленных файлов игры.</value>
+  </data>
+  <data name="DownloadSettingPage_SpeedLimit" xml:space="preserve">
+    <value>Ограничение скорости</value>
+  </data>
+  <data name="DownloadSettingPage_TheNumber0MeansNoSpeedLimit" xml:space="preserve">
+    <value>Цифра 0 означает отсутствие ограничений скорости.</value>
+  </data>
+  <data name="SettingPage_Download" xml:space="preserve">
+    <value>Загрузка</value>
+  </data>
+  <data name="DownloadGamePage_Paused" xml:space="preserve">
+    <value>Пауза</value>
+  </data>
+  <data name="Common_Restart" xml:space="preserve">
+    <value>Перезагрузка</value>
+  </data>
+  <data name="InstallGameDialog_HardLinkDescription" xml:space="preserve">
+    <value>Создание жесткой ссылки для установки игровых клиентов на разных серверах, занимает очень мало свободного места.</value>
+  </data>
+  <data name="LauncherPage_HardLink" xml:space="preserve">
+    <value>Жёсткая ссылка</value>
+  </data>
+  <data name="GameLauncherPage_RemovableStorageDeviceNotConnected" xml:space="preserve">
+    <value>Съемное устройство хранения не подключено.</value>
+  </data>
+  <data name="DeleteGachaLogDialog_BeginTime" xml:space="preserve">
+    <value>Время начала</value>
+  </data>
+  <data name="DeleteGachaLogDialog_EndTime" xml:space="preserve">
+    <value>Время окончания</value>
+  </data>
+  <data name="DeleteGachaLogDialog_DeleteGachaRecordsForASpecificTimePeriod" xml:space="preserve">
+    <value>Удалить записи гачи за конкретный период времени</value>
+  </data>
+  <data name="DeleteGachaLogDialog_6MonthsDeletingWarning" xml:space="preserve">
+    <value>Предупреждение: Выбранный период времени включает в себя записи гачи более чем 6 месяцев назад, которые не могут быть восстановлены после удаления.</value>
+  </data>
+  <data name="DeleteGachaLogDialog_ThisAccountHas0GachaRecordS" xml:space="preserve">
+    <value>У этой учетной записи {0} записей гачи.</value>
+  </data>
+  <data name="DeleteGachaLogDialog_TheSelectedTimePeriodIncludes0GachaRecords" xml:space="preserve">
+    <value>Выбранный период времени содержит {0} записей гачи.</value>
+  </data>
+  <data name="GachaLogPage_DeleteAll" xml:space="preserve">
+    <value>Удалить за все время</value>
+  </data>
+  <data name="GachaLogPage_SpecificTimePeriod" xml:space="preserve">
+    <value>Определенный период времени</value>
+  </data>
+  <data name="StartGameButton_ResumeDownload" xml:space="preserve">
+    <value>Возобновить загрузку</value>
+  </data>
+  <data name="StartGameButton_Waiting" xml:space="preserve">
+    <value>Ожидание</value>
+  </data>
+  <data name="GameLauncherPage_Relocate" xml:space="preserve">
+    <value>Перемещение</value>
+  </data>
+  <data name="GameLauncherSettingDialog_RelocateGame" xml:space="preserve">
+    <value>Переместить игру</value>
+  </data>
+  <data name="GameLauncherSettingDialog_Size" xml:space="preserve">
+    <value>Размер</value>
+  </data>
+  <data name="GameLauncherSettingDialog_BasicInformation" xml:space="preserve">
+    <value>Базовая Информация</value>
+  </data>
+  <data name="GameLauncherSettingDialog_StartupArguments" xml:space="preserve">
+    <value>Аргументы при запуске</value>
+  </data>
+  <data name="GameLauncherSettingDialog_CustomBackground" xml:space="preserve">
+    <value>Пользовательский фон</value>
+  </data>
+  <data name="GameLauncherSettingDialog_GamePackages" xml:space="preserve">
+    <value>Игровые пакеты</value>
+  </data>
+  <data name="GameLauncherSettingDialog_CommandLineArgument" xml:space="preserve">
+    <value>Аргумент командной строки</value>
+  </data>
+  <data name="GameLauncherSettingDialog_SeeMoreInformationAboutCommandLineArgument" xml:space="preserve">
+    <value>Дополнительную информацию об аргументе командной строки см.</value>
+  </data>
+  <data name="GameSelector_ActualSizeOfInstalledGames" xml:space="preserve">
+    <value>Фактический размер установленных игр</value>
+  </data>
+  <data name="GameSelector_StorageSpaceSavedByHardLinks" xml:space="preserve">
+    <value>Область хранения сохранена - жесткими ссылками</value>
+  </data>
+  <data name="GameLauncherSettingDialog_CannotDecodeFile" xml:space="preserve">
+    <value>Невозможно декодировать файл.</value>
+  </data>
+  <data name="GameLauncherSettingDialog_AnUnknownErrorOccurredPleaseCheckTheLogs" xml:space="preserve">
+    <value>Произошла неизвестная ошибка. Пожалуйста, проверьте журналы.</value>
+  </data>
+  <data name="GameLauncherSettingDialog_DragAndDropImageOrVideoFiles" xml:space="preserve">
+    <value>Перетащите изображения / видео файлы.</value>
+  </data>
+  <data name="GameSelector_Calculating" xml:space="preserve">
+    <value>Расчет</value>
+    <comment>Calculating storage space usage.</comment>
+  </data>
+  <data name="SettingPage_General" xml:space="preserve">
+    <value>Основные</value>
+    <comment>General Setting</comment>
+  </data>
+  <data name="SettingPage_ForABetterExperiencePleaseEnableTheFollowingFeaturesInSystemSettings" xml:space="preserve">
+    <value>Для улучшения опыта использования включите следующие функции в настройках системы.</value>
+  </data>
+  <data name="PlayTimeButton_LastStartup" xml:space="preserve">
+    <value>Последний запуск</value>
+  </data>
+  <data name="UpdateWindow_AutoRestartAfterUpdate" xml:space="preserve">
+    <value>Автоматический перезапуск после обновления</value>
+  </data>
+  <data name="UpdateWindow_DisplayUpdateContentAfterRestart" xml:space="preserve">
+    <value>Показывать обновление после перезапуска</value>
+  </data>
+  <data name="Common_WebView2ComponentInitializationFailed" xml:space="preserve">
+    <value>Не удалось инициализировать компонент WebView2.</value>
+  </data>
+  <data name="SettingPage_RPCService" xml:space="preserve">
+    <value>Служба RPC</value>
+  </data>
+  <data name="SettingPage_RPCService_Desc" xml:space="preserve">
+    <value>Сервис RPC - это независимый процесс, используемый для избежания перезапуска при загрузке игр, обновлении программного обеспечения и других функций, которые требуют прав администратора.</value>
+  </data>
+  <data name="SettingPage_KeepRPCServiceRunningInTheBackground" xml:space="preserve">
+    <value>Оставить службу RPC работающей в фоновом режиме</value>
+  </data>
+  <data name="SettingPage_RPCServiceWarningIfAppInRemovableStorage" xml:space="preserve">
+    <value>Обнаружено, что приложение находится на съемном устройстве хранения. Не рекомендуется оставлять службу RPC работающей в фоновом режиме.</value>
+  </data>
+  <data name="InstallGameDialog_HardLinkDesc" xml:space="preserve">
+    <value>Если выбранный путь находится на том же диске, где расположены клиенты других установленных серверов, можно установить несколько клиентов для разных серверов с использованием жестких ссылок. Это займет минимальный объем дополнительного пространства на диске.</value>
+  </data>
+  <data name="InstallGameDialog_SupportHardLinks" xml:space="preserve">
+    <value>Поддержка Жестких Ссылок</value>
+  </data>
+  <data name="PreDownloadDialog_NoPatchesWarning" xml:space="preserve">
+    <value>Нет доступных пакетов обновления. Рекомендуется обновить игру до последней версии перед началом предустановки.</value>
+  </data>
+  <data name="PreDownloadDialog_StartPreInstall" xml:space="preserve">
+    <value>Начать предустановку</value>
+  </data>
+  <data name="GameLauncherSettingDialog_StartRepairing" xml:space="preserve">
+    <value>Начать восстановление</value>
+  </data>
+  <data name="PreDownloadButton_PreInstallFinished" xml:space="preserve">
+    <value>Предварительная установка завершена</value>
+  </data>
+  <data name="Common_Error" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="StartGameButton_InQueue" xml:space="preserve">
+    <value>В очереди</value>
+  </data>
+  <data name="RPCServiceExitedUnexpectedly" xml:space="preserve">
+    <value>Служба RPC завершила работу неожиданно.</value>
+  </data>
+  <data name="StartGameButton_Install" xml:space="preserve">
+    <value>Установка</value>
+  </data>
+  <data name="StartGameButton_Verify" xml:space="preserve">
+    <value>Проверить</value>
+  </data>
+  <data name="SettingPage_RPCServiceIsNotRunning" xml:space="preserve">
+    <value>Служба RPC не запущена</value>
+  </data>
+  <data name="SettingPage_RunService" xml:space="preserve">
+    <value>Запустить службу</value>
+  </data>
+  <data name="SettingPage_RPCServiceIsRunning" xml:space="preserve">
+    <value>Служба RPC запущена</value>
+  </data>
+  <data name="SettingPage_StopService" xml:space="preserve">
+    <value>Остановить службу</value>
+  </data>
+  <data name="SettingPage_CannotConnectRPCService" xml:space="preserve">
+    <value>Не удаётся подключиться к службе RPC</value>
+  </data>
+  <data name="InstallGameDialog_AutomaticallyCreateASubfolder" xml:space="preserve">
+    <value>Автоматически создать подпапку</value>
+  </data>
+  <data name="GameLauncherSettingDialog_UninstallGameWarning" xml:space="preserve">
+    <value>Все файлы в следующей папке будут удалены. Пожалуйста, подтвердите путь перед удалением.</value>
+  </data>
+  <data name="GameLauncherSettingDialog_ConfirmUninstall" xml:space="preserve">
+    <value>Подтвердите удаление</value>
+  </data>
+  <data name="GameLauncherSettingDialog_CannotDeleteTheDriveRootDirectory" xml:space="preserve">
+    <value>Невозможно удалить корневой каталог диска.</value>
+  </data>
+  <data name="PreDownloadDialog_PreInstallIsNotAvailable" xml:space="preserve">
+    <value>Предварительная установка недоступна.</value>
+  </data>
+  <data name="PreDownloadDialog_IncompatibilityNotice" xml:space="preserve">
+    <value>Несовместимость</value>
+  </data>
+  <data name="PreDownloadDialog_IncompatibilityNoticeContent" xml:space="preserve">
+    <value>Tideward uses its own pre-download cache. Select existing game files through the game folder setting.</value>
+  </data>
+  <data name="WelcomeView_WelcomeToTidewardDescription" xml:space="preserve">
+    <value>Tideward is a Wuthering Waves launcher with separate CN and global profiles.</value>
+  </data>
+  <data name="WelcomeView_SelectUserDataFolderDescription" xml:space="preserve">
+    <value>Все ваши личные данные будут храниться в папке ниже. Это важно, и вы также можете нажать кнопку ниже, чтобы выбрать другую папку.</value>
+  </data>
+  <data name="WelcomeView_BeforeStartingSomeNecessaryEnvironmentChecksAreRequired" xml:space="preserve">
+    <value>Перед началом необходима проверка некоторых обязательных параметров среды.</value>
+  </data>
+  <data name="WelcomeView_NotInstalled" xml:space="preserve">
+    <value>Не установлено</value>
+  </data>
+  <data name="WelcomeView_InstallNow" xml:space="preserve">
+    <value>Установить сейчас</value>
+  </data>
+  <data name="WelcomeView_Installed" xml:space="preserve">
+    <value>Установлено</value>
+  </data>
+  <data name="WelcomeView_TidewardStart" xml:space="preserve">
+    <value>Tideward, начинаем!</value>
+  </data>
+  <data name="GameSelector_ClickToSelectOrSwitchGame" xml:space="preserve">
+    <value>Нажмите, чтобы выбрать или сменить игру.</value>
+  </data>
+  <data name="GameLauncherSettingDialog_UninstallGameUserDataFolderWarning" xml:space="preserve">
+    <value>Папка данных Tideward находится внутри папки игры и будет удалена вместе с ней. Пожалуйста, измените расположение папки данных на странице настроек и попробуйте снова.</value>
+  </data>
+  <data name="GameLauncherSettingDialog_UninstallGameTidewardProgramFolderWarning" xml:space="preserve">
+    <value>Программа Tideward находится внутри папки игры и будет удалена вместе с игрой. Пожалуйста, переместите программу за пределы папки игры и попробуйте снова.</value>
+  </data>
+  <data name="GameAccountSwitcher_TheCurrentlyLoggedInAccountIsNotSaved" xml:space="preserve">
+    <value>Текущий вход в аккаунт не сохранен.</value>
+  </data>
+  <data name="SettingPage_Toolbox" xml:space="preserve">
+    <value>Панель инструментов</value>
+  </data>
+  <data name="GachaImportAndExportWindow_Import" xml:space="preserve">
+    <value>Импорт</value>
+  </data>
+  <data name="Common_Disabled" xml:space="preserve">
+    <value>Выключено</value>
+  </data>
+  <data name="Common_Enabled" xml:space="preserve">
+    <value>Включено</value>
+  </data>
+  <data name="GachaLogPage_ImportAndExport" xml:space="preserve">
+    <value>Импорт / Экспорт</value>
+  </data>
+  <data name="GachaLogPage_HideGachaBanners" xml:space="preserve">
+    <value>Скрыть баннеры Гачи</value>
+  </data>
+  <data name="DisplayInformation_MaxLuminance" xml:space="preserve">
+    <value>Макс. яркость</value>
+  </data>
+  <data name="DisplayInformation_MonitorInformation" xml:space="preserve">
+    <value>Информация о мониторе</value>
+  </data>
+  <data name="DisplayInformation_ColorSpace" xml:space="preserve">
+    <value>Цветовое пространство</value>
+  </data>
+  <data name="DisplayInformation_PeakLuminance" xml:space="preserve">
+    <value>Пиковая яркость</value>
+  </data>
+  <data name="DisplayInformation_MaxFullScreenLuminance" xml:space="preserve">
+    <value>Макс. яркость полноэкранного режима</value>
+  </data>
+  <data name="DisplayInformation_SDRWhiteLuminance" xml:space="preserve">
+    <value>Белая яркость SDR</value>
+  </data>
+  <data name="WelcomeView_IfTidewardTakesALongTimeToStartItIsRecommendedToDisableSmartAppControlInWindowsSecurity" xml:space="preserve">
+    <value>Если Tideward запускается слишком долго, рекомендуется отключить функцию Smart App Control в разделе "Безопасность Windows".
+
+
+
+
+
+
+
+
+
+
+
+Инструменты
+
+
+
+ChatGPT может допускать ошибки. Проверьте важную информацию. См. настройки cookie-файлов.
+</value>
+  </data>
+  <data name="WelcomeView_OpenWindowsSecurity" xml:space="preserve">
+    <value>Открыть безопасность Windows</value>
+  </data>
+  <data name="WelcomeView_LearnMore" xml:space="preserve">
+    <value>Подробнее</value>
+  </data>
+  <data name="MainView_CheckSystemProxy_SystemProxyIsEnabled" xml:space="preserve">
+    <value>Системный прокси-сервер включён.</value>
+  </data>
+  <data name="InstallGameDialog_MappedNetworkDrivesAreNotSupportedPleaseUseANetworkSharePathStartingWithDoubleBackslashes" xml:space="preserve">
+    <value>Сопоставленные сетевые диски не поддерживаются. Пожалуйста, используйте сетевой путь, начинающийся с двойного обратного слэша (\\).</value>
+  </data>
+  <data name="ScreenCaptureInfoWindow_ScreenshotSaved" xml:space="preserve">
+    <value>Скриншот Сохранён</value>
+  </data>
+  <data name="ScreenshotPage_ManageScreenshotFolders" xml:space="preserve">
+    <value>Управление папками скриншотов</value>
+  </data>
+  <data name="ScreenshotFolderManageDialog_AddFolder" xml:space="preserve">
+    <value>Добавить Папку</value>
+  </data>
+  <data name="ScreenshotFolderManageDialog_BackingUp" xml:space="preserve">
+    <value>Резервное копирование...</value>
+  </data>
+  <data name="Common_Remove" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="ScreenshotFolderManageDialog_FailedToBackupScreenshots" xml:space="preserve">
+    <value>Не удалось сделать резервную копию скриншотов.</value>
+  </data>
+  <data name="ScreenCaptureInfoWindow_ScreenshotFailed" xml:space="preserve">
+    <value>Не удалось сделать скриншот</value>
+  </data>
+  <data name="ScreenCaptureInfoWindow_CheckTheLogForMoreInformation" xml:space="preserve">
+    <value>См. журнал для получения подробностей.</value>
+  </data>
+  <data name="ScreenshotFolderManageDialog_ImagesFromTheFollowingFoldersWillBeDisplayedInTheGallery" xml:space="preserve">
+    <value>Изображения из следующих папок будут отображаться в галерее.</value>
+  </data>
+  <data name="ImageViewWindow2_OpenInExplorer" xml:space="preserve">
+    <value>Открыть в проводнике</value>
+  </data>
+  <data name="ImageViewWindow2_OpenWith" xml:space="preserve">
+    <value>Открыть с помощью</value>
+  </data>
+  <data name="ImageViewWindow2_Previous" xml:space="preserve">
+    <value>Предыдущая</value>
+    <comment>Previous Image</comment>
+  </data>
+  <data name="ImageViewWindow2_Next" xml:space="preserve">
+    <value>Следующий</value>
+    <comment>Next Image</comment>
+  </data>
+  <data name="ImageViewWindow2_ShowGallery" xml:space="preserve">
+    <value>Показать галерею</value>
+  </data>
+  <data name="ImageViewWindow2_FitToWindow" xml:space="preserve">
+    <value>По размеру окна</value>
+    <comment>Zoom image fit to window</comment>
+  </data>
+  <data name="ImageViewWindow2_CopyFile" xml:space="preserve">
+    <value>Скопировать файл</value>
+  </data>
+  <data name="ImageViewWindow2_CopyPath" xml:space="preserve">
+    <value>Копировать путь</value>
+  </data>
+  <data name="ImageViewWindow2_CopyImage" xml:space="preserve">
+    <value>Копировать изображение</value>
+  </data>
+  <data name="Common_Edit" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="ImageViewWindow2_SaveAs" xml:space="preserve">
+    <value>Сохранить как</value>
+  </data>
+  <data name="ImageViewWindow2_ImageInformation" xml:space="preserve">
+    <value>Информация о изображении</value>
+  </data>
+  <data name="ImageViewWindow2_EditImage" xml:space="preserve">
+    <value>Редактировать изображение</value>
+  </data>
+  <data name="ImageViewWindow2_DisplayMode" xml:space="preserve">
+    <value>Режим отображения</value>
+  </data>
+  <data name="ImageViewWindow2_SDRMappedLuminance" xml:space="preserve">
+    <value>Отображаемая яркость SDR</value>
+  </data>
+  <data name="ImageViewWindow2_ExportImage" xml:space="preserve">
+    <value>Экспорт изображения</value>
+  </data>
+  <data name="ImageViewWindow2_DeleteImageFile" xml:space="preserve">
+    <value>Удалить изображение</value>
+  </data>
+  <data name="ImageViewWindow2_CopiedToClipboard" xml:space="preserve">
+    <value>Скопировано в буфер обмена.</value>
+  </data>
+  <data name="ImageViewWindow2_FileDoesNotExist" xml:space="preserve">
+    <value>Файл не существует.</value>
+  </data>
+  <data name="ImageViewWindow2_OpenWithDefaultApp" xml:space="preserve">
+    <value>Открыть в приложении по умолчанию</value>
+  </data>
+  <data name="ImageViewWindow2_NoImageToDisplay" xml:space="preserve">
+    <value>Нет изображения для отображения</value>
+  </data>
+  <data name="Common_OpenFiles" xml:space="preserve">
+    <value>Открыть файлы</value>
+  </data>
+  <data name="ImageViewWindow2_OpenNewFiles" xml:space="preserve">
+    <value>Открыть новые файлы</value>
+  </data>
+  <data name="ImageViewWindow2_FailedToDisplayImage" xml:space="preserve">
+    <value>Не удалось отобразить изображение</value>
+  </data>
+  <data name="ImageViewWindow2_FailedToSaveImage" xml:space="preserve">
+    <value>Не удалось сохранить изображение</value>
+  </data>
+  <data name="ImageViewWindow2_FailedToDeleteImageFile" xml:space="preserve">
+    <value>Не удалось удалить файл изображения</value>
+  </data>
+  <data name="ImageViewWindow2_UnableToDeleteTheFile" xml:space="preserve">
+    <value>Не удалось удалить файл</value>
+  </data>
+  <data name="ImageViewWindow2_InsufficientPermissionsOrTheFileIsInUse" xml:space="preserve">
+    <value>Недостаточно прав доступа или файл используется.</value>
+  </data>
+  <data name="HotkeyInput_ClickToSetShortcutKeys" xml:space="preserve">
+    <value>Нажмите, чтобы назначить сочетания клавиш</value>
+  </data>
+  <data name="HotkeyInput_PressTheShortcutKeys" xml:space="preserve">
+    <value>Нажмите сочетания клавиш</value>
+  </data>
+  <data name="HotkeyManager_TheShortcutKeys0IsAlreadyInUse" xml:space="preserve">
+    <value>Сочетание клавиш ({0}) уже используется.</value>
+  </data>
+  <data name="HotkeyManager_FailedToRegisterTheShortcutKeys0" xml:space="preserve">
+    <value>Не удалось зарегистрировать сочетание клавиш ({0}).</value>
+  </data>
+  <data name="HotkeyManager_TheShortcutKeys0IsAlreadyInUsePleaseModifyItInSettingsPage" xml:space="preserve">
+    <value>Сочетание клавиш ({0}) уже используется. Измените его на странице настроек.</value>
+  </data>
+  <data name="HotkeyManager_FailedToRegisterTheShortcutKeys0PleaseRetryInSettingsPage" xml:space="preserve">
+    <value>Не удалось зарегистрировать сочетание клавиш ({0}). Повторите попытку на странице настроек.</value>
+  </data>
+  <data name="ScreenshotSetting_ScreenshotShortcut" xml:space="preserve">
+    <value>Сочетание клавиш для скриншота</value>
+  </data>
+  <data name="HotkeySetting_OpenMainWindow" xml:space="preserve">
+    <value>Открыть главное Окно</value>
+  </data>
+  <data name="HotkeySetting_FailedToRegisterTheShortcutKeys" xml:space="preserve">
+    <value>Не удалось зарегистрировать сочетания клавиш.</value>
+  </data>
+  <data name="ScreenshotSetting_TheBuiltInScreenshotFeatureWillSaveImagesToTheFollowingFolder" xml:space="preserve">
+    <value>Встроенная функция создания скриншотов будет сохранять изображения в следующую папку.</value>
+  </data>
+  <data name="Common_ChangeFolder" xml:space="preserve">
+    <value>Изменить папку</value>
+  </data>
+  <data name="HotkeySetting_SingleKeyShortcutsTips" xml:space="preserve">
+    <value>Если вы назначаете горячие клавиши на одиночные клавиши (F1–F12), необходимо запускать Tideward с правами администратора — в противном случае сочетания могут не работать в игре.</value>
+  </data>
+  <data name="SettingPage_KeyboardShortcuts" xml:space="preserve">
+    <value>Сочетания клавиш</value>
+  </data>
+  <data name="SettingPage_ControllerEnhancement" xml:space="preserve">
+    <value>Улучшение контроллера</value>
+  </data>
+  <data name="GamepadControlSetting_SimulateInput" xml:space="preserve">
+    <value>Эмулировать ввод</value>
+  </data>
+  <data name="GamepadControlSetting_GuideButton" xml:space="preserve">
+    <value>Кнопка Guide</value>
+  </data>
+  <data name="GamepadControlSetting_NoAction" xml:space="preserve">
+    <value>Не назначено</value>
+  </data>
+  <data name="GamepadControlSetting_GameScreenshot" xml:space="preserve">
+    <value>Скриншот игры</value>
+  </data>
+  <data name="GamepadControlSetting_KeyboardKeys" xml:space="preserve">
+    <value>Клавиши клавиатуры</value>
+  </data>
+  <data name="GamepadControlSetting_EnterKeyText" xml:space="preserve">
+    <value>Введите текст кнопки</value>
+  </data>
+  <data name="GamepadControlSetting_ShareButton" xml:space="preserve">
+    <value>Кнопка «Поделиться»</value>
+  </data>
+  <data name="GamepadControlSetting_ButtonMapping" xml:space="preserve">
+    <value>Назначение кнопок</value>
+  </data>
+  <data name="GamepadControlSetting_UnrecognizedKey" xml:space="preserve">
+    <value>Неизвестная кнопка</value>
+  </data>
+  <data name="GamepadControlSetting_OnlySupportXboxControllerProtocol" xml:space="preserve">
+    <value>Поддерживаются только контроллеры по протоколу Xbox. Совместимость с другими типами контроллеров не гарантируется.</value>
+  </data>
+  <data name="GamepadControlSetting_SimulateInputDesc" xml:space="preserve">
+    <value>Эмуляция ввода с клавиатуры и мыши с помощью игрового контроллера. Для корректной работы в играх Tideward необходимо запускать с правами администратора.</value>
+  </data>
+  <data name="GamepadControlSetting_LongPressGuideButtonDesc" xml:space="preserve">
+    <value>Нажмите и удерживайте кнопку Guide, чтобы открыть главное окно Tideward.</value>
+  </data>
+  <data name="GamepadControlSetting_BothThumbsticksDesc" xml:space="preserve">
+    <value>Одновременно нажмите обе кнопки на стиках, чтобы активировать эмуляцию клавиатуры и мыши с помощью контроллера.</value>
+  </data>
+  <data name="GamepadControlSetting_ButtonMappingGuideDesc" xml:space="preserve">
+    <value>• При назначении кнопки Guide стандартное сочетание клавиш Xbox Game Bar будет отключено. Другие программы (например, Steam в режиме Big Picture) также могут реагировать на кнопку Guide. В случае конфликтов потребуется вручную отключить соответствующие функции.</value>
+  </data>
+  <data name="GamepadControlSetting_ButtonMappingKeyboardDesc" xml:space="preserve">
+    <value>• При назначении клавиш клавиатуры вводите их имена так, как они указаны на клавиатуре, разделяя пробелами. Например, чтобы назначить кнопку сочетанию «Ctrl + Alt + F1», введите: «Ctrl Alt F1». Для клавиш на цифровой клавиатуре добавляйте префикс Pad, например: Pad8, Pad+. Для корректной работы этой функции в играх Tideward необходимо запускать с правами администратора.</value>
+  </data>
+  <data name="GamepadControlSetting_ButtonMappingShareDesc" xml:space="preserve">
+    <value>Кнопка «Поделиться» по-прежнему запускает скриншоты Xbox Game Bar, и в настоящее время нет хорошего решения.</value>
+  </data>
+  <data name="GamepadControlSetting_FailedToInitializeTheGameInputComponentControllerEnhancementIsUnavailable" xml:space="preserve">
+    <value>Не удалось инициализировать компонент GameInput. Улучшенные функции контроллера недоступны.</value>
+  </data>
+  <data name="SimulateInputTipsWindow_ControllerSimulatedInputIsActive" xml:space="preserve">
+    <value>Эмуляция ввода с контроллера активна.</value>
+  </data>
+  <data name="SimulateInputTipsWindow_ShowHideButtonHints" xml:space="preserve">
+    <value>Показать / Скрыть подсказки кнопок</value>
+  </data>
+  <data name="SimulateInputTipsWindow_MouseMove" xml:space="preserve">
+    <value>Движение мышки</value>
+  </data>
+  <data name="SimulateInputTipsWindow_MouseWheel" xml:space="preserve">
+    <value>Колесо мыши</value>
+  </data>
+  <data name="SimulateInputTipsWindow_MouseLeftButton" xml:space="preserve">
+    <value>Левая кнопка мыши</value>
+  </data>
+  <data name="SimulateInputTipsWindow_MouseRightButton" xml:space="preserve">
+    <value>Правая кнопка мыши</value>
+  </data>
+  <data name="SimulateInputTipsWindow_KeyboardEscKey" xml:space="preserve">
+    <value>Клавиша Esc</value>
+  </data>
+  <data name="SimulateInputTipsWindow_KeyboardArrowKeys" xml:space="preserve">
+    <value>Клавиши со стрелками</value>
+  </data>
+  <data name="SimulateInputTipsWindow_LocateMousePointer" xml:space="preserve">
+    <value>Найти указатель мыши</value>
+  </data>
+  <data name="SimulateInputTipsWindow_StopSimualteInput" xml:space="preserve">
+    <value>Остановить эмуляцию ввода</value>
+  </data>
+  <data name="ScreenshotSetting_TestScreenshot" xml:space="preserve">
+    <value> Тестовый скриншот</value>
+  </data>
+  <data name="ScreenshotSetting_AutoConvertToSDRImage" xml:space="preserve">
+    <value>Автоматически преобразовывать в изображение SDR</value>
+  </data>
+  <data name="ScreenshotSetting_WhenCapturingHDRImagesSDRVersionWillAlsoBeSaved" xml:space="preserve">
+    <value>При захвате HDR-изображений также будет сохраняться версия в SDR.</value>
+  </data>
+  <data name="ScreenshotSetting_ScreenshotFetureDescAndLimit" xml:space="preserve">
+    <value>Функция создания скриншота захватывает текущую запущенную игру. Если запущено несколько игр, будет выбрана та, которая была в фокусе последней. Обратите внимание на следующие ограничения:
+• Минимизированные игровые окна не могут быть захвачены.
+• Части окна игры, выходящие за пределы экрана, не будут включены.
+• В редких случаях может быть захвачено не игровое окно.</value>
+  </data>
+  <data name="ScreenshotSetting_ScreenshotWithGamepadSuggestion" xml:space="preserve">
+    <value> Если вы хотите делать скриншоты с помощью контроллера, используйте назначение кнопок на странице «Улучшение контроллера».</value>
+  </data>
+  <data name="SimulateInputTipsWindow_SwitchWindows" xml:space="preserve">
+    <value>Переключить окна</value>
+  </data>
+  <data name="ScreenshotSetting_AutoCopyScreenshotFile" xml:space="preserve">
+    <value>Автоматически копировать файл скриншота</value>
+  </data>
+  <data name="ToolboxSetting_ImageViewer" xml:space="preserve">
+    <value>Просмотр изображений</value>
+  </data>
+  <data name="ToolboxSetting_ViewOrEditImage" xml:space="preserve">
+    <value>Просмотреть / Редактировать изображение</value>
+  </data>
+  <data name="GamepadControlSetting_GameInputRedistOutdate" xml:space="preserve">
+    <value>Устаревший компонент Microsoft GameInput установлен. Пожалуйста, удалите или обновите его.</value>
+  </data>
+  <data name="GamepadControlSetting_NeedInstallGameInputRedistOnWin10" xml:space="preserve">
+    <value>Для корректной работы функции улучшения контроллера в Windows 10 должен быть установлен компонент Microsoft GameInput .</value>
+  </data>
+  <data name="GamepadControlSetting_ClickToDownload" xml:space="preserve">
+    <value>Нажмите, чтобы скачать.</value>
+  </data>
+  <data name="ImageViewWindow2_CopyAsJPG" xml:space="preserve">
+    <value>Скопировать как JPG</value>
+  </data>
+  <data name="ScreenshotPage_MultiSelect" xml:space="preserve">
+    <value>Множественный выбор</value>
+  </data>
+  <data name="ScreenshotPage_Total0Files" xml:space="preserve">
+    <value>Всего {0} файлов.</value>
+  </data>
+  <data name="SimulateInputTipsWindow_KeyboardEnterKey" xml:space="preserve">
+    <value>Клавиша Enter на клавиатуре</value>
+  </data>
+  <data name="ScreenshotSetting_OtherOptions" xml:space="preserve">
+    <value>Другие опции</value>
+  </data>
+  <data name="ScreenshotSetting_Lossless" xml:space="preserve">
+    <value>Без потерь</value>
+  </data>
+  <data name="ScreenshotSetting_FormatAndQuality" xml:space="preserve">
+    <value>Формат и качество</value>
+  </data>
+  <data name="ScreenCaptureInfoWindow_ProcessingImage" xml:space="preserve">
+    <value>Обработка изображения</value>
+  </data>
+  <data name="ScreenshotPage_BatchConvert" xml:space="preserve">
+    <value>Пакетное преобразование</value>
+  </data>
+  <data name="ImageBatchConvertWindow_Quality" xml:space="preserve">
+    <value>Качество</value>
+  </data>
+  <data name="ImageBatchConvertWindow_StartConvert" xml:space="preserve">
+    <value>Начать конвертацию</value>
+  </data>
+  <data name="Common_Clear" xml:space="preserve">
+    <value>Очистить</value>
+  </data>
+  <data name="ImageBatchConvertWindow_OutputFolder" xml:space="preserve">
+    <value>Папка для сохранения</value>
+  </data>
+  <data name="ImageBatchConvertWindow_OriginalFileFolder" xml:space="preserve">
+    <value>Папка исходных файлов</value>
+  </data>
+  <data name="ImageBatchConvertWindow_SelectOutputFormat" xml:space="preserve">
+    <value>Выберите формат сохранения</value>
+  </data>
+  <data name="ImageBatchConvertWindow_NoReadOrWritePermission" xml:space="preserve">
+    <value>Нет прав на чтение или запись</value>
+  </data>
+  <data name="ImageBatchConvertWindow_ConvertFailed" xml:space="preserve">
+    <value>Ошибка конвертации</value>
+  </data>
+  <data name="ImageBatchConvertWindow_IfOutputFileExists" xml:space="preserve">
+    <value>Если файл уже существует</value>
+  </data>
+  <data name="ImageBatchConvertWindow_SkipDefault" xml:space="preserve">
+    <value>Пропустить (по умолчанию)</value>
+  </data>
+  <data name="ImageBatchConvertWindow_Overwrite" xml:space="preserve">
+    <value>Перезаписать</value>
+  </data>
+  <data name="ImageBatchConvertWindow_Rename" xml:space="preserve">
+    <value>Переименовать</value>
+  </data>
+  <data name="Common_Success" xml:space="preserve">
+    <value>Успешно</value>
+  </data>
+  <data name="Common_Failed" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="ImageBatchConvertWindow_ImageBatchConvert" xml:space="preserve">
+    <value>Пакетная конвертация изображений</value>
+  </data>
+  <data name="ScreenshotSetting_ClearThumbnailCache" xml:space="preserve">
+    <value>Очистить кэш миниатюр</value>
+  </data>
+  <data name="ScreenshotSetting_ClearSuccessfully" xml:space="preserve">
+    <value>Успешная очистка</value>
+  </data>
+  <data name="ScreenshotSetting_ClearFailed" xml:space="preserve">
+    <value>Не удалось очистить</value>
+  </data>
+  <data name="ScreenshotSetting_HighQualityAVIFAndJPEGXLImageFormatsSaveApproximately85OfStorageSpace" xml:space="preserve">
+    <value>Высококачественные AVIF и JPEG XL форматы позволяют сэкономить около 85% пространства для хранения.</value>
+  </data>
+  <data name="Common_CopiedToClipboard" xml:space="preserve">
+    <value>Скопировано в буфер обмена.</value>
+  </data>
+  <data name="GameLauncherSettingDialog_LaunchGameUsingCMD" xml:space="preserve">
+    <value>Запустить игру с помощью командной строки</value>
+  </data>
+  <data name="UpdateWindow_FullPackage" xml:space="preserve">
+    <value>Полный пакет</value>
+  </data>
+  <data name="ItIsRecommendedToInstallTheVP9VideoExtensionsToReduceCPUUsage" xml:space="preserve">
+    <value>Рекомендуется установить VP9 Видео расширения для уменьшения использования ЦП.</value>
+  </data>
+  <data name="GameLauncherPage_PlayPause" xml:space="preserve">
+    <value>Запуск / Пауза</value>
+  </data>
+  <data name="GameLauncherPage_Gallery" xml:space="preserve">
+    <value>Галерея</value>
+  </data>
+  <data name="BackgroundViewPage_DeleteDuplicateFiles" xml:space="preserve">
+    <value>Удалить дубликаты файлов</value>
+  </data>
+  <data name="BackgroundViewPage_0DuplicateFileSHasBeenDeleted" xml:space="preserve">
+    <value>Удалено дубликатов: {0} </value>
+  </data>
+  <data name="Common_All" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="Common_Video" xml:space="preserve">
+    <value>Видео</value>
+  </data>
+  <data name="Common_Time" xml:space="preserve">
+    <value>Время</value>
+  </data>
+  <data name="Common_FileSize" xml:space="preserve">
+    <value>Размер файла</value>
+  </data>
+  <data name="Common_Filter" xml:space="preserve">
+    <value>Фильтр</value>
+  </data>
+  <data name="Common_Sort" xml:space="preserve">
+    <value>Сортировка</value>
+  </data>
+  <data name="BackgroundViewPage_DeleteDuplicateFilesTip" xml:space="preserve">
+    <value>Дубликаты файлов определяются по их данным. Некоторые визуально похожие изображения не будут удалены.</value>
+  </data>
+  <data name="BackgroundViewPage_VP9VideoExtensionsTip" xml:space="preserve">
+    <value>VP9 Video Extensions не поддерживает некоторые форматы, из-за чего могут не создаваться миниатюры или не воспроизводиться видео.</value>
+  </data>
+  <data name="AppBackground_ImageDecodingFailed" xml:space="preserve">
+    <value>Ошибка декодирования изображения</value>
+  </data>
+  <data name="AppBackground_PleaseInstallTheWebPImageExtension" xml:space="preserve">
+    <value>Пожалуйста, установите расширение для изображений WebP.</value>
+  </data>
+  <data name="AppBackground_VideoDecodingFailed" xml:space="preserve">
+    <value>Ошибка декодирования видео</value>
+  </data>
+  <data name="AppBackground_VideoDecodingFailedPleaseInstallTheVP9VideoExtensions" xml:space="preserve">
+    <value>Ошибка декодирования видео. Пожалуйста, установите расширения видео VP9.</value>
+  </data>
+  <data name="AppConfig_AnUnknownIssueOccurredDuringInitialization" xml:space="preserve">
+    <value>Во время инициализации произошла неизвестная ошибка.</value>
+  </data>
+  <data name="NoPermissionWindow_NoPermissionToFolderRestartOrClose" xml:space="preserve">
+    <value>У программы нет разрешения на доступ к следующей папке. Перезапустите от имени администратора или переместите папку.</value>
+  </data>
+  <data name="NoPermissionWindow_RestartAsAdministrator" xml:space="preserve">
+    <value>Перезапустить от имени администратора</value>
+  </data>
+  <data name="ScreenshotSetting_ColorManagement" xml:space="preserve">
+    <value>Управление цветом</value>
+  </data>
+  <data name="GameLauncherPage_LaunchWithDX11" xml:space="preserve">
+    <value>Запуск с DX11</value>
+  </data>
+  <data name="FileManageSetting_LauncherBackground" xml:space="preserve">
+    <value>Фон лаунчера</value>
+  </data>
+  <data name="FileManageSetting_CleanUpLauncherBackgroundFiles" xml:space="preserve">
+    <value>Очистить файлы фона лаунчера</value>
+  </data>
+  <data name="PlayTimeStatsDialog_PlaytimeStatistics" xml:space="preserve">
+    <value>Статистика времени в игре</value>
+  </data>
+  <data name="PlayTimeStatsDialog_Total" xml:space="preserve">
+    <value>Итого</value>
+  </data>
+  <data name="PlayTimeStatsDialog_TotalPlaytime" xml:space="preserve">
+    <value>Общее время в игре</value>
+  </data>
+  <data name="PlayTimeStatsDialog_LongestDailyPlaytime" xml:space="preserve">
+    <value>Самое долгое время за один день</value>
+  </data>
+  <data name="PlayTimeStatsDialog_Last15Days" xml:space="preserve">
+    <value>Последние 15 дней</value>
+  </data>
+  <data name="PlayTimeStatsDialog_Last12Weeks" xml:space="preserve">
+    <value>Последние 12 недель</value>
+  </data>
+  <data name="PlayTimeStatsDialog_Last12Months" xml:space="preserve">
+    <value>Последние 12 месяцев</value>
+  </data>
+  <data name="PlayTimeStatsDialog_LongestStreak" xml:space="preserve">
+    <value>Самая длинная серия дней</value>
+  </data>
+  <data name="PlayTimeStatsDialog_LongestSession" xml:space="preserve">
+    <value>Самая длинная игровая сессия</value>
+  </data>
+  <data name="PlayTimeStatsDialog_0Days" xml:space="preserve">
+    <value>{0} дн.</value>
+  </data>
+  <data name="PlayTimeStatsDialog_Started0Times" xml:space="preserve">
+    <value>Запущено {0} раз</value>
+  </data>
+  <data name="PlayTimeStatsDialog_PlayedFor0Days" xml:space="preserve">
+    <value>Отыграно {0} дн.</value>
+  </data>
+  <data name="PlayTimeStatsDialog_AverageDailyPlaytime" xml:space="preserve">
+    <value>Среднее время в игре за день</value>
+  </data>
+  <data name="PlayTimeStatsDialog_StatsTip" xml:space="preserve">
+    <value>Статистика основана на времени работы игры, а не на фактическом времени в игре, и приведена только для справки.</value>
+  </data>
+  <data name="GachaLogPage_Times" xml:space="preserve">
+    <value>раз</value>
+  </data>
+  <data name="GameLauncherPage_DetailsGt" xml:space="preserve">
+    <value>Подробнее &gt;</value>
+  </data>
+  <data name="DX11IntroDialog_Title" xml:space="preserve">
+    <value>Wuthering Waves: запуск с DirectX 11</value>
+  </data>
+  <data name="DX11IntroDialog_Launch" xml:space="preserve">
+    <value>По умолчанию Wuthering Waves использует DirectX 12. Включите «Запуск с DX11», чтобы запросить DirectX 11, или отключите этот параметр для стандартного режима игры.</value>
+  </data>
+  <data name="DX11IntroDialog_Requirements" xml:space="preserve">
+    <value>Выберите этот параметр при проблемах с игрой. Если компиляция шейдеров вызывает длительные подтормаживания или другие помехи, Kuro рекомендует закрыть игру и попробовать DX11.</value>
+  </data>
+  <data name="DX11IntroDialog_Arguments" xml:space="preserve">
+    <value>Режим рендеринга, явно указанный в пользовательских параметрах запуска, имеет приоритет над этим переключателем.</value>
+  </data>
+  <data name="DX11IntroDialog_OfficialSource" xml:space="preserve">
+    <value>Официальные сведения об обновлении лаунчера</value>
+  </data>
+  <data name="DX11IntroDialog_OfficialSourceUrl" xml:space="preserve">
+    <value>https://wutheringwaves.kurogames.com/en/main/news/detail/1320</value>
+  </data>
+  <data name="GachaLogPage_AuthkeyTimeoutAlwaysOccurs" xml:space="preserve">
+    <value>Тайм-аут Authkey всегда происходит?</value>
+  </data>
+  <data name="GachaLogPage_RestartGameAfterDeletingTheCacheFolder" xml:space="preserve">
+    <value>Перезапустите игру после удаления папки кэша.</value>
+  </data>
+  <data name="GachaLogPage_DeleteCacheFolder" xml:space="preserve">
+    <value>Удалить папку кэша</value>
+  </data>
+  <data name="GachaLogPage_CacheFolderNotFound" xml:space="preserve">
+    <value>Папка веб-кэша не найдена. Сначала откройте историю в игре.</value>
+  </data>
+  <data name="GachaLogPage_RequestTimedOut" xml:space="preserve">
+    <value>Время ожидания запроса истории истекло</value>
+  </data>
+  <data name="Common_Apply" xml:space="preserve">
+    <value>Применить</value>
+  </data>
+  <data name="GachaLogPage_0GachaItemsHaveBeenChangedToLanguage1" xml:space="preserve">
+    <value>Язык записей гачи {0} был изменен на ({1}).</value>
+    </data>
+  <data name="SettingPage_CheckForUpdate" xml:space="preserve">
+    <value>Проверить наличие обновления</value>
+  </data>
+  <data name="AboutSetting_UpdatedToTheLatestVersion" xml:space="preserve">
+    <value>Обновлено до последней версии.</value>
+  </data>
+  <data name="SettingPage_ProjectHomepage" xml:space="preserve">
+    <value>Главная страница</value>
+  </data>
+  <data name="SettingPage_ReportIssue" xml:space="preserve">
+    <value>Сообщить об ошибке</value>
+  </data>
+  <data name="SettingPage_ReleaseHistroy" xml:space="preserve">
+    <value>История релизов</value>
+  </data>
+</root>

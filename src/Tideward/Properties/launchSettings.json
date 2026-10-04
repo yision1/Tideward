@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Tideward": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    }
+  }
+}

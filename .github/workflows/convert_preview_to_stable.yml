@@ -1,0 +1,37 @@
+name: Convert Preview to Stable
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Published preview version to promote, such as 0.18.3
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  promote:
+    if: github.repository == 'yision1/Tideward'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Promote published preview to stable
+        uses: actions/github-script@v8
+        env:
+          RELEASE_TAG: ${{ inputs.tag }}
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const tag = process.env.RELEASE_TAG;
+            if (!/^\d+\.\d+\.\d+(?:\.\d+)?$/.test(tag)) {
+              throw new Error('Use a numeric release version, such as 0.18.3.');
+            }
+            const { data: release } = await github.rest.repos.getReleaseByTag({ owner, repo, tag });
+            if (release.draft) {
+              throw new Error('Publish the preview draft before promoting it.');
+            }
+            await github.rest.repos.updateRelease({
+              owner, repo, release_id: release.id, prerelease: false, make_latest: 'true'
+            });
+            core.info(`Promoted ${tag} to stable.`);

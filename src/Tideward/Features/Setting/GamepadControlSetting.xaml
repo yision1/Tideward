@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sf:PageBase x:Class="Tideward.Features.Setting.GamepadControlSetting"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:lang="using:Tideward.Language"
+             xmlns:local="using:Tideward.Features.Setting"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:sf="using:Tideward.Frameworks"
+             x:DefaultBindMode="OneWay"
+             mc:Ignorable="d">
+
+    <Page.Resources>
+        <FontFamily x:Key="XboxFluent2">ms-appx:///Assets/Font/XboxFluent2.ttf#Xbox Fluent v2</FontFamily>
+    </Page.Resources>
+
+    <ScrollViewer x:Name="scr" Background="{x:Null}">
+        <StackPanel Padding="0,0,24,0">
+
+            <StackPanel HorizontalAlignment="Left"
+                        Orientation="Horizontal"
+                        Spacing="20">
+                <TextBlock FontSize="20" Text="{x:Bind lang:Lang.SettingPage_ControllerEnhancement}" />
+                <ToggleSwitch Margin="0,-4,0,-4"
+                              IsOn="{x:Bind EnableGamepadController, Mode=TwoWay}"
+                              OffContent="{x:Bind lang:Lang.Common_Disabled}"
+                              OnContent="{x:Bind lang:Lang.Common_Enabled}" />
+            </StackPanel>
+
+            <!--  仅适配 Xbox 协议手柄，不能保证其他类型手柄的使用体验。  -->
+            <TextBlock Margin="0,8,0,0"
+                       Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                       Text="{x:Bind lang:Lang.GamepadControlSetting_OnlySupportXboxControllerProtocol}"
+                       TextWrapping="Wrap" />
+
+            <TextBlock x:Name="TextBlock_GameInputRedistOutdate"
+                       Margin="0,8,0,0"
+                       Foreground="{ThemeResource SystemFillColorCautionBrush}"
+                       TextWrapping="Wrap"
+                       Visibility="Collapsed">
+                <Run Text="{x:Bind lang:Lang.GamepadControlSetting_GameInputRedistOutdate}" />
+                <Hyperlink NavigateUri="https://starward-static.scighost.com/resource/gameinput/GameInputRedist.msi" UnderlineStyle="None">
+                    <Run Text="{x:Bind lang:Lang.GamepadControlSetting_ClickToDownload}" />
+                </Hyperlink>
+            </TextBlock>
+
+            <TextBlock x:Name="TextBlock_NeedInstallGameInputRedistOnWin10"
+                       Margin="0,8,0,0"
+                       Foreground="{ThemeResource SystemFillColorCautionBrush}"
+                       TextWrapping="Wrap"
+                       Visibility="Collapsed">
+                <Run Text="{x:Bind lang:Lang.GamepadControlSetting_NeedInstallGameInputRedistOnWin10}" />
+                <Hyperlink NavigateUri="https://starward-static.scighost.com/resource/gameinput/GameInputRedist.msi" UnderlineStyle="None">
+                    <Run Text="{x:Bind lang:Lang.GamepadControlSetting_ClickToDownload}" />
+                </Hyperlink>
+            </TextBlock>
+
+            <!--  GameInput 组件初始化失败，手柄增强不可用。  -->
+            <TextBlock x:Name="TextBlock_GameInputInitializeFailed"
+                       Margin="0,8,0,0"
+                       Foreground="{ThemeResource SystemFillColorCautionBrush}"
+                       Text="{x:Bind lang:Lang.GamepadControlSetting_FailedToInitializeTheGameInputComponentControllerEnhancementIsUnavailable}"
+                       TextWrapping="Wrap"
+                       Visibility="Collapsed" />
+
+            <MenuFlyoutSeparator Margin="0,12,0,12" />
+
+            <StackPanel HorizontalAlignment="Left"
+                        Orientation="Horizontal"
+                        Spacing="20">
+                <TextBlock FontSize="20" Text="{x:Bind lang:Lang.GamepadControlSetting_SimulateInput}" />
+                <ToggleSwitch Margin="0,-4,0,-4"
+                              IsEnabled="{x:Bind EnableGamepadController}"
+                              IsOn="{x:Bind EnableGamepadSimulateInput, Mode=TwoWay}"
+                              OffContent="{x:Bind lang:Lang.Common_Disabled}"
+                              OnContent="{x:Bind lang:Lang.Common_Enabled}" />
+            </StackPanel>
+
+            <TextBlock Margin="0,4,0,0"
+                       Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                       Text="{x:Bind lang:Lang.GamepadControlSetting_SimulateInputDesc}"
+                       TextWrapping="Wrap" />
+
+            <StackPanel Margin="0,12,0,0" Orientation="Horizontal">
+                <FontIcon FontFamily="{ThemeResource XboxFluent2}" Glyph="&#xE9A1;" />
+                <TextBlock Margin="12,0,0,0"
+                           VerticalAlignment="Center"
+                           Text="{x:Bind lang:Lang.GamepadControlSetting_LongPressGuideButtonDesc}" />
+            </StackPanel>
+
+            <StackPanel Margin="0,12,0,0" Orientation="Horizontal">
+                <FontIcon FontFamily="{ThemeResource XboxFluent2}" Glyph="&#xE9A4;" />
+                <TextBlock Margin="2,0,2,0"
+                           VerticalAlignment="Center"
+                           Text="+" />
+                <FontIcon FontFamily="{ThemeResource XboxFluent2}" Glyph="&#xE9C8;" />
+                <TextBlock Margin="12,0,0,0"
+                           VerticalAlignment="Center"
+                           Text="{x:Bind lang:Lang.GamepadControlSetting_BothThumbsticksDesc}" />
+            </StackPanel>
+
+            <MenuFlyoutSeparator Margin="0,12,0,12" />
+
+            <TextBlock FontSize="20" Text="{x:Bind lang:Lang.GamepadControlSetting_ButtonMapping}" />
+
+            <StackPanel Margin="0,12,0,0"
+                        Orientation="Horizontal"
+                        Spacing="12">
+                <FontIcon FontFamily="{ThemeResource XboxFluent2}" Glyph="&#xE9A1;" />
+                <TextBlock VerticalAlignment="Center" Text="{x:Bind lang:Lang.GamepadControlSetting_GuideButton}" />
+                <ComboBox MinWidth="160"
+                          VerticalAlignment="Center"
+                          IsEnabled="{x:Bind EnableGamepadController}"
+                          SelectedIndex="{x:Bind GamepadGuideButtonMode, Mode=TwoWay}">
+                    <ComboBoxItem Content="{x:Bind lang:Lang.GamepadControlSetting_NoAction}" />
+                    <ComboBoxItem Content="{x:Bind lang:Lang.GamepadControlSetting_GameScreenshot}" />
+                    <ComboBoxItem Content="{x:Bind lang:Lang.GamepadControlSetting_KeyboardKeys}" />
+                </ComboBox>
+                <TextBox MinWidth="160"
+                         HorizontalAlignment="Left"
+                         IsEnabled="{x:Bind EnableGamepadController}"
+                         PlaceholderText="{x:Bind lang:Lang.GamepadControlSetting_EnterKeyText}"
+                         Text="{x:Bind GamepadGuideButtonKeyText, Mode=TwoWay}"
+                         Visibility="{x:Bind GamepadGuideButtonModeIsKeyboard}" />
+                <FontIcon VerticalAlignment="Center"
+                          FontSize="16"
+                          Foreground="{ThemeResource SystemFillColorSuccessBrush}"
+                          Glyph="&#xE930;"
+                          Visibility="{x:Bind GamepadGuideButtonKeyTextEditSuccess}" />
+                <TextBlock VerticalAlignment="Center"
+                           Foreground="{ThemeResource SystemFillColorCautionBrush}"
+                           Text="{x:Bind GamepadGuideButtonKeyTextEditError}"
+                           Visibility="{x:Bind GamepadGuideButtonModeIsKeyboard}" />
+            </StackPanel>
+
+            <StackPanel Margin="0,12,0,0"
+                        Orientation="Horizontal"
+                        Spacing="12">
+                <FontIcon FontFamily="{ThemeResource XboxFluent2}" Glyph="&#xE7D4;" />
+                <TextBlock VerticalAlignment="Center" Text="{x:Bind lang:Lang.GamepadControlSetting_ShareButton}" />
+                <ComboBox MinWidth="160"
+                          VerticalAlignment="Center"
+                          IsEnabled="{x:Bind EnableGamepadController}"
+                          SelectedIndex="{x:Bind GamepadShareButtonMode, Mode=TwoWay}">
+                    <ComboBoxItem Content="{x:Bind lang:Lang.GamepadControlSetting_NoAction}" />
+                    <ComboBoxItem Content="{x:Bind lang:Lang.GamepadControlSetting_GameScreenshot}" />
+                    <ComboBoxItem Content="{x:Bind lang:Lang.GamepadControlSetting_KeyboardKeys}" />
+                </ComboBox>
+                <TextBox MinWidth="160"
+                         HorizontalAlignment="Left"
+                         IsEnabled="{x:Bind EnableGamepadController}"
+                         PlaceholderText="{x:Bind lang:Lang.GamepadControlSetting_EnterKeyText}"
+                         Text="{x:Bind GamepadShareButtonKeyText, Mode=TwoWay}"
+                         Visibility="{x:Bind GamepadShareButtonModeIsKeyboard}" />
+                <FontIcon VerticalAlignment="Center"
+                          FontSize="16"
+                          Foreground="{ThemeResource SystemFillColorSuccessBrush}"
+                          Glyph="&#xE930;"
+                          Visibility="{x:Bind GamepadShareButtonKeyTextEditSuccess}" />
+                <TextBlock VerticalAlignment="Center"
+                           Foreground="{ThemeResource SystemFillColorCautionBrush}"
+                           Text="{x:Bind GamepadShareButtonKeyTextEditError}"
+                           Visibility="{x:Bind GamepadShareButtonModeIsKeyboard}" />
+            </StackPanel>
+
+            <TextBlock Margin="0,12,0,0"
+                       FontSize="12"
+                       Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                       Text="{x:Bind lang:Lang.GamepadControlSetting_ButtonMappingGuideDesc}"
+                       TextWrapping="Wrap" />
+
+            <TextBlock Margin="0,2,0,0"
+                       FontSize="12"
+                       Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                       Text="{x:Bind lang:Lang.GamepadControlSetting_ButtonMappingKeyboardDesc}"
+                       TextWrapping="Wrap" />
+
+            <TextBlock Margin="0,2,0,0"
+                       FontSize="12"
+                       Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                       Text="{x:Bind lang:Lang.GamepadControlSetting_ButtonMappingShareDesc}"
+                       TextWrapping="Wrap" />
+
+        </StackPanel>
+    </ScrollViewer>
+
+</sf:PageBase>

@@ -1,0 +1,1411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DownloadGameDialog_PackageSize" xml:space="preserve">
+    <value>Dimensione Pacchetto</value>
+  </data>
+  <data name="Language_Chinese" xml:space="preserve">
+    <value>Cinese</value>
+  </data>
+  <data name="Language_English" xml:space="preserve">
+    <value>Inglese</value>
+  </data>
+  <data name="Language_Japanese" xml:space="preserve">
+    <value>Giapponese</value>
+  </data>
+  <data name="Language_Korean" xml:space="preserve">
+    <value>Coreano</value>
+  </data>
+  <data name="GachaStatsCard_Pity" xml:space="preserve">
+    <value>Pity</value>
+  </data>
+  <data name="GachaStatsCard_Average" xml:space="preserve">
+    <value>Medio</value>
+  </data>
+  <data name="GachaStatsCard_Stats" xml:space="preserve">
+    <value>Statistiche</value>
+  </data>
+  <data name="SelectDirectoryPage_SelectFolder" xml:space="preserve">
+    <value>Seleziona Cartella</value>
+  </data>
+  <data name="SelectDirectoryPage_AutoDeleteAfterUpdate" xml:space="preserve">
+    <value>Questa cartella verrà automaticamente eliminata dopo l'aggiornamento del software</value>
+  </data>
+  <data name="SelectDirectoryPage_NoWritePermission" xml:space="preserve">
+    <value>Nessun permesso di scrittura</value>
+  </data>
+  <data name="DownloadGamePage_Close" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="Common_Cancel" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+  <data name="Common_Confirm" xml:space="preserve">
+    <value>Conferma</value>
+  </data>
+  <data name="DownloadGamePage_Downloading" xml:space="preserve">
+    <value>Download in corso</value>
+  </data>
+  <data name="DownloadGamePage_Verifying" xml:space="preserve">
+    <value>Verifica in corso</value>
+  </data>
+  <data name="DownloadGamePage_Decompressing" xml:space="preserve">
+    <value>Decompressione in corso</value>
+  </data>
+  <data name="DownloadGamePage_SomethingError" xml:space="preserve">
+    <value>Qualcosa è andato storto</value>
+  </data>
+  <data name="DownloadGamePage_Retry" xml:space="preserve">
+    <value>Riprova</value>
+  </data>
+  <data name="DownloadGamePage_UnknownError" xml:space="preserve">
+    <value>Errore Sconosciuto</value>
+  </data>
+  <data name="DownloadGamePage_Finished" xml:space="preserve">
+    <value>Completato</value>
+  </data>
+  <data name="DownloadGamePage_Pause" xml:space="preserve">
+    <value>Pausa</value>
+  </data>
+  <data name="DownloadGamePage_Stop" xml:space="preserve">
+    <value>Arresta</value>
+  </data>
+  <data name="GachaLogPage_NoGachaRecords" xml:space="preserve">
+    <value>Nessun Registro Gacha</value>
+  </data>
+  <data name="GachaLogPage_UpdateRecords" xml:space="preserve">
+    <value>Aggiorna Record</value>
+  </data>
+  <data name="GachaLogPage_UpdateSavedURL" xml:space="preserve">
+    <value>Aggiorna (URL salvato)</value>
+  </data>
+  <data name="GachaLogPage_UpdateAll" xml:space="preserve">
+    <value>Aggiorna (Tutto)</value>
+  </data>
+  <data name="GachaLogPage_InputURL" xml:space="preserve">
+    <value>Ingresso URL</value>
+  </data>
+  <data name="Common_Setting" xml:space="preserve">
+    <value>Impostazioni</value>
+  </data>
+  <data name="GachaLogPage_OtherSettings" xml:space="preserve">
+    <value>Altre Opzioni</value>
+  </data>
+  <data name="GachaLogPage_CopyURL" xml:space="preserve">
+    <value>Copia URL</value>
+  </data>
+  <data name="GachaLogPage_ExportAs" xml:space="preserve">
+    <value>Esporta come</value>
+  </data>
+  <data name="GachaLogPage_ImportFrom0" xml:space="preserve">
+    <value>Importa da {0}</value>
+  </data>
+  <data name="GachaLogPage_DeleteRecords" xml:space="preserve">
+    <value>Elimina Record</value>
+  </data>
+  <data name="GachaLogPage_Language" xml:space="preserve">
+    <value>Lingua</value>
+  </data>
+  <data name="GachaLogPage_CannotFindSavedURLOfUid" xml:space="preserve">
+    <value>Impossibile trovare l'URL salvato del tuo UID {0}.</value>
+    <comment>{0} = {uid}</comment>
+  </data>
+  <data name="GachaLogPage_OperationCanceled" xml:space="preserve">
+    <value>Operazione annullata</value>
+  </data>
+  <data name="Common_Warning" xml:space="preserve">
+    <value>Avviso</value>
+  </data>
+  <data name="Common_Delete" xml:space="preserve">
+    <value>Cancella</value>
+  </data>
+  <data name="GachaLogPage_DeletedGachaRecordsOfUid" xml:space="preserve">
+    <value>Eliminato {0} gacha record di UID {1}.</value>
+    <comment>{0} = {count} ,  {1} = {uid}</comment>
+  </data>
+  <data name="GachaLogPage_DeleteGachaRecordsWarning" xml:space="preserve">
+    <value>Tutti i record di gacha di UID {0} verranno cancellati, non potrai annullare questa operazione.</value>
+    <comment>{0} = {uid}</comment>
+  </data>
+  <data name="UpdateService_CannotUpdateAutomatically" xml:space="preserve">
+    <value>Impossibile aggiornare automaticamente</value>
+  </data>
+  <data name="GameSettingPage_Medium" xml:space="preserve">
+    <value>Medio</value>
+  </data>
+  <data name="GameSettingPage_High" xml:space="preserve">
+    <value>Alto</value>
+  </data>
+  <data name="GameSettingPage_FullScreen" xml:space="preserve">
+    <value>Schermo intero</value>
+  </data>
+  <data name="LauncherPage_InstallGame" xml:space="preserve">
+    <value>Installa Gioco</value>
+  </data>
+  <data name="LauncherPage_UpdateGame" xml:space="preserve">
+    <value>Aggiorna Gioco</value>
+  </data>
+  <data name="Common_Refresh" xml:space="preserve">
+    <value>Aggiorna</value>
+  </data>
+  <data name="LauncherPage_PreInstall" xml:space="preserve">
+    <value>Pre-Installa</value>
+  </data>
+  <data name="LauncherPage_SwitchAccount" xml:space="preserve">
+    <value>Cambia Account</value>
+  </data>
+  <data name="LauncherPage_AccountInformation" xml:space="preserve">
+    <value>Informazioni Account</value>
+  </data>
+  <data name="LauncherPage_Nickname" xml:space="preserve">
+    <value>Soprannome</value>
+  </data>
+  <data name="Common_Save" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="LauncherPage_GameSetting" xml:space="preserve">
+    <value>Impostazioni Di Gioco</value>
+  </data>
+  <data name="LauncherPage_Locate" xml:space="preserve">
+    <value>Individua</value>
+  </data>
+  <data name="LauncherPage_RepairGame" xml:space="preserve">
+    <value>Ripara Gioco</value>
+  </data>
+  <data name="LauncherPage_CustomStartExecutable" xml:space="preserve">
+    <value>Eseguibile Di Avvio Personalizzato</value>
+  </data>
+  <data name="Common_Select" xml:space="preserve">
+    <value>Seleziona</value>
+  </data>
+  <data name="LauncherPage_ShowGameAnnouncement" xml:space="preserve">
+    <value>Mostra Annunci Di Gioco</value>
+  </data>
+  <data name="SettingPage_BgSizeTip" xml:space="preserve">
+    <value>Si prega di selezionare un'immagine con una dimensione di pixel uguale alla finestra dell'applicazione; immagini di maggiori dimensioni ridurranno le prestazioni.</value>
+  </data>
+  <data name="LauncherPage_StartGame" xml:space="preserve">
+    <value>Avvia gioco</value>
+  </data>
+  <data name="LauncherPage_GameIsRunning" xml:space="preserve">
+    <value>Gioco in esecuzione</value>
+  </data>
+  <data name="Common_Continue" xml:space="preserve">
+    <value>Continua</value>
+  </data>
+  <data name="MainPage_Launcer" xml:space="preserve">
+    <value>Launcher</value>
+  </data>
+  <data name="MainPage_GameScreenshot" xml:space="preserve">
+    <value>Foto salvate</value>
+  </data>
+  <data name="ScreenshotPage_GameScreenshot" xml:space="preserve">
+    <value>Foto salvate</value>
+  </data>
+  <data name="ScreenshotPage_OpenFolder" xml:space="preserve">
+    <value>Apri cartella</value>
+  </data>
+  <data name="SettingPage_AppSettings" xml:space="preserve">
+    <value>Impostazioni App</value>
+  </data>
+  <data name="SettingPage_OpenLogFolder" xml:space="preserve">
+    <value>Apri cartella dei Log</value>
+  </data>
+  <data name="SettingPage_CustomBackgroundSupportVideo" xml:space="preserve">
+    <value>Sfondo Personalizzato (Supporta Video)</value>
+  </data>
+  <data name="SettingPage_CurrentVersion" xml:space="preserve">
+    <value>Versione attuale:</value>
+  </data>
+  <data name="SettingPage_ReselectDataFolder" xml:space="preserve">
+    <value>Riseleziona Cartella Dati</value>
+  </data>
+  <data name="SettingPage_DeleteAllSettings" xml:space="preserve">
+    <value>Ripristina tutte le impostazioni</value>
+  </data>
+  <data name="SettingPage_About" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="SettingPage_TheCurrentLocationOfTheDataFolderIs" xml:space="preserve">
+    <value>La posizione corrente della cartella dati è:</value>
+  </data>
+  <data name="SettingPage_WouldLikeToReselectDataFolder" xml:space="preserve">
+    <value>Vuoi riselezionare? (È necessario migrare manualmente i file di dati prima di selezionare)</value>
+  </data>
+  <data name="Common_Yes" xml:space="preserve">
+    <value>Sì</value>
+  </data>
+  <data name="SettingPage_AfterDeletingTheSoftwareWillBeRestartedAutomatically" xml:space="preserve">
+    <value>Dopo l'eliminazione, il software verrà riavviato automaticamente.</value>
+  </data>
+  <data name="UpdatePage_NewVersion" xml:space="preserve">
+    <value>Nuova Versione!</value>
+  </data>
+  <data name="UpdatePage_Links" xml:space="preserve">
+    <value>Indirizzi:</value>
+  </data>
+  <data name="UpdatePage_BuiltTime" xml:space="preserve">
+    <value>Tempo di compilazione:</value>
+  </data>
+  <data name="UpdatePage_ReleaseChannel" xml:space="preserve">
+    <value>Canale Di Rilascio:</value>
+  </data>
+  <data name="UpdatePage_Architecture" xml:space="preserve">
+    <value>Architettura:</value>
+  </data>
+  <data name="UpdatePage_RemindLatter" xml:space="preserve">
+    <value>Ricordamelo più tardi</value>
+  </data>
+  <data name="UpdatePage_IgnoreThisVersion" xml:space="preserve">
+    <value>Ignora questa versione</value>
+  </data>
+  <data name="UpdatePage_UpdateNow" xml:space="preserve">
+    <value>Aggiorna Adesso</value>
+  </data>
+  <data name="UpdatePage_YouNeedToManuallyDownloadTheNewVersionPackage" xml:space="preserve">
+    <value>È necessario scaricare manualmente la nuova versione del pacchetto</value>
+  </data>
+  <data name="UpdatePage_PreviewChannel" xml:space="preserve">
+    <value>Canale Anteprima</value>
+  </data>
+  <data name="UpdatePage_StableChannel" xml:space="preserve">
+    <value>Canale Stabile</value>
+  </data>
+  <data name="UpdatePage_DevChannel" xml:space="preserve">
+    <value>Canale Dev</value>
+  </data>
+  <data name="UpdatePage_ReleasePage" xml:space="preserve">
+    <value>Data di Rilascio</value>
+  </data>
+  <data name="GachaLogPage_GachaLanguageDesc" xml:space="preserve">
+    <value>Specificare la lingua dei record gacha, esempio it-it.</value>
+    <comment>Replace en-us with the target language when translating</comment>
+  </data>
+  <data name="SettingPage_Language" xml:space="preserve">
+    <value>Lingua</value>
+  </data>
+  <data name="SettingPage_FollowSystem" xml:space="preserve">
+    <value>Usa Il Sistema</value>
+  </data>
+  <data name="ScreenshotPage_ScreenshotFolderDoesNotExist" xml:space="preserve">
+    <value>Screenshot folder does not exist</value>
+  </data>
+  <data name="SettingPage_PrivacyPolicy" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="SelectGamePage_SelectGameServer" xml:space="preserve">
+    <value>Select Server</value>
+  </data>
+  <data name="Common_Exit" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="ScreenshotPage_BackupScreenshots" xml:space="preserve">
+    <value>Backup Screenshots</value>
+  </data>
+  <data name="SettingPage_LastBackup" xml:space="preserve">
+    <value>Ultimo backup</value>
+  </data>
+  <data name="SettingPage_BackupDatabase" xml:space="preserve">
+    <value>Backup Database</value>
+  </data>
+  <data name="ScreenshotPage_BackedUpNewScreenshots" xml:space="preserve">
+    <value>Ottenuti {0} nuovi screenshots.</value>
+  </data>
+  <data name="MainPage_GameNotices" xml:space="preserve">
+    <value>Avvisi Di Gioco</value>
+  </data>
+  <data name="DownloadGamePage_Merging" xml:space="preserve">
+    <value>Merging</value>
+  </data>
+  <data name="LauncherPage_ConfirmDelete" xml:space="preserve">
+    <value>Conferma Eliminazione</value>
+  </data>
+  <data name="Common_Attention" xml:space="preserve">
+    <value>Attenzione</value>
+  </data>
+  <data name="LauncherPage_Replace" xml:space="preserve">
+    <value>Sostituisci</value>
+  </data>
+  <data name="LauncherPage_SaveNew" xml:space="preserve">
+    <value>Salva nuovo</value>
+    <comment>Account with uid {0} already exists, replace it or save new?</comment>
+  </data>
+  <data name="LauncherPage_AccountSaveNew" xml:space="preserve">
+    <value>L'account con uid {0} esiste già, sostituirlo o salvare nuovo?</value>
+  </data>
+  <data name="LauncherPage_UninstallGame" xml:space="preserve">
+    <value>Disinstalla Gioco</value>
+  </data>
+  <data name="SettingPage_URLProtocolExperimental" xml:space="preserve">
+    <value>Protocollo URL (Sperimentale)</value>
+  </data>
+  <data name="SettingPage_URLProtocolDesc" xml:space="preserve">
+    <value>Altri software possono utilizzare alcune funzionalità di Tideward attraverso il protocollo URL.</value>
+  </data>
+  <data name="SettingPage_RegisterURLProtocol" xml:space="preserve">
+    <value>Registra Protocollo URL</value>
+  </data>
+  <data name="SettingPage_TestURLProtocol" xml:space="preserve">
+    <value>Testa Protocollo URL</value>
+  </data>
+  <data name="ImageViewPage_ZoomOut" xml:space="preserve">
+    <value>Zoom indietro</value>
+  </data>
+  <data name="ImageViewPage_ZoomIn" xml:space="preserve">
+    <value>Zoom avanti</value>
+  </data>
+  <data name="ImageViewPage_Rotate" xml:space="preserve">
+    <value>Ruota</value>
+  </data>
+  <data name="Common_Copy" xml:space="preserve">
+    <value>Copia</value>
+  </data>
+  <data name="Common_Open" xml:space="preserve">
+    <value>Apri</value>
+  </data>
+  <data name="FileSettingPage_DataFolder" xml:space="preserve">
+    <value>Cartella dati</value>
+  </data>
+  <data name="SettingPage_FileManagement" xml:space="preserve">
+    <value>Gestore file</value>
+  </data>
+  <data name="AboutSettingPage_Links" xml:space="preserve">
+    <value>Indirizzi</value>
+  </data>
+  <data name="SettingPage_Advanced" xml:space="preserve">
+    <value>Avanzate</value>
+  </data>
+  <data name="ExperienceSettingPage_CloseWindowOption" xml:space="preserve">
+    <value>Chiudi Opzione Finestra</value>
+  </data>
+  <data name="ExperienceSettingPage_MinimizeToSystemTray" xml:space="preserve">
+    <value>Riduci ad icona sull'area di notifica</value>
+  </data>
+  <data name="ExperienceSettingPage_ExitCompletely" xml:space="preserve">
+    <value>Esci completamente</value>
+  </data>
+  <data name="CloseWindowDialog_YouCouldChangeTheOptionAgainInSettingPage" xml:space="preserve">
+    <value>Puoi cambiare nuovamente l'opzione nelle impostazioni.</value>
+  </data>
+  <data name="FileSettingPage_DataFolderIsImportant" xml:space="preserve">
+    <value>I tuoi dati personali sono memorizzati nella cartella sottostante. È molto importante, non cancellarli casualmente.</value>
+  </data>
+  <data name="ExperienceSettingPage_DisableRedDotReminderForGameNotices" xml:space="preserve">
+    <value>Disabilita il punto rosso per le notifiche di gioco</value>
+  </data>
+  <data name="ExperienceSettingPage_MinimizeToTaskbar" xml:space="preserve">
+    <value>Minimizza programma</value>
+  </data>
+  <data name="ExperienceSettingPage_DoNothing" xml:space="preserve">
+    <value>Non fare nulla</value>
+  </data>
+  <data name="ExperienceSettingPage_AfterStartingGame" xml:space="preserve">
+    <value>Dopo L'Avvio Del Gioco</value>
+  </data>
+  <data name="FileSettingPage_Cache" xml:space="preserve">
+    <value>Cache</value>
+  </data>
+  <data name="FileSettingPage_Log" xml:space="preserve">
+    <value>Registro</value>
+  </data>
+  <data name="FileSettingPage_Image" xml:space="preserve">
+    <value>Immagine</value>
+  </data>
+  <data name="FileSettingPage_Browser" xml:space="preserve">
+    <value>Browser</value>
+  </data>
+  <data name="FileSettingPage_ClearCache" xml:space="preserve">
+    <value>Cancella Cache</value>
+  </data>
+  <data name="DownloadGamePage_TheFolderDoesNotExist" xml:space="preserve">
+    <value>La cartella non esiste.</value>
+  </data>
+  <data name="LauncherPage_PleaseDoNotSelectTheRootDirectoryOfADrive" xml:space="preserve">
+    <value>Per favore non selezionare la directory radice di un disco.</value>
+  </data>
+  <data name="AppearanceSettingPage_TransparencyEffects" xml:space="preserve">
+    <value>Effetti di trasparenza</value>
+  </data>
+  <data name="AppearanceSettingPage_AnimationEffects" xml:space="preserve">
+    <value>Effetti animazione</value>
+  </data>
+  <data name="FileSettingPage_GameResource" xml:space="preserve">
+    <value>Game Resource</value>
+  </data>
+  <data name="GameResourcePage_LatestVersion" xml:space="preserve">
+    <value>Ultima versione</value>
+  </data>
+  <data name="GameResourcePage_FullPackages" xml:space="preserve">
+    <value>Pacchetti Completi</value>
+  </data>
+  <data name="GameResourcePage_DiffPackages" xml:space="preserve">
+    <value>Diff Pacchetti</value>
+  </data>
+  <data name="UpdateContentWindow_RecentlyUpdatedContent" xml:space="preserve">
+    <value>Contenuti aggiornati di recente</value>
+  </data>
+  <data name="GameBizSelector_AutoSearch" xml:space="preserve">
+    <value>Ricerca automatica</value>
+  </data>
+  <data name="InstallGameDialog_SelectInstallationPath" xml:space="preserve">
+    <value>Seleziona percorso di installazione</value>
+  </data>
+  <data name="Common_Change" xml:space="preserve">
+    <value>Cambia</value>
+  </data>
+  <data name="InstallGameDialog_SpaceRequiredToUnzip" xml:space="preserve">
+    <value>Spazio richiesto per decomprimere</value>
+  </data>
+  <data name="InstallGameDialog_SpaceAvailable" xml:space="preserve">
+    <value>Spazio disponibile</value>
+  </data>
+  <data name="InstallGameDialog_Installed" xml:space="preserve">
+    <value>Installato?</value>
+  </data>
+  <data name="InstallGameDialog_LocateGame" xml:space="preserve">
+    <value>Trova gioco</value>
+  </data>
+  <data name="InstallGameDialog_StartInstallation" xml:space="preserve">
+    <value>Avvia installazione</value>
+  </data>
+  <data name="DownloadSettingPage_DefaultGameInstallationPath" xml:space="preserve">
+    <value>Percorso di installazione predefinito del gioco</value>
+  </data>
+  <data name="DownloadSettingPage_DefaultGameInstallationPathDescription" xml:space="preserve">
+    <value>I giochi verranno installati in sottocartelle diverse; la modifica del percorso predefinito non sposterà i file di gioco installati.</value>
+  </data>
+  <data name="DownloadSettingPage_SpeedLimit" xml:space="preserve">
+    <value>Limite di velocità</value>
+  </data>
+  <data name="DownloadSettingPage_TheNumber0MeansNoSpeedLimit" xml:space="preserve">
+    <value>Il numero 0 significa nessun limite di velocità.</value>
+  </data>
+  <data name="SettingPage_Download" xml:space="preserve">
+    <value>Scarica</value>
+  </data>
+  <data name="DownloadGamePage_Paused" xml:space="preserve">
+    <value>In pausa</value>
+  </data>
+  <data name="Common_Restart" xml:space="preserve">
+    <value>Riavvia</value>
+  </data>
+  <data name="InstallGameDialog_HardLinkDescription" xml:space="preserve">
+    <value>Creazione di un collegamento fisico per installare i client di gioco in server diversi, occupando pochissimo spazio di archiviazione aggiuntivo.</value>
+  </data>
+  <data name="LauncherPage_HardLink" xml:space="preserve">
+    <value>Collegamento fisico</value>
+  </data>
+  <data name="GameLauncherPage_RemovableStorageDeviceNotConnected" xml:space="preserve">
+    <value>Dispositivo di archiviazione rimovibile non connesso.</value>
+  </data>
+  <data name="DeleteGachaLogDialog_BeginTime" xml:space="preserve">
+    <value>Ora inizio</value>
+  </data>
+  <data name="DeleteGachaLogDialog_EndTime" xml:space="preserve">
+    <value>Ora fine</value>
+  </data>
+  <data name="DeleteGachaLogDialog_DeleteGachaRecordsForASpecificTimePeriod" xml:space="preserve">
+    <value>Elimina i record gacha per un periodo specifico</value>
+  </data>
+  <data name="DeleteGachaLogDialog_6MonthsDeletingWarning" xml:space="preserve">
+    <value>Attenzione: il periodo selezionato include record gacha di oltre 6 mesi fa, che non possono essere recuperati dopo l'eliminazione.</value>
+  </data>
+  <data name="DeleteGachaLogDialog_ThisAccountHas0GachaRecordS" xml:space="preserve">
+    <value>Questo account ha {0} record gacha.</value>
+  </data>
+  <data name="DeleteGachaLogDialog_TheSelectedTimePeriodIncludes0GachaRecords" xml:space="preserve">
+    <value>Il periodo selezionato include {0} record gacha.</value>
+  </data>
+  <data name="GachaLogPage_DeleteAll" xml:space="preserve">
+    <value>Elimina tutto</value>
+  </data>
+  <data name="GachaLogPage_SpecificTimePeriod" xml:space="preserve">
+    <value>Periodo specifico</value>
+  </data>
+  <data name="StartGameButton_ResumeDownload" xml:space="preserve">
+    <value>Riprendi download</value>
+  </data>
+  <data name="StartGameButton_Waiting" xml:space="preserve">
+    <value>In attesa</value>
+  </data>
+  <data name="GameLauncherPage_Relocate" xml:space="preserve">
+    <value>Rilocalizza</value>
+  </data>
+  <data name="GameLauncherSettingDialog_RelocateGame" xml:space="preserve">
+    <value>Rilocalizza gioco</value>
+  </data>
+  <data name="GameLauncherSettingDialog_Size" xml:space="preserve">
+    <value>Dimensioni</value>
+  </data>
+  <data name="GameLauncherSettingDialog_BasicInformation" xml:space="preserve">
+    <value>Informazioni base</value>
+  </data>
+  <data name="GameLauncherSettingDialog_StartupArguments" xml:space="preserve">
+    <value>Argomenti di avvio</value>
+  </data>
+  <data name="GameLauncherSettingDialog_CustomBackground" xml:space="preserve">
+    <value>Sfondo personalizzato</value>
+  </data>
+  <data name="GameLauncherSettingDialog_GamePackages" xml:space="preserve">
+    <value>Pacchetti gioco</value>
+  </data>
+  <data name="GameLauncherSettingDialog_CommandLineArgument" xml:space="preserve">
+    <value>Argomento riga di comando</value>
+  </data>
+  <data name="GameLauncherSettingDialog_SeeMoreInformationAboutCommandLineArgument" xml:space="preserve">
+    <value>Vedi maggiori informazioni sugli argomenti della riga di comando.</value>
+  </data>
+  <data name="GameSelector_ActualSizeOfInstalledGames" xml:space="preserve">
+    <value>Dimensioni effettive dei giochi installati</value>
+  </data>
+  <data name="GameSelector_StorageSpaceSavedByHardLinks" xml:space="preserve">
+    <value>Spazio di archiviazione risparmiato tramite hard link</value>
+  </data>
+  <data name="GameLauncherSettingDialog_CannotDecodeFile" xml:space="preserve">
+    <value>Impossibile decodificare il file.</value>
+  </data>
+  <data name="GameLauncherSettingDialog_AnUnknownErrorOccurredPleaseCheckTheLogs" xml:space="preserve">
+    <value>Si è verificato un errore sconosciuto. Controlla i log.</value>
+  </data>
+  <data name="GameLauncherSettingDialog_DragAndDropImageOrVideoFiles" xml:space="preserve">
+    <value>Trascina e rilascia file immagine/video.</value>
+  </data>
+  <data name="GameSelector_Calculating" xml:space="preserve">
+    <value>Calcolo in corso</value>
+    <comment>Calculating storage space usage.</comment>
+  </data>
+  <data name="SettingPage_General" xml:space="preserve">
+    <value>Generali</value>
+    <comment>General Setting</comment>
+  </data>
+  <data name="SettingPage_ForABetterExperiencePleaseEnableTheFollowingFeaturesInSystemSettings" xml:space="preserve">
+    <value>Per un'esperienza migliore, abilita le seguenti funzionalità nelle impostazioni di sistema.</value>
+  </data>
+  <data name="PlayTimeButton_LastStartup" xml:space="preserve">
+    <value>Ultimo avvio</value>
+  </data>
+  <data name="UpdateWindow_AutoRestartAfterUpdate" xml:space="preserve">
+    <value>Riavvio automatico dopo l'aggiornamento</value>
+  </data>
+  <data name="UpdateWindow_DisplayUpdateContentAfterRestart" xml:space="preserve">
+    <value>Mostra contenuto aggiornamento dopo il riavvio</value>
+  </data>
+  <data name="Common_WebView2ComponentInitializationFailed" xml:space="preserve">
+    <value>Inizializzazione del componente WebView2 fallita.</value>
+  </data>
+  <data name="SettingPage_RPCService" xml:space="preserve">
+    <value>Servizio RPC</value>
+  </data>
+  <data name="SettingPage_RPCService_Desc" xml:space="preserve">
+    <value>Il servizio RPC è un processo indipendente utilizzato per evitare riavvii durante il download di giochi, aggiornamenti software e altre funzionalità che richiedono privilegi di amministratore.</value>
+  </data>
+  <data name="SettingPage_KeepRPCServiceRunningInTheBackground" xml:space="preserve">
+    <value>Mantieni il servizio RPC in esecuzione in background</value>
+  </data>
+  <data name="SettingPage_RPCServiceWarningIfAppInRemovableStorage" xml:space="preserve">
+    <value>Rilevato che l'applicazione si trova su un dispositivo di archiviazione rimovibile, non è consigliabile mantenere il servizio RPC in esecuzione in background.</value>
+  </data>
+  <data name="InstallGameDialog_HardLinkDesc" xml:space="preserve">
+    <value>Se il percorso selezionato si trova sulla stessa unità dei client di altri server installati, è possibile installare più client per server diversi utilizzando hard link, che occupano una quantità minima di spazio di archiviazione aggiuntivo.</value>
+  </data>
+  <data name="InstallGameDialog_SupportHardLinks" xml:space="preserve">
+    <value>Supporta hard link</value>
+  </data>
+  <data name="PreDownloadDialog_NoPatchesWarning" xml:space="preserve">
+    <value>Non ci sono pacchetti di patch disponibili. Si consiglia di aggiornare il gioco all'ultima versione prima di iniziare il pre-download.</value>
+  </data>
+  <data name="PreDownloadDialog_StartPreInstall" xml:space="preserve">
+    <value>Avvia pre-installazione</value>
+  </data>
+  <data name="GameLauncherSettingDialog_StartRepairing" xml:space="preserve">
+    <value>Avvia riparazione</value>
+  </data>
+  <data name="PreDownloadButton_PreInstallFinished" xml:space="preserve">
+    <value>Pre-installazione completata</value>
+  </data>
+  <data name="Common_Error" xml:space="preserve">
+    <value>Errore</value>
+  </data>
+  <data name="StartGameButton_InQueue" xml:space="preserve">
+    <value>In coda</value>
+  </data>
+  <data name="RPCServiceExitedUnexpectedly" xml:space="preserve">
+    <value>Il servizio RPC è uscito in modo imprevisto.</value>
+  </data>
+  <data name="StartGameButton_Install" xml:space="preserve">
+    <value>Installa</value>
+  </data>
+  <data name="StartGameButton_Verify" xml:space="preserve">
+    <value>Verifica</value>
+  </data>
+  <data name="SettingPage_RPCServiceIsNotRunning" xml:space="preserve">
+    <value>Il servizio RPC non è in esecuzione</value>
+  </data>
+  <data name="SettingPage_RunService" xml:space="preserve">
+    <value>Avvia servizio</value>
+  </data>
+  <data name="SettingPage_RPCServiceIsRunning" xml:space="preserve">
+    <value>Il servizio RPC è in esecuzione</value>
+  </data>
+  <data name="SettingPage_StopService" xml:space="preserve">
+    <value>Arresta servizio</value>
+  </data>
+  <data name="SettingPage_CannotConnectRPCService" xml:space="preserve">
+    <value>Impossibile connettersi al servizio RPC</value>
+  </data>
+  <data name="InstallGameDialog_AutomaticallyCreateASubfolder" xml:space="preserve">
+    <value>Crea automaticamente una sottocartella</value>
+  </data>
+  <data name="GameLauncherSettingDialog_UninstallGameWarning" xml:space="preserve">
+    <value>Tutti i file nella seguente cartella verranno eliminati. Conferma il percorso prima di disinstallare.</value>
+  </data>
+  <data name="GameLauncherSettingDialog_ConfirmUninstall" xml:space="preserve">
+    <value>Conferma disinstallazione</value>
+  </data>
+  <data name="GameLauncherSettingDialog_CannotDeleteTheDriveRootDirectory" xml:space="preserve">
+    <value>Impossibile eliminare la directory radice dell'unità.</value>
+  </data>
+  <data name="PreDownloadDialog_PreInstallIsNotAvailable" xml:space="preserve">
+    <value>Pre-installazione non disponibile.</value>
+  </data>
+  <data name="PreDownloadDialog_IncompatibilityNotice" xml:space="preserve">
+    <value>Avviso di incompatibilità</value>
+  </data>
+  <data name="PreDownloadDialog_IncompatibilityNoticeContent" xml:space="preserve">
+    <value>Tideward uses its own pre-download cache. Select existing game files through the game folder setting.</value>
+  </data>
+  <data name="WelcomeView_WelcomeToTidewardDescription" xml:space="preserve">
+    <value>Tideward is a Wuthering Waves launcher with separate CN and global profiles.</value>
+  </data>
+  <data name="WelcomeView_SelectUserDataFolderDescription" xml:space="preserve">
+    <value>Tutti i tuoi dati personali verranno memorizzati nella cartella sottostante. È importante, e puoi anche fare clic sul pulsante qui sotto per selezionare una cartella diversa.</value>
+  </data>
+  <data name="WelcomeView_BeforeStartingSomeNecessaryEnvironmentChecksAreRequired" xml:space="preserve">
+    <value>Prima di iniziare, sono necessari alcuni controlli ambientali.</value>
+  </data>
+  <data name="WelcomeView_NotInstalled" xml:space="preserve">
+    <value>Non installato</value>
+  </data>
+  <data name="WelcomeView_InstallNow" xml:space="preserve">
+    <value>Installa ora</value>
+  </data>
+  <data name="WelcomeView_Installed" xml:space="preserve">
+    <value>Installato</value>
+  </data>
+  <data name="WelcomeView_TidewardStart" xml:space="preserve">
+    <value>Tideward, Avvia!</value>
+  </data>
+  <data name="GameSelector_ClickToSelectOrSwitchGame" xml:space="preserve">
+    <value>Fai clic per selezionare o cambiare gioco.</value>
+  </data>
+  <data name="GameLauncherSettingDialog_UninstallGameUserDataFolderWarning" xml:space="preserve">
+    <value>La cartella dati di Tideward si trova all'interno della cartella del gioco e verrà eliminata insieme ad essa. Modifica la posizione della cartella dati nella pagina delle impostazioni e riprova.</value>
+  </data>
+  <data name="GameLauncherSettingDialog_UninstallGameTidewardProgramFolderWarning" xml:space="preserve">
+    <value>Il programma Tideward si trova all'interno della cartella del gioco e verrà eliminato insieme al gioco. Sposta il programma fuori dalla cartella del gioco e riprova.</value>
+  </data>
+  <data name="GameAccountSwitcher_TheCurrentlyLoggedInAccountIsNotSaved" xml:space="preserve">
+    <value>L'account attualmente connesso non è salvato.</value>
+  </data>
+  <data name="SettingPage_Toolbox" xml:space="preserve">
+    <value>Cassetta degli attrezzi</value>
+  </data>
+  <data name="GachaImportAndExportWindow_Import" xml:space="preserve">
+    <value>Importa</value>
+  </data>
+  <data name="Common_Disabled" xml:space="preserve">
+    <value>Disabilitato</value>
+  </data>
+  <data name="Common_Enabled" xml:space="preserve">
+    <value>Abilitato</value>
+  </data>
+  <data name="GachaLogPage_ImportAndExport" xml:space="preserve">
+    <value>Importa ed esporta</value>
+  </data>
+  <data name="GachaLogPage_HideGachaBanners" xml:space="preserve">
+    <value>Nascondi banner Gacha</value>
+  </data>
+  <data name="DisplayInformation_MaxLuminance" xml:space="preserve">
+    <value>Luminosità massima</value>
+  </data>
+  <data name="DisplayInformation_MonitorInformation" xml:space="preserve">
+    <value>Informazioni monitor</value>
+  </data>
+  <data name="DisplayInformation_ColorSpace" xml:space="preserve">
+    <value>Spazio colore</value>
+  </data>
+  <data name="DisplayInformation_PeakLuminance" xml:space="preserve">
+    <value>Luminosità di picco</value>
+  </data>
+  <data name="DisplayInformation_MaxFullScreenLuminance" xml:space="preserve">
+    <value>Luminosità massima a schermo intero</value>
+  </data>
+  <data name="DisplayInformation_SDRWhiteLuminance" xml:space="preserve">
+    <value>Luminosità bianco SDR</value>
+  </data>
+  <data name="WelcomeView_IfTidewardTakesALongTimeToStartItIsRecommendedToDisableSmartAppControlInWindowsSecurity" xml:space="preserve">
+    <value>Se Tideward impiega molto tempo ad avviarsi, si consiglia di disabilitare il Controllo intelligente delle app in Sicurezza di Windows.</value>
+  </data>
+  <data name="WelcomeView_OpenWindowsSecurity" xml:space="preserve">
+    <value>Apri Sicurezza di Windows</value>
+  </data>
+  <data name="WelcomeView_LearnMore" xml:space="preserve">
+    <value>Scopri di più</value>
+  </data>
+  <data name="MainView_CheckSystemProxy_SystemProxyIsEnabled" xml:space="preserve">
+    <value>Il proxy di sistema è abilitato.</value>
+  </data>
+  <data name="InstallGameDialog_MappedNetworkDrivesAreNotSupportedPleaseUseANetworkSharePathStartingWithDoubleBackslashes" xml:space="preserve">
+    <value>Le unità di rete mappate non sono supportate. Utilizza un percorso di condivisione di rete che inizi con doppia barra rovesciata (\\.)</value>
+  </data>
+  <data name="ScreenCaptureInfoWindow_ScreenshotSaved" xml:space="preserve">
+    <value>Screenshot salvato</value>
+  </data>
+  <data name="ScreenshotPage_ManageScreenshotFolders" xml:space="preserve">
+    <value>Gestisci cartelle screenshot</value>
+  </data>
+  <data name="ScreenshotFolderManageDialog_AddFolder" xml:space="preserve">
+    <value>Aggiungi cartella</value>
+  </data>
+  <data name="ScreenshotFolderManageDialog_BackingUp" xml:space="preserve">
+    <value>Backup in corso...</value>
+  </data>
+  <data name="Common_Remove" xml:space="preserve">
+    <value>Rimuovi</value>
+  </data>
+  <data name="ScreenshotFolderManageDialog_FailedToBackupScreenshots" xml:space="preserve">
+    <value>Backup degli screenshot non riuscito.</value>
+  </data>
+  <data name="ScreenCaptureInfoWindow_ScreenshotFailed" xml:space="preserve">
+    <value>Screenshot non riuscito</value>
+  </data>
+  <data name="ScreenCaptureInfoWindow_CheckTheLogForMoreInformation" xml:space="preserve">
+    <value>Controlla il registro per maggiori informazioni.</value>
+  </data>
+  <data name="ScreenshotFolderManageDialog_ImagesFromTheFollowingFoldersWillBeDisplayedInTheGallery" xml:space="preserve">
+    <value>Le immagini dalle seguenti cartelle verranno visualizzate nella galleria.</value>
+  </data>
+  <data name="ImageViewWindow2_OpenInExplorer" xml:space="preserve">
+    <value>Apri in Esplora file</value>
+  </data>
+  <data name="ImageViewWindow2_OpenWith" xml:space="preserve">
+    <value>Apri con</value>
+  </data>
+  <data name="ImageViewWindow2_Previous" xml:space="preserve">
+    <value>Precedente</value>
+    <comment>Previous Image</comment>
+  </data>
+  <data name="ImageViewWindow2_Next" xml:space="preserve">
+    <value>Successivo</value>
+    <comment>Next Image</comment>
+  </data>
+  <data name="ImageViewWindow2_ShowGallery" xml:space="preserve">
+    <value>Mostra galleria</value>
+  </data>
+  <data name="ImageViewWindow2_FitToWindow" xml:space="preserve">
+    <value>Adatta alla finestra</value>
+    <comment>Zoom image fit to window</comment>
+  </data>
+  <data name="ImageViewWindow2_CopyFile" xml:space="preserve">
+    <value>Copia file</value>
+  </data>
+  <data name="ImageViewWindow2_CopyPath" xml:space="preserve">
+    <value>Copia percorso</value>
+  </data>
+  <data name="ImageViewWindow2_CopyImage" xml:space="preserve">
+    <value>Copia immagine</value>
+  </data>
+  <data name="Common_Edit" xml:space="preserve">
+    <value>Modifica</value>
+  </data>
+  <data name="ImageViewWindow2_SaveAs" xml:space="preserve">
+    <value>Salva come</value>
+  </data>
+  <data name="ImageViewWindow2_ImageInformation" xml:space="preserve">
+    <value>Informazioni immagine</value>
+  </data>
+  <data name="ImageViewWindow2_EditImage" xml:space="preserve">
+    <value>Modifica immagine</value>
+  </data>
+  <data name="ImageViewWindow2_DisplayMode" xml:space="preserve">
+    <value>Modalità di visualizzazione</value>
+  </data>
+  <data name="ImageViewWindow2_SDRMappedLuminance" xml:space="preserve">
+    <value>Luminanza mappata SDR</value>
+  </data>
+  <data name="ImageViewWindow2_ExportImage" xml:space="preserve">
+    <value>Esporta immagine</value>
+  </data>
+  <data name="ImageViewWindow2_DeleteImageFile" xml:space="preserve">
+    <value>Elimina file immagine</value>
+  </data>
+  <data name="ImageViewWindow2_CopiedToClipboard" xml:space="preserve">
+    <value>Copiato negli appunti.</value>
+  </data>
+  <data name="ImageViewWindow2_FileDoesNotExist" xml:space="preserve">
+    <value>Il file non esiste.</value>
+  </data>
+  <data name="ImageViewWindow2_OpenWithDefaultApp" xml:space="preserve">
+    <value>Apri con l'app predefinita</value>
+  </data>
+  <data name="ImageViewWindow2_NoImageToDisplay" xml:space="preserve">
+    <value>Nessuna immagine da visualizzare</value>
+  </data>
+  <data name="Common_OpenFiles" xml:space="preserve">
+    <value>Apri file</value>
+  </data>
+  <data name="ImageViewWindow2_OpenNewFiles" xml:space="preserve">
+    <value>Apri nuovi file</value>
+  </data>
+  <data name="ImageViewWindow2_FailedToDisplayImage" xml:space="preserve">
+    <value>Impossibile visualizzare l'immagine</value>
+  </data>
+  <data name="ImageViewWindow2_FailedToSaveImage" xml:space="preserve">
+    <value>Impossibile salvare l'immagine</value>
+  </data>
+  <data name="ImageViewWindow2_FailedToDeleteImageFile" xml:space="preserve">
+    <value>Impossibile eliminare il file immagine</value>
+  </data>
+  <data name="ImageViewWindow2_UnableToDeleteTheFile" xml:space="preserve">
+    <value>Impossibile eliminare il file</value>
+  </data>
+  <data name="ImageViewWindow2_InsufficientPermissionsOrTheFileIsInUse" xml:space="preserve">
+    <value>Autorizzazioni insufficienti o file in uso.</value>
+  </data>
+  <data name="HotkeyInput_ClickToSetShortcutKeys" xml:space="preserve">
+    <value>Clicca per impostare i tasti di scelta rapida</value>
+  </data>
+  <data name="HotkeyInput_PressTheShortcutKeys" xml:space="preserve">
+    <value>Premi i tasti di scelta rapida</value>
+  </data>
+  <data name="HotkeyManager_TheShortcutKeys0IsAlreadyInUse" xml:space="preserve">
+    <value>La combinazione di tasti ({0}) è già in uso.</value>
+  </data>
+  <data name="HotkeyManager_FailedToRegisterTheShortcutKeys0" xml:space="preserve">
+    <value>Impossibile registrare la combinazione di tasti ({0}).</value>
+  </data>
+  <data name="HotkeyManager_TheShortcutKeys0IsAlreadyInUsePleaseModifyItInSettingsPage" xml:space="preserve">
+    <value>La combinazione di tasti ({0}) è già in uso. Modificala nella pagina delle Impostazioni.</value>
+  </data>
+  <data name="HotkeyManager_FailedToRegisterTheShortcutKeys0PleaseRetryInSettingsPage" xml:space="preserve">
+    <value>Impossibile registrare la combinazione di tasti ({0}). Riprova nella pagina delle Impostazioni.</value>
+  </data>
+  <data name="ScreenshotSetting_ScreenshotShortcut" xml:space="preserve">
+    <value>Scorciatoia screenshot</value>
+  </data>
+  <data name="HotkeySetting_OpenMainWindow" xml:space="preserve">
+    <value>Apri finestra principale</value>
+  </data>
+  <data name="HotkeySetting_FailedToRegisterTheShortcutKeys" xml:space="preserve">
+    <value>Impossibile registrare la combinazione di tasti.</value>
+  </data>
+  <data name="ScreenshotSetting_TheBuiltInScreenshotFeatureWillSaveImagesToTheFollowingFolder" xml:space="preserve">
+    <value>La funzione screenshot integrata salverà le immagini nella seguente cartella.</value>
+  </data>
+  <data name="Common_ChangeFolder" xml:space="preserve">
+    <value>Cambia cartella</value>
+  </data>
+  <data name="HotkeySetting_SingleKeyShortcutsTips" xml:space="preserve">
+    <value>Se registri scorciatoie a tasto singolo (F1–F12), devi eseguire Tideward con privilegi di amministratore; altrimenti, le scorciatoie potrebbero non funzionare nel gioco.</value>
+  </data>
+  <data name="SettingPage_KeyboardShortcuts" xml:space="preserve">
+    <value>Scorciatoie da tastiera</value>
+  </data>
+  <data name="SettingPage_ControllerEnhancement" xml:space="preserve">
+    <value>Miglioramento controller</value>
+  </data>
+  <data name="GamepadControlSetting_SimulateInput" xml:space="preserve">
+    <value>Simula input</value>
+  </data>
+  <data name="GamepadControlSetting_GuideButton" xml:space="preserve">
+    <value>Pulsante Guida</value>
+  </data>
+  <data name="GamepadControlSetting_NoAction" xml:space="preserve">
+    <value>Nessuna azione</value>
+  </data>
+  <data name="GamepadControlSetting_GameScreenshot" xml:space="preserve">
+    <value>Screenshot di gioco</value>
+  </data>
+  <data name="GamepadControlSetting_KeyboardKeys" xml:space="preserve">
+    <value>Tasti tastiera</value>
+  </data>
+  <data name="GamepadControlSetting_EnterKeyText" xml:space="preserve">
+    <value>Inserisci il testo del tasto</value>
+  </data>
+  <data name="GamepadControlSetting_ShareButton" xml:space="preserve">
+    <value>Pulsante Condividi</value>
+  </data>
+  <data name="GamepadControlSetting_ButtonMapping" xml:space="preserve">
+    <value>Mappatura pulsanti</value>
+  </data>
+  <data name="GamepadControlSetting_UnrecognizedKey" xml:space="preserve">
+    <value>Tasto non riconosciuto</value>
+  </data>
+  <data name="GamepadControlSetting_OnlySupportXboxControllerProtocol" xml:space="preserve">
+    <value>Sono supportati solo controller con protocollo Xbox. La compatibilità con altri tipi di controller non è garantita.</value>
+  </data>
+  <data name="GamepadControlSetting_SimulateInputDesc" xml:space="preserve">
+    <value>Simula input di tastiera e mouse usando un controller di gioco. Questa funzione richiede che Tideward venga eseguito con privilegi di amministratore per funzionare correttamente nei giochi.</value>
+  </data>
+  <data name="GamepadControlSetting_LongPressGuideButtonDesc" xml:space="preserve">
+    <value>Tieni premuto il pulsante Guida per aprire la finestra principale di Tideward.</value>
+  </data>
+  <data name="GamepadControlSetting_BothThumbsticksDesc" xml:space="preserve">
+    <value>Premi contemporaneamente entrambi i pulsanti dei thumbstick per attivare la simulazione di tastiera e mouse basata su controller.</value>
+  </data>
+  <data name="GamepadControlSetting_ButtonMappingGuideDesc" xml:space="preserve">
+    <value>• Quando si mappa il pulsante Guida, la scorciatoia predefinita di Xbox Game Bar verrà disabilitata. Altri software (come la modalità Big Picture di Steam) potrebbero rispondere al pulsante Guida. Se si verificano conflitti, devi disabilitare manualmente quelle funzioni.</value>
+  </data>
+  <data name="GamepadControlSetting_ButtonMappingKeyboardDesc" xml:space="preserve">
+    <value>• Quando si mappa sui tasti della tastiera, inserisci i nomi dei tasti come appaiono sulla tastiera, separati da spazi. Ad esempio, per mappare un pulsante su "Ctrl + Alt + F1", inserisci: "Ctrl Alt F1". Per i tasti del tastierino numerico, aggiungi Pad prima del tasto, come: Pad8, Pad+. Questa funzione richiede che Tideward venga eseguito con privilegi di amministratore per funzionare correttamente nei giochi.</value>
+  </data>
+  <data name="GamepadControlSetting_ButtonMappingShareDesc" xml:space="preserve">
+    <value>Il pulsante Condividi attiva ancora gli screenshot di Xbox Game Bar, e attualmente non c'è una buona soluzione.</value>
+  </data>
+  <data name="GamepadControlSetting_FailedToInitializeTheGameInputComponentControllerEnhancementIsUnavailable" xml:space="preserve">
+    <value>Impossibile inizializzare il componente GameInput. Il miglioramento controller non è disponibile.</value>
+  </data>
+  <data name="SimulateInputTipsWindow_ControllerSimulatedInputIsActive" xml:space="preserve">
+    <value>L'input simulato del controller è attivo.</value>
+  </data>
+  <data name="SimulateInputTipsWindow_ShowHideButtonHints" xml:space="preserve">
+    <value>Mostra / Nascondi suggerimenti pulsanti</value>
+  </data>
+  <data name="SimulateInputTipsWindow_MouseMove" xml:space="preserve">
+    <value>Movimento mouse</value>
+  </data>
+  <data name="SimulateInputTipsWindow_MouseWheel" xml:space="preserve">
+    <value>Rotellina mouse</value>
+  </data>
+  <data name="SimulateInputTipsWindow_MouseLeftButton" xml:space="preserve">
+    <value>Pulsante sinistro del mouse</value>
+  </data>
+  <data name="SimulateInputTipsWindow_MouseRightButton" xml:space="preserve">
+    <value>Pulsante destro del mouse</value>
+  </data>
+  <data name="SimulateInputTipsWindow_KeyboardEscKey" xml:space="preserve">
+    <value>Tasto Esc della tastiera</value>
+  </data>
+  <data name="SimulateInputTipsWindow_KeyboardArrowKeys" xml:space="preserve">
+    <value>Tasti freccia della tastiera</value>
+  </data>
+  <data name="SimulateInputTipsWindow_LocateMousePointer" xml:space="preserve">
+    <value>Localizza puntatore del mouse</value>
+  </data>
+  <data name="SimulateInputTipsWindow_StopSimualteInput" xml:space="preserve">
+    <value>Interrompi input simulato</value>
+  </data>
+  <data name="ScreenshotSetting_TestScreenshot" xml:space="preserve">
+    <value>Schermata di prova</value>
+  </data>
+  <data name="ScreenshotSetting_AutoConvertToSDRImage" xml:space="preserve">
+    <value>Converti automaticamente in immagine SDR</value>
+  </data>
+  <data name="ScreenshotSetting_WhenCapturingHDRImagesSDRVersionWillAlsoBeSaved" xml:space="preserve">
+    <value>Quando si catturano immagini HDR, verrà salvata anche la versione SDR.</value>
+  </data>
+  <data name="ScreenshotSetting_ScreenshotFetureDescAndLimit" xml:space="preserve">
+    <value>La funzione di screenshot cattura il gioco attualmente in esecuzione. Se sono in esecuzione più giochi, verrà selezionata la finestra del gioco con il focus più recente. Si notino le seguenti limitazioni:
+• Le finestre di gioco ridotte a icona non possono essere catturate.
+• Le parti della finestra di gioco che si estendono oltre lo schermo non saranno incluse.
+• In rari casi, potrebbe essere catturata una finestra non di gioco.</value>
+  </data>
+  <data name="ScreenshotSetting_ScreenshotWithGamepadSuggestion" xml:space="preserve">
+    <value>Se desideri catturare screenshot con un controller, utilizza la mappatura dei pulsanti nella pagina di potenziamento del controller.</value>
+  </data>
+  <data name="SimulateInputTipsWindow_SwitchWindows" xml:space="preserve">
+    <value>Cambia finestra</value>
+  </data>
+  <data name="ScreenshotSetting_AutoCopyScreenshotFile" xml:space="preserve">
+    <value>Copia automaticamente il file dello screenshot</value>
+  </data>
+  <data name="ToolboxSetting_ImageViewer" xml:space="preserve">
+    <value>Visualizzatore immagini</value>
+  </data>
+  <data name="ToolboxSetting_ViewOrEditImage" xml:space="preserve">
+    <value>Visualizza / Modifica immagine</value>
+  </data>
+  <data name="GamepadControlSetting_GameInputRedistOutdate" xml:space="preserve">
+    <value>È installato un componente Microsoft GameInput obsoleto. Disinstallalo o aggiornalo.</value>
+  </data>
+  <data name="GamepadControlSetting_NeedInstallGameInputRedistOnWin10" xml:space="preserve">
+    <value>Su Windows 10, il componente Microsoft GameInput deve essere installato affinché la funzione di potenziamento del controller funzioni correttamente.</value>
+  </data>
+  <data name="GamepadControlSetting_ClickToDownload" xml:space="preserve">
+    <value>Clicca per scaricare.</value>
+  </data>
+  <data name="ImageViewWindow2_CopyAsJPG" xml:space="preserve">
+    <value>Copia come JPG</value>
+  </data>
+  <data name="ScreenshotPage_MultiSelect" xml:space="preserve">
+    <value>Selezione multipla</value>
+  </data>
+  <data name="ScreenshotPage_Total0Files" xml:space="preserve">
+    <value>Totale {0} file.</value>
+  </data>
+  <data name="SimulateInputTipsWindow_KeyboardEnterKey" xml:space="preserve">
+    <value>Tasto Enter della tastiera</value>
+  </data>
+  <data name="ScreenshotSetting_OtherOptions" xml:space="preserve">
+    <value>Altre opzioni</value>
+  </data>
+  <data name="ScreenshotSetting_Lossless" xml:space="preserve">
+    <value>Senza perdita</value>
+  </data>
+  <data name="ScreenshotSetting_FormatAndQuality" xml:space="preserve">
+    <value>Formato e qualità</value>
+  </data>
+  <data name="ScreenCaptureInfoWindow_ProcessingImage" xml:space="preserve">
+    <value>Elaborazione immagine</value>
+  </data>
+  <data name="ScreenshotPage_BatchConvert" xml:space="preserve">
+    <value>Conversione batch</value>
+  </data>
+  <data name="ImageBatchConvertWindow_Quality" xml:space="preserve">
+    <value>Qualità</value>
+  </data>
+  <data name="ImageBatchConvertWindow_StartConvert" xml:space="preserve">
+    <value>Avvia conversione</value>
+  </data>
+  <data name="Common_Clear" xml:space="preserve">
+    <value>Cancella</value>
+  </data>
+  <data name="ImageBatchConvertWindow_OutputFolder" xml:space="preserve">
+    <value>Cartella di output</value>
+  </data>
+  <data name="ImageBatchConvertWindow_OriginalFileFolder" xml:space="preserve">
+    <value>Cartella dei file originali</value>
+  </data>
+  <data name="ImageBatchConvertWindow_SelectOutputFormat" xml:space="preserve">
+    <value>Seleziona formato di output</value>
+  </data>
+  <data name="ImageBatchConvertWindow_NoReadOrWritePermission" xml:space="preserve">
+    <value>Nessun permesso di lettura o scrittura</value>
+  </data>
+  <data name="ImageBatchConvertWindow_ConvertFailed" xml:space="preserve">
+    <value>Conversione fallita</value>
+  </data>
+  <data name="ImageBatchConvertWindow_IfOutputFileExists" xml:space="preserve">
+    <value>Se il file di output esiste</value>
+  </data>
+  <data name="ImageBatchConvertWindow_SkipDefault" xml:space="preserve">
+    <value>Salta (Predefinito)</value>
+  </data>
+  <data name="ImageBatchConvertWindow_Overwrite" xml:space="preserve">
+    <value>Sovrascrivi</value>
+  </data>
+  <data name="ImageBatchConvertWindow_Rename" xml:space="preserve">
+    <value>Rinomina</value>
+  </data>
+  <data name="Common_Success" xml:space="preserve">
+    <value>Successo</value>
+  </data>
+  <data name="Common_Failed" xml:space="preserve">
+    <value>Fallito</value>
+  </data>
+  <data name="ImageBatchConvertWindow_ImageBatchConvert" xml:space="preserve">
+    <value>Conversione batch immagini</value>
+  </data>
+  <data name="ScreenshotSetting_ClearThumbnailCache" xml:space="preserve">
+    <value>Cancella cache delle miniature</value>
+  </data>
+  <data name="ScreenshotSetting_ClearSuccessfully" xml:space="preserve">
+    <value>Cancellazione riuscita</value>
+  </data>
+  <data name="ScreenshotSetting_ClearFailed" xml:space="preserve">
+    <value>Cancellazione fallita</value>
+  </data>
+  <data name="ScreenshotSetting_HighQualityAVIFAndJPEGXLImageFormatsSaveApproximately85OfStorageSpace" xml:space="preserve">
+    <value>I formati immagine AVIF e JPEG XL di alta qualità consentono di risparmiare circa l'85% di spazio di archiviazione.</value>
+  </data>
+  <data name="Common_CopiedToClipboard" xml:space="preserve">
+    <value>Copiato negli appunti.</value>
+  </data>
+  <data name="GameLauncherSettingDialog_LaunchGameUsingCMD" xml:space="preserve">
+    <value>Avvia gioco usando CMD</value>
+  </data>
+  <data name="UpdateWindow_FullPackage" xml:space="preserve">
+    <value>Pacchetto completo</value>
+  </data>
+  <data name="ItIsRecommendedToInstallTheVP9VideoExtensionsToReduceCPUUsage" xml:space="preserve">
+    <value>Si consiglia di installare le estensioni video VP9 per ridurre l'utilizzo della CPU.</value>
+  </data>
+  <data name="GameLauncherPage_PlayPause" xml:space="preserve">
+    <value>Riproduci / Metti in pausa</value>
+  </data>
+  <data name="GameLauncherPage_Gallery" xml:space="preserve">
+    <value>Galleria</value>
+  </data>
+  <data name="BackgroundViewPage_DeleteDuplicateFiles" xml:space="preserve">
+    <value>Elimina file duplicati</value>
+  </data>
+  <data name="BackgroundViewPage_0DuplicateFileSHasBeenDeleted" xml:space="preserve">
+    <value>{0} file duplicato/i eliminato/i.</value>
+  </data>
+  <data name="Common_All" xml:space="preserve">
+    <value>Tutti</value>
+  </data>
+  <data name="Common_Video" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="Common_Time" xml:space="preserve">
+    <value>Tempo</value>
+  </data>
+  <data name="Common_FileSize" xml:space="preserve">
+    <value>Dimensione file</value>
+  </data>
+  <data name="Common_Filter" xml:space="preserve">
+    <value>Filtro</value>
+  </data>
+  <data name="Common_Sort" xml:space="preserve">
+    <value>Ordina</value>
+  </data>
+  <data name="BackgroundViewPage_DeleteDuplicateFilesTip" xml:space="preserve">
+    <value>I file duplicati vengono identificati in base ai dati del file. Alcune immagini visivamente simili non verranno rimosse.</value>
+  </data>
+  <data name="BackgroundViewPage_VP9VideoExtensionsTip" xml:space="preserve">
+    <value>Le estensioni video VP9 non supportano alcuni formati, il che potrebbe impedire la generazione di miniature o la riproduzione corretta.</value>
+  </data>
+  <data name="AppBackground_ImageDecodingFailed" xml:space="preserve">
+    <value>Decodifica immagine fallita</value>
+  </data>
+  <data name="AppBackground_PleaseInstallTheWebPImageExtension" xml:space="preserve">
+    <value>Installa l'estensione immagine WebP.</value>
+  </data>
+  <data name="AppBackground_VideoDecodingFailed" xml:space="preserve">
+    <value>Decodifica video fallita</value>
+  </data>
+  <data name="AppBackground_VideoDecodingFailedPleaseInstallTheVP9VideoExtensions" xml:space="preserve">
+    <value>Decodifica video fallita. Installa le estensioni video VP9.</value>
+  </data>
+  <data name="AppConfig_AnUnknownIssueOccurredDuringInitialization" xml:space="preserve">
+    <value>Si è verificato un problema sconosciuto durante l'inizializzazione.</value>
+  </data>
+  <data name="NoPermissionWindow_NoPermissionToFolderRestartOrClose" xml:space="preserve">
+    <value>Il programma non ha l'autorizzazione per accedere alla cartella seguente. Riavvia come amministratore o sposta la cartella.</value>
+  </data>
+  <data name="NoPermissionWindow_RestartAsAdministrator" xml:space="preserve">
+    <value>Riavvia come amministratore</value>
+  </data>
+  <data name="ScreenshotSetting_ColorManagement" xml:space="preserve">
+    <value>Gestione colore</value>
+  </data>
+  <data name="GameLauncherPage_LaunchWithDX11" xml:space="preserve">
+    <value>Avvia con DX11</value>
+  </data>
+  <data name="FileManageSetting_LauncherBackground" xml:space="preserve">
+    <value>Sfondo del launcher</value>
+  </data>
+  <data name="FileManageSetting_CleanUpLauncherBackgroundFiles" xml:space="preserve">
+    <value>Pulisci file di sfondo del launcher</value>
+  </data>
+  <data name="PlayTimeStatsDialog_PlaytimeStatistics" xml:space="preserve">
+    <value>Statistiche del tempo di gioco</value>
+  </data>
+  <data name="PlayTimeStatsDialog_Total" xml:space="preserve">
+    <value>Totale</value>
+  </data>
+  <data name="PlayTimeStatsDialog_TotalPlaytime" xml:space="preserve">
+    <value>Tempo di gioco totale</value>
+  </data>
+  <data name="PlayTimeStatsDialog_LongestDailyPlaytime" xml:space="preserve">
+    <value>Tempo di gioco più lungo in un giorno</value>
+  </data>
+  <data name="PlayTimeStatsDialog_Last15Days" xml:space="preserve">
+    <value>Ultimi 15 giorni</value>
+  </data>
+  <data name="PlayTimeStatsDialog_Last12Weeks" xml:space="preserve">
+    <value>Ultime 12 settimane</value>
+  </data>
+  <data name="PlayTimeStatsDialog_Last12Months" xml:space="preserve">
+    <value>Ultimi 12 mesi</value>
+  </data>
+  <data name="PlayTimeStatsDialog_LongestStreak" xml:space="preserve">
+    <value>Serie di giorni più lunga</value>
+  </data>
+  <data name="PlayTimeStatsDialog_LongestSession" xml:space="preserve">
+    <value>Sessione più lunga</value>
+  </data>
+  <data name="PlayTimeStatsDialog_0Days" xml:space="preserve">
+    <value>{0} giorni</value>
+  </data>
+  <data name="PlayTimeStatsDialog_Started0Times" xml:space="preserve">
+    <value>Avviato {0} volte</value>
+  </data>
+  <data name="PlayTimeStatsDialog_PlayedFor0Days" xml:space="preserve">
+    <value>Giocato per {0} giorni</value>
+  </data>
+  <data name="PlayTimeStatsDialog_AverageDailyPlaytime" xml:space="preserve">
+    <value>Tempo di gioco medio in un giorno</value>
+  </data>
+  <data name="PlayTimeStatsDialog_StatsTip" xml:space="preserve">
+    <value>Le statistiche si basano sul tempo di esecuzione del gioco, non sul tempo di gioco effettivo, e servono solo come riferimento.</value>
+  </data>
+  <data name="GachaLogPage_Times" xml:space="preserve">
+    <value>times</value>
+  </data>
+  <data name="GameLauncherPage_DetailsGt" xml:space="preserve">
+    <value>Dettagli &gt;</value>
+  </data>
+  <data name="DX11IntroDialog_Title" xml:space="preserve">
+    <value>Wuthering Waves: avvio con DirectX 11</value>
+  </data>
+  <data name="DX11IntroDialog_Launch" xml:space="preserve">
+    <value>Wuthering Waves usa DirectX 12 per impostazione predefinita. Seleziona «Avvia con DX11» per richiedere DirectX 11, oppure deseleziona l’opzione per usare la modalità predefinita del gioco.</value>
+  </data>
+  <data name="DX11IntroDialog_Requirements" xml:space="preserve">
+    <value>Seleziona questa opzione se il gioco presenta problemi. Se la compilazione degli shader causa scatti prolungati o altri problemi durante il gioco, Kuro consiglia di chiudere il gioco e provare DX11.</value>
+  </data>
+  <data name="DX11IntroDialog_Arguments" xml:space="preserve">
+    <value>Una modalità di rendering indicata esplicitamente negli argomenti di avvio personalizzati ha la precedenza su questa opzione.</value>
+  </data>
+  <data name="DX11IntroDialog_OfficialSource" xml:space="preserve">
+    <value>Note ufficiali sull’aggiornamento del launcher</value>
+  </data>
+  <data name="DX11IntroDialog_OfficialSourceUrl" xml:space="preserve">
+    <value>https://wutheringwaves.kurogames.com/en/main/news/detail/1320</value>
+  </data>
+  <data name="GachaLogPage_AuthkeyTimeoutAlwaysOccurs" xml:space="preserve">
+    <value>Si verifica sempre il timeout di Authkey?</value>
+  </data>
+  <data name="GachaLogPage_RestartGameAfterDeletingTheCacheFolder" xml:space="preserve">
+    <value>Riavvia il gioco dopo aver eliminato la cartella della cache.</value>
+  </data>
+  <data name="GachaLogPage_DeleteCacheFolder" xml:space="preserve">
+    <value>Elimina cartella cache</value>
+  </data>
+  <data name="GachaLogPage_CacheFolderNotFound" xml:space="preserve">
+    <value>Cartella della cache web non trovata. Apri prima i registri nel gioco.</value>
+  </data>
+  <data name="GachaLogPage_RequestTimedOut" xml:space="preserve">
+    <value>Timeout della richiesta dei registri</value>
+  </data>
+  <data name="Common_Apply" xml:space="preserve">
+    <value>Applica</value>
+  </data>
+  <data name="GachaLogPage_0GachaItemsHaveBeenChangedToLanguage1" xml:space="preserve">
+    <value>The language of {0} gacha records has been changed to ({1}).</value>
+    </data>
+  <data name="SettingPage_CheckForUpdate" xml:space="preserve">
+    <value>Ricerca aggiornamenti</value>
+  </data>
+  <data name="AboutSetting_UpdatedToTheLatestVersion" xml:space="preserve">
+    <value>Aggiornato all'ultima versione.</value>
+  </data>
+  <data name="SettingPage_ProjectHomepage" xml:space="preserve">
+    <value>Pagina iniziale</value>
+  </data>
+  <data name="SettingPage_ReportIssue" xml:space="preserve">
+    <value>Report Issue</value>
+  </data>
+  <data name="SettingPage_ReleaseHistroy" xml:space="preserve">
+    <value>Cronologia Rilasci</value>
+  </data>
+</root>

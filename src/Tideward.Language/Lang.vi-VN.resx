@@ -1,0 +1,1411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DownloadGameDialog_PackageSize" xml:space="preserve">
+    <value>Kích thước gói</value>
+  </data>
+  <data name="Language_Chinese" xml:space="preserve">
+    <value>Tiếng Trung</value>
+  </data>
+  <data name="Language_English" xml:space="preserve">
+    <value>Tiếng Anh</value>
+  </data>
+  <data name="Language_Japanese" xml:space="preserve">
+    <value>Tiếng Nhật</value>
+  </data>
+  <data name="Language_Korean" xml:space="preserve">
+    <value>Tiếng Hàn</value>
+  </data>
+  <data name="GachaStatsCard_Pity" xml:space="preserve">
+    <value>Đảm bảo</value>
+  </data>
+  <data name="GachaStatsCard_Average" xml:space="preserve">
+    <value>Trung bình</value>
+  </data>
+  <data name="GachaStatsCard_Stats" xml:space="preserve">
+    <value>Chỉ số</value>
+  </data>
+  <data name="SelectDirectoryPage_SelectFolder" xml:space="preserve">
+    <value>Chọn thư mục</value>
+  </data>
+  <data name="SelectDirectoryPage_AutoDeleteAfterUpdate" xml:space="preserve">
+    <value>Thư mục này sẽ tự động xoá sau khi ứng dụng được cập nhật</value>
+  </data>
+  <data name="SelectDirectoryPage_NoWritePermission" xml:space="preserve">
+    <value>Không có quyền ghi</value>
+  </data>
+  <data name="DownloadGamePage_Close" xml:space="preserve">
+    <value>Đóng</value>
+  </data>
+  <data name="Common_Cancel" xml:space="preserve">
+    <value>Huỷ</value>
+  </data>
+  <data name="Common_Confirm" xml:space="preserve">
+    <value>Đồng ý</value>
+  </data>
+  <data name="DownloadGamePage_Downloading" xml:space="preserve">
+    <value>Đang tải xuống</value>
+  </data>
+  <data name="DownloadGamePage_Verifying" xml:space="preserve">
+    <value>Đang xác minh</value>
+  </data>
+  <data name="DownloadGamePage_Decompressing" xml:space="preserve">
+    <value>Đang giải nén</value>
+  </data>
+  <data name="DownloadGamePage_SomethingError" xml:space="preserve">
+    <value>Có lỗi xảy ra</value>
+  </data>
+  <data name="DownloadGamePage_Retry" xml:space="preserve">
+    <value>Thử lại</value>
+  </data>
+  <data name="DownloadGamePage_UnknownError" xml:space="preserve">
+    <value>Lỗi không xác định</value>
+  </data>
+  <data name="DownloadGamePage_Finished" xml:space="preserve">
+    <value>Đã hoàn thành</value>
+  </data>
+  <data name="DownloadGamePage_Pause" xml:space="preserve">
+    <value>Tạm dừng</value>
+  </data>
+  <data name="DownloadGamePage_Stop" xml:space="preserve">
+    <value>Dừng</value>
+  </data>
+  <data name="GachaLogPage_NoGachaRecords" xml:space="preserve">
+    <value>Không có bản ghi gacha</value>
+  </data>
+  <data name="GachaLogPage_UpdateRecords" xml:space="preserve">
+    <value>Cập nhật bản ghi</value>
+  </data>
+  <data name="GachaLogPage_UpdateSavedURL" xml:space="preserve">
+    <value>Cập nhật (URL đã lưu)</value>
+  </data>
+  <data name="GachaLogPage_UpdateAll" xml:space="preserve">
+    <value>Cập nhật (tất cả)</value>
+  </data>
+  <data name="GachaLogPage_InputURL" xml:space="preserve">
+    <value>Nhập URL</value>
+  </data>
+  <data name="Common_Setting" xml:space="preserve">
+    <value>Cài đặt</value>
+  </data>
+  <data name="GachaLogPage_OtherSettings" xml:space="preserve">
+    <value>Cài đặt khác</value>
+  </data>
+  <data name="GachaLogPage_CopyURL" xml:space="preserve">
+    <value>Sao chép URL</value>
+  </data>
+  <data name="GachaLogPage_ExportAs" xml:space="preserve">
+    <value>Xuất như</value>
+  </data>
+  <data name="GachaLogPage_ImportFrom0" xml:space="preserve">
+    <value>Nhập từ {0}</value>
+  </data>
+  <data name="GachaLogPage_DeleteRecords" xml:space="preserve">
+    <value>Xoá các bản ghi</value>
+  </data>
+  <data name="GachaLogPage_Language" xml:space="preserve">
+    <value>Ngôn ngữ</value>
+  </data>
+  <data name="GachaLogPage_CannotFindSavedURLOfUid" xml:space="preserve">
+    <value>Không thể tìm thấy URL đã lưu của UID {0}.</value>
+    <comment>{0} = {uid}</comment>
+  </data>
+  <data name="GachaLogPage_OperationCanceled" xml:space="preserve">
+    <value>Thao tác bị huỷ</value>
+  </data>
+  <data name="Common_Warning" xml:space="preserve">
+    <value>Cảnh báo</value>
+  </data>
+  <data name="Common_Delete" xml:space="preserve">
+    <value>Xoá</value>
+  </data>
+  <data name="GachaLogPage_DeletedGachaRecordsOfUid" xml:space="preserve">
+    <value>Đã xoá {0} bản ghi gacha của UID {1}.</value>
+    <comment>{0} = {count} ,  {1} = {uid}</comment>
+  </data>
+  <data name="GachaLogPage_DeleteGachaRecordsWarning" xml:space="preserve">
+    <value>Tất cả bản ghi gacha của UID {0} sẽ bị xoá, bạn sẽ không thể hoàn tác hành động này.</value>
+    <comment>{0} = {uid}</comment>
+  </data>
+  <data name="UpdateService_CannotUpdateAutomatically" xml:space="preserve">
+    <value>Không thể cập nhật tự động</value>
+  </data>
+  <data name="GameSettingPage_Medium" xml:space="preserve">
+    <value>Trung bình</value>
+  </data>
+  <data name="GameSettingPage_High" xml:space="preserve">
+    <value>Cao</value>
+  </data>
+  <data name="GameSettingPage_FullScreen" xml:space="preserve">
+    <value>Toàn màn hình</value>
+  </data>
+  <data name="LauncherPage_InstallGame" xml:space="preserve">
+    <value>Cài đặt trò chơi</value>
+  </data>
+  <data name="LauncherPage_UpdateGame" xml:space="preserve">
+    <value>Cập nhật trò chơi</value>
+  </data>
+  <data name="Common_Refresh" xml:space="preserve">
+    <value>Làm mới</value>
+  </data>
+  <data name="LauncherPage_PreInstall" xml:space="preserve">
+    <value>Cài đặt trước</value>
+  </data>
+  <data name="LauncherPage_SwitchAccount" xml:space="preserve">
+    <value>Chuyển đổi tài khoản</value>
+  </data>
+  <data name="LauncherPage_AccountInformation" xml:space="preserve">
+    <value>Thông tin tài khoản</value>
+  </data>
+  <data name="LauncherPage_Nickname" xml:space="preserve">
+    <value>Biệt danh</value>
+  </data>
+  <data name="Common_Save" xml:space="preserve">
+    <value>Lưu</value>
+  </data>
+  <data name="LauncherPage_GameSetting" xml:space="preserve">
+    <value>Cài đặt trò chơi</value>
+  </data>
+  <data name="LauncherPage_Locate" xml:space="preserve">
+    <value>Chọn đường dẫn</value>
+  </data>
+  <data name="LauncherPage_RepairGame" xml:space="preserve">
+    <value>Sửa chữa trò chơi</value>
+  </data>
+  <data name="LauncherPage_CustomStartExecutable" xml:space="preserve">
+    <value>Tuỳ chỉnh lệnh thực thi khởi động</value>
+  </data>
+  <data name="Common_Select" xml:space="preserve">
+    <value>Chọn</value>
+  </data>
+  <data name="LauncherPage_ShowGameAnnouncement" xml:space="preserve">
+    <value>Hiện thị thông báo trò chơi</value>
+  </data>
+  <data name="SettingPage_BgSizeTip" xml:space="preserve">
+    <value>Vui lòng chọn bức ảnh có kích thước pixel trùng với cửa sổ ứng dụng; ảnh quá cỡ sẽ làm giảm hiệu năng.</value>
+  </data>
+  <data name="LauncherPage_StartGame" xml:space="preserve">
+    <value>Bắt đầu trò chơi</value>
+  </data>
+  <data name="LauncherPage_GameIsRunning" xml:space="preserve">
+    <value>Trò chơi đang chạy</value>
+  </data>
+  <data name="Common_Continue" xml:space="preserve">
+    <value>Tiếp tục</value>
+  </data>
+  <data name="MainPage_Launcer" xml:space="preserve">
+    <value>Trình khởi chạy</value>
+  </data>
+  <data name="MainPage_GameScreenshot" xml:space="preserve">
+    <value>Ảnh chụp màn hình</value>
+  </data>
+  <data name="ScreenshotPage_GameScreenshot" xml:space="preserve">
+    <value>Ảnh chụp màn hình</value>
+  </data>
+  <data name="ScreenshotPage_OpenFolder" xml:space="preserve">
+    <value>Mở thư mục</value>
+  </data>
+  <data name="SettingPage_AppSettings" xml:space="preserve">
+    <value>Cài đặt ứng dụng</value>
+  </data>
+  <data name="SettingPage_OpenLogFolder" xml:space="preserve">
+    <value>Mở thư mục nhật kí</value>
+  </data>
+  <data name="SettingPage_CustomBackgroundSupportVideo" xml:space="preserve">
+    <value>Hình nền tuỳ chọn (hỗ trợ video)</value>
+  </data>
+  <data name="SettingPage_CurrentVersion" xml:space="preserve">
+    <value>Phiên bản hiện tại:</value>
+  </data>
+  <data name="SettingPage_ReselectDataFolder" xml:space="preserve">
+    <value>Chọn lại thư mục dữ liệu</value>
+  </data>
+  <data name="SettingPage_DeleteAllSettings" xml:space="preserve">
+    <value>Xoá tất cả cài đặt</value>
+  </data>
+  <data name="SettingPage_About" xml:space="preserve">
+    <value>Về chúng tôi</value>
+  </data>
+  <data name="SettingPage_TheCurrentLocationOfTheDataFolderIs" xml:space="preserve">
+    <value>Vị trí hiện tại của thư mục chứa dữ liệu là:</value>
+  </data>
+  <data name="SettingPage_WouldLikeToReselectDataFolder" xml:space="preserve">
+    <value>Bạn có muốn chọn lại? (bạn cần chuyển dữ liệu thủ công trước khi chọn)</value>
+  </data>
+  <data name="Common_Yes" xml:space="preserve">
+    <value>Có</value>
+  </data>
+  <data name="SettingPage_AfterDeletingTheSoftwareWillBeRestartedAutomatically" xml:space="preserve">
+    <value>Sau khi xoá, ứng dụng sẽ tự động được khởi động lại.</value>
+  </data>
+  <data name="UpdatePage_NewVersion" xml:space="preserve">
+    <value>Phiên bản mới!</value>
+  </data>
+  <data name="UpdatePage_Links" xml:space="preserve">
+    <value>Đường dẫn:</value>
+  </data>
+  <data name="UpdatePage_BuiltTime" xml:space="preserve">
+    <value>Thời gian xây dựng:</value>
+  </data>
+  <data name="UpdatePage_ReleaseChannel" xml:space="preserve">
+    <value>Kênh phát hành:</value>
+  </data>
+  <data name="UpdatePage_Architecture" xml:space="preserve">
+    <value>Kiến trúc:</value>
+  </data>
+  <data name="UpdatePage_RemindLatter" xml:space="preserve">
+    <value>Nhắc tôi sau</value>
+  </data>
+  <data name="UpdatePage_IgnoreThisVersion" xml:space="preserve">
+    <value>Bỏ qua phiên bản này</value>
+  </data>
+  <data name="UpdatePage_UpdateNow" xml:space="preserve">
+    <value>Cập nhật ngay</value>
+  </data>
+  <data name="UpdatePage_YouNeedToManuallyDownloadTheNewVersionPackage" xml:space="preserve">
+    <value>Bạn cần phải tải xuống gói phiên bản mới thủ công</value>
+  </data>
+  <data name="UpdatePage_PreviewChannel" xml:space="preserve">
+    <value>Kênh trải nghiệm trước</value>
+  </data>
+  <data name="UpdatePage_StableChannel" xml:space="preserve">
+    <value>Kênh chính thức</value>
+  </data>
+  <data name="UpdatePage_DevChannel" xml:space="preserve">
+    <value>Kênh dành cho nhà phát triển</value>
+  </data>
+  <data name="UpdatePage_ReleasePage" xml:space="preserve">
+    <value>Trang phát hành</value>
+  </data>
+  <data name="GachaLogPage_GachaLanguageDesc" xml:space="preserve">
+    <value>Chỉ định ngôn ngữ của bản ghi gacha, chẳng hạn như vi-vn.</value>
+    <comment>Replace en-us with the target language when translating</comment>
+  </data>
+  <data name="SettingPage_Language" xml:space="preserve">
+    <value>Ngôn ngữ</value>
+  </data>
+  <data name="SettingPage_FollowSystem" xml:space="preserve">
+    <value>Theo hệ thống</value>
+  </data>
+  <data name="ScreenshotPage_ScreenshotFolderDoesNotExist" xml:space="preserve">
+    <value>Thư mục ảnh chụp màn hình không tồn tại</value>
+  </data>
+  <data name="SettingPage_PrivacyPolicy" xml:space="preserve">
+    <value>Chính sách bảo mật</value>
+  </data>
+  <data name="SelectGamePage_SelectGameServer" xml:space="preserve">
+    <value>Chọn máy chủ</value>
+  </data>
+  <data name="Common_Exit" xml:space="preserve">
+    <value>Thoát</value>
+  </data>
+  <data name="ScreenshotPage_BackupScreenshots" xml:space="preserve">
+    <value>Sao lưu ảnh chụp màn hình</value>
+  </data>
+  <data name="SettingPage_LastBackup" xml:space="preserve">
+    <value>Bản sao lưu gần nhất</value>
+  </data>
+  <data name="SettingPage_BackupDatabase" xml:space="preserve">
+    <value>Sao lưu cơ sở dữ liệu</value>
+  </data>
+  <data name="ScreenshotPage_BackedUpNewScreenshots" xml:space="preserve">
+    <value>Đã sao lưu {0} ảnh chụp màn hình mới.</value>
+  </data>
+  <data name="MainPage_GameNotices" xml:space="preserve">
+    <value>Thông báo trò chơi</value>
+  </data>
+  <data name="DownloadGamePage_Merging" xml:space="preserve">
+    <value>Đang hợp nhất</value>
+  </data>
+  <data name="LauncherPage_ConfirmDelete" xml:space="preserve">
+    <value>Xác nhận xóa</value>
+  </data>
+  <data name="Common_Attention" xml:space="preserve">
+    <value>Chú ý</value>
+  </data>
+  <data name="LauncherPage_Replace" xml:space="preserve">
+    <value>Thay thế</value>
+  </data>
+  <data name="LauncherPage_SaveNew" xml:space="preserve">
+    <value>Lưu mới</value>
+    <comment>Account with uid {0} already exists, replace it or save new?</comment>
+  </data>
+  <data name="LauncherPage_AccountSaveNew" xml:space="preserve">
+    <value>Tài khoản với UID {0} đã tồn tại, thay thế hay lưu mới?</value>
+  </data>
+  <data name="LauncherPage_UninstallGame" xml:space="preserve">
+    <value>Gỡ cài đặt trò chơi</value>
+  </data>
+  <data name="SettingPage_URLProtocolExperimental" xml:space="preserve">
+    <value>Giao thức URL (thử nghiệm)</value>
+  </data>
+  <data name="SettingPage_URLProtocolDesc" xml:space="preserve">
+    <value>Những phần mềm khác có thể sử dụng một số tính năng của Tideward thông qua giao thức URL.</value>
+  </data>
+  <data name="SettingPage_RegisterURLProtocol" xml:space="preserve">
+    <value>Đăng kí giao thức URL</value>
+  </data>
+  <data name="SettingPage_TestURLProtocol" xml:space="preserve">
+    <value>Kiểm tra giao thức URL</value>
+  </data>
+  <data name="ImageViewPage_ZoomOut" xml:space="preserve">
+    <value>Thu nhỏ</value>
+  </data>
+  <data name="ImageViewPage_ZoomIn" xml:space="preserve">
+    <value>Phóng to</value>
+  </data>
+  <data name="ImageViewPage_Rotate" xml:space="preserve">
+    <value>Quay</value>
+  </data>
+  <data name="Common_Copy" xml:space="preserve">
+    <value>Sao chép</value>
+  </data>
+  <data name="Common_Open" xml:space="preserve">
+    <value>Mở</value>
+  </data>
+  <data name="FileSettingPage_DataFolder" xml:space="preserve">
+    <value>Thư mục dữ liệu</value>
+  </data>
+  <data name="SettingPage_FileManagement" xml:space="preserve">
+    <value>Quản lí tập tin</value>
+  </data>
+  <data name="AboutSettingPage_Links" xml:space="preserve">
+    <value>Liên kết</value>
+  </data>
+  <data name="SettingPage_Advanced" xml:space="preserve">
+    <value>Nâng cao</value>
+  </data>
+  <data name="ExperienceSettingPage_CloseWindowOption" xml:space="preserve">
+    <value>Tuỳ chọn đóng cửa sổ</value>
+  </data>
+  <data name="ExperienceSettingPage_MinimizeToSystemTray" xml:space="preserve">
+    <value>Thu nhỏ xuống khay hệ thống</value>
+  </data>
+  <data name="ExperienceSettingPage_ExitCompletely" xml:space="preserve">
+    <value>Thoát hoàn toàn</value>
+  </data>
+  <data name="CloseWindowDialog_YouCouldChangeTheOptionAgainInSettingPage" xml:space="preserve">
+    <value>Bạn có thể thay đổi lại tùy chọn trong trang cài đặt.</value>
+  </data>
+  <data name="FileSettingPage_DataFolderIsImportant" xml:space="preserve">
+    <value>Dữ liệu cá nhân của bạn được lưu trữ trong thư mục bên dưới. Nó rất quan trọng, xin đừng vô tình xóa nó đi.</value>
+  </data>
+  <data name="ExperienceSettingPage_DisableRedDotReminderForGameNotices" xml:space="preserve">
+    <value>Tắt thông báo chấm đỏ cho thông báo trò chơi</value>
+  </data>
+  <data name="ExperienceSettingPage_MinimizeToTaskbar" xml:space="preserve">
+    <value>Thu nhỏ xuống thanh tác vụ</value>
+  </data>
+  <data name="ExperienceSettingPage_DoNothing" xml:space="preserve">
+    <value>Không làm gì cả</value>
+  </data>
+  <data name="ExperienceSettingPage_AfterStartingGame" xml:space="preserve">
+    <value>Sau khi khởi động trò chơi</value>
+  </data>
+  <data name="FileSettingPage_Cache" xml:space="preserve">
+    <value>Bộ nhớ đệm</value>
+  </data>
+  <data name="FileSettingPage_Log" xml:space="preserve">
+    <value>Bản ghi</value>
+  </data>
+  <data name="FileSettingPage_Image" xml:space="preserve">
+    <value>Hình ảnh</value>
+  </data>
+  <data name="FileSettingPage_Browser" xml:space="preserve">
+    <value>Trình duyệt</value>
+  </data>
+  <data name="FileSettingPage_ClearCache" xml:space="preserve">
+    <value>Dọn bộ nhớ đệm</value>
+  </data>
+  <data name="DownloadGamePage_TheFolderDoesNotExist" xml:space="preserve">
+    <value>Thư mục không tồn tại.</value>
+  </data>
+  <data name="LauncherPage_PleaseDoNotSelectTheRootDirectoryOfADrive" xml:space="preserve">
+    <value>Vui lòng không chọn thư mục gốc của ổ đĩa.</value>
+  </data>
+  <data name="AppearanceSettingPage_TransparencyEffects" xml:space="preserve">
+    <value>Hiệu ứng trong suốt</value>
+  </data>
+  <data name="AppearanceSettingPage_AnimationEffects" xml:space="preserve">
+    <value>Hiệu ứng chuyển động</value>
+  </data>
+  <data name="FileSettingPage_GameResource" xml:space="preserve">
+    <value>Tài nguyên trò chơi</value>
+  </data>
+  <data name="GameResourcePage_LatestVersion" xml:space="preserve">
+    <value>Phiên bản mới nhất</value>
+  </data>
+  <data name="GameResourcePage_FullPackages" xml:space="preserve">
+    <value>Gói đầy đủ</value>
+  </data>
+  <data name="GameResourcePage_DiffPackages" xml:space="preserve">
+    <value>Gói khác</value>
+  </data>
+  <data name="UpdateContentWindow_RecentlyUpdatedContent" xml:space="preserve">
+    <value>Nội dung cập nhật gần đây</value>
+  </data>
+  <data name="GameBizSelector_AutoSearch" xml:space="preserve">
+    <value>Tìm Kiếm Tự Động</value>
+  </data>
+  <data name="InstallGameDialog_SelectInstallationPath" xml:space="preserve">
+    <value>Lựa Chọn Thư Mục Cài Đặt</value>
+  </data>
+  <data name="Common_Change" xml:space="preserve">
+    <value>Thay đổi</value>
+  </data>
+  <data name="InstallGameDialog_SpaceRequiredToUnzip" xml:space="preserve">
+    <value>Không gian giải nén</value>
+  </data>
+  <data name="InstallGameDialog_SpaceAvailable" xml:space="preserve">
+    <value>Dung lượng khả thi</value>
+  </data>
+  <data name="InstallGameDialog_Installed" xml:space="preserve">
+    <value>Đã cài đặt?</value>
+  </data>
+  <data name="InstallGameDialog_LocateGame" xml:space="preserve">
+    <value>Tìm Trò Chơi</value>
+  </data>
+  <data name="InstallGameDialog_StartInstallation" xml:space="preserve">
+    <value>Bắt Đầu Cài Đặt</value>
+  </data>
+  <data name="DownloadSettingPage_DefaultGameInstallationPath" xml:space="preserve">
+    <value>Đường dẫn cài đặt mặc định</value>
+  </data>
+  <data name="DownloadSettingPage_DefaultGameInstallationPathDescription" xml:space="preserve">
+    <value>Trò chơi sẽ được cài đặt trong thư mục con, việc thay đổi đường dẫn mặc định sẽ không di chuyển các trò chơi đã được cài đặt.</value>
+  </data>
+  <data name="DownloadSettingPage_SpeedLimit" xml:space="preserve">
+    <value>Giới hạn tốc độ tải</value>
+  </data>
+  <data name="DownloadSettingPage_TheNumber0MeansNoSpeedLimit" xml:space="preserve">
+    <value>Nhập 0 để không giới hạn.</value>
+  </data>
+  <data name="SettingPage_Download" xml:space="preserve">
+    <value>Tải về</value>
+  </data>
+  <data name="DownloadGamePage_Paused" xml:space="preserve">
+    <value>Tạm dừng</value>
+  </data>
+  <data name="Common_Restart" xml:space="preserve">
+    <value>Khởi động lại</value>
+  </data>
+  <data name="InstallGameDialog_HardLinkDescription" xml:space="preserve">
+    <value>Tạo liên kết cứng để cài đặt trò chơi trên các máy chủ khác nhau, chỉ tốn rất ít không gian lưu trữ bổ sung.</value>
+  </data>
+  <data name="LauncherPage_HardLink" xml:space="preserve">
+    <value>Liên Kết Cứng</value>
+  </data>
+  <data name="GameLauncherPage_RemovableStorageDeviceNotConnected" xml:space="preserve">
+    <value>Thiết bị lưu trữ di động không được kết nối.</value>
+  </data>
+  <data name="DeleteGachaLogDialog_BeginTime" xml:space="preserve">
+    <value>Thời gian bắt đầu</value>
+  </data>
+  <data name="DeleteGachaLogDialog_EndTime" xml:space="preserve">
+    <value>Thời gian kết thúc</value>
+  </data>
+  <data name="DeleteGachaLogDialog_DeleteGachaRecordsForASpecificTimePeriod" xml:space="preserve">
+    <value>Xoá lịch sử gacha trong một khoảng thời gian cụ thể</value>
+  </data>
+  <data name="DeleteGachaLogDialog_6MonthsDeletingWarning" xml:space="preserve">
+    <value>Cảnh báo: Khoảng thời gian đã chọn bao gồm dữ liệu gacha từ hơn 6 tháng trước, dữ liệu này sẽ không thể khôi phục sau khi bị xóa.</value>
+  </data>
+  <data name="DeleteGachaLogDialog_ThisAccountHas0GachaRecordS" xml:space="preserve">
+    <value>Tài khoản này có {0} dữ liệu gacha.</value>
+  </data>
+  <data name="DeleteGachaLogDialog_TheSelectedTimePeriodIncludes0GachaRecords" xml:space="preserve">
+    <value>Khoảng thời gian đã chọn bao gồm {0} bản ghi gacha.</value>
+  </data>
+  <data name="GachaLogPage_DeleteAll" xml:space="preserve">
+    <value>Xoá tất cả</value>
+  </data>
+  <data name="GachaLogPage_SpecificTimePeriod" xml:space="preserve">
+    <value>Khoảng thời gian cụ thể</value>
+  </data>
+  <data name="StartGameButton_ResumeDownload" xml:space="preserve">
+    <value>Tiếp tục tải xuống</value>
+  </data>
+  <data name="StartGameButton_Waiting" xml:space="preserve">
+    <value>Xin chờ</value>
+  </data>
+  <data name="GameLauncherPage_Relocate" xml:space="preserve">
+    <value>Chuyển đường dẫn</value>
+  </data>
+  <data name="GameLauncherSettingDialog_RelocateGame" xml:space="preserve">
+    <value>Tìm Trò Chơi</value>
+  </data>
+  <data name="GameLauncherSettingDialog_Size" xml:space="preserve">
+    <value>Kích thước</value>
+  </data>
+  <data name="GameLauncherSettingDialog_BasicInformation" xml:space="preserve">
+    <value>Thông tin cơ bản</value>
+  </data>
+  <data name="GameLauncherSettingDialog_StartupArguments" xml:space="preserve">
+    <value>Tham số khởi động</value>
+  </data>
+  <data name="GameLauncherSettingDialog_CustomBackground" xml:space="preserve">
+    <value>Tùy chỉnh ảnh nền</value>
+  </data>
+  <data name="GameLauncherSettingDialog_GamePackages" xml:space="preserve">
+    <value>Gói Trò chơi</value>
+  </data>
+  <data name="GameLauncherSettingDialog_CommandLineArgument" xml:space="preserve">
+    <value>Tham số dòng lệnh</value>
+  </data>
+  <data name="GameLauncherSettingDialog_SeeMoreInformationAboutCommandLineArgument" xml:space="preserve">
+    <value>Xem thêm thông tin về tham số dòng lệnh.</value>
+  </data>
+  <data name="GameSelector_ActualSizeOfInstalledGames" xml:space="preserve">
+    <value>Kích thước thực tế của các trò chơi đã cài đặt</value>
+  </data>
+  <data name="GameSelector_StorageSpaceSavedByHardLinks" xml:space="preserve">
+    <value>Không gian lưu trữ được tiết kiệm bởi Hard Links</value>
+  </data>
+  <data name="GameLauncherSettingDialog_CannotDecodeFile" xml:space="preserve">
+    <value>Không thể giải mã tệp tin.</value>
+  </data>
+  <data name="GameLauncherSettingDialog_AnUnknownErrorOccurredPleaseCheckTheLogs" xml:space="preserve">
+    <value>Lỗi không xác định đã xảy ra. Vui lòng kiểm tra nhật ký.</value>
+  </data>
+  <data name="GameLauncherSettingDialog_DragAndDropImageOrVideoFiles" xml:space="preserve">
+    <value>Kéo thả tệp hình ảnh / video vào đây.</value>
+  </data>
+  <data name="GameSelector_Calculating" xml:space="preserve">
+    <value>Đang tính toán</value>
+    <comment>Calculating storage space usage.</comment>
+  </data>
+  <data name="SettingPage_General" xml:space="preserve">
+    <value>Cài đặt chung</value>
+    <comment>General Setting</comment>
+  </data>
+  <data name="SettingPage_ForABetterExperiencePleaseEnableTheFollowingFeaturesInSystemSettings" xml:space="preserve">
+    <value>Để có được trải nghiệm tốt hơn, xin vui lòng bật những tính năng sau trong cài đặt của hệ thống.</value>
+  </data>
+  <data name="PlayTimeButton_LastStartup" xml:space="preserve">
+    <value>Lần khởi chạy gần nhất</value>
+  </data>
+  <data name="UpdateWindow_AutoRestartAfterUpdate" xml:space="preserve">
+    <value>Tự động khởi động lại sau khi cập nhật</value>
+  </data>
+  <data name="UpdateWindow_DisplayUpdateContentAfterRestart" xml:space="preserve">
+    <value>Hiển thị nội dung cập nhật sau khi khởi động lại</value>
+  </data>
+  <data name="Common_WebView2ComponentInitializationFailed" xml:space="preserve">
+    <value>Thành phần WebView2 khởi chạy thất bại.</value>
+  </data>
+  <data name="SettingPage_RPCService" xml:space="preserve">
+    <value>Dịch vụ RPC</value>
+  </data>
+  <data name="SettingPage_RPCService_Desc" xml:space="preserve">
+    <value>Dịch vụ RPC là một tiến trình độc lập được sử dụng để tránh việc khởi động lại khi tải xuống trò chơi, cập nhật và các tính năng khác cần yêu cầu quyền admin.</value>
+  </data>
+  <data name="SettingPage_KeepRPCServiceRunningInTheBackground" xml:space="preserve">
+    <value>Giữ dịch vụ RPC chạy ở chế độ nền</value>
+  </data>
+  <data name="SettingPage_RPCServiceWarningIfAppInRemovableStorage" xml:space="preserve">
+    <value>Phát hiện ứng dụng nằm trong thiết bị lưu trữ di động, không nên để dịch vụ RPC chạy ở chế độ nền.</value>
+  </data>
+  <data name="InstallGameDialog_HardLinkDesc" xml:space="preserve">
+    <value>Nếu đường dẫn đã chọn nằm trên cùng ổ đĩa với các client của các máy chủ đã cài đặt khác, nhiều client cho các máy chủ khác nhau có thể được cài đặt bằng hard links, chiếm thêm một chút không gian lưu trữ bổ sung.</value>
+  </data>
+  <data name="InstallGameDialog_SupportHardLinks" xml:space="preserve">
+    <value>Hỗ trợ Hard Links</value>
+  </data>
+  <data name="PreDownloadDialog_NoPatchesWarning" xml:space="preserve">
+    <value>Không có gói vá nào khả dụng. Bạn nên cập nhật trò chơi lên phiên bản mới nhất trước khi bắt đầu cài đặt trước.</value>
+  </data>
+  <data name="PreDownloadDialog_StartPreInstall" xml:space="preserve">
+    <value>Bắt đầu Cài đặt trước</value>
+  </data>
+  <data name="GameLauncherSettingDialog_StartRepairing" xml:space="preserve">
+    <value>Bắt đầu sửa chữa</value>
+  </data>
+  <data name="PreDownloadButton_PreInstallFinished" xml:space="preserve">
+    <value>Đã hoàn thành Cài đặt trước</value>
+  </data>
+  <data name="Common_Error" xml:space="preserve">
+    <value>Lỗi</value>
+  </data>
+  <data name="StartGameButton_InQueue" xml:space="preserve">
+    <value>Đang trong hàng chờ</value>
+  </data>
+  <data name="RPCServiceExitedUnexpectedly" xml:space="preserve">
+    <value>Dịch vụ RPC thoát đột ngột.</value>
+  </data>
+  <data name="StartGameButton_Install" xml:space="preserve">
+    <value>Cài đặt</value>
+  </data>
+  <data name="StartGameButton_Verify" xml:space="preserve">
+    <value>Xác thực</value>
+  </data>
+  <data name="SettingPage_RPCServiceIsNotRunning" xml:space="preserve">
+    <value>Dịch vụ RPC không khởi động</value>
+  </data>
+  <data name="SettingPage_RunService" xml:space="preserve">
+    <value>Khởi chạy dịch vụ</value>
+  </data>
+  <data name="SettingPage_RPCServiceIsRunning" xml:space="preserve">
+    <value>Dịch vụ RPC đang chạy</value>
+  </data>
+  <data name="SettingPage_StopService" xml:space="preserve">
+    <value>Dừng dịch vụ</value>
+  </data>
+  <data name="SettingPage_CannotConnectRPCService" xml:space="preserve">
+    <value>Không thể kết nối dịch vụ RPC</value>
+  </data>
+  <data name="InstallGameDialog_AutomaticallyCreateASubfolder" xml:space="preserve">
+    <value>Tự động tạo một thư mục con</value>
+  </data>
+  <data name="GameLauncherSettingDialog_UninstallGameWarning" xml:space="preserve">
+    <value>Tất cả các tập tin trong thư mục sau sẽ bị xóa. Vui lòng xác nhận đường dẫn trước khi gỡ cài đặt.</value>
+  </data>
+  <data name="GameLauncherSettingDialog_ConfirmUninstall" xml:space="preserve">
+    <value>Xác nhận Gỡ cài đặt</value>
+  </data>
+  <data name="GameLauncherSettingDialog_CannotDeleteTheDriveRootDirectory" xml:space="preserve">
+    <value>Không thể xóa thư mục gốc của ổ đĩa.</value>
+  </data>
+  <data name="PreDownloadDialog_PreInstallIsNotAvailable" xml:space="preserve">
+    <value>Tải trước hiện tại không có sẵn.</value>
+  </data>
+  <data name="PreDownloadDialog_IncompatibilityNotice" xml:space="preserve">
+    <value>Thông báo không tương thích</value>
+  </data>
+  <data name="PreDownloadDialog_IncompatibilityNoticeContent" xml:space="preserve">
+    <value>Tideward uses its own pre-download cache. Select existing game files through the game folder setting.</value>
+  </data>
+  <data name="WelcomeView_WelcomeToTidewardDescription" xml:space="preserve">
+    <value>Tideward is a Wuthering Waves launcher with separate CN and global profiles.</value>
+  </data>
+  <data name="WelcomeView_SelectUserDataFolderDescription" xml:space="preserve">
+    <value>Tất cả dữ liệu cá nhân của bạn sẽ được lưu trữ trong thư mục bên dưới. Điều này rất quan trọng và bạn cũng có thể nhấp vào nút bên dưới để chọn một thư mục khác.</value>
+  </data>
+  <data name="WelcomeView_BeforeStartingSomeNecessaryEnvironmentChecksAreRequired" xml:space="preserve">
+    <value>Trước khi bắt đầu, cần phải kiểm tra một số môi trường cần thiết.</value>
+  </data>
+  <data name="WelcomeView_NotInstalled" xml:space="preserve">
+    <value>Chưa cài đặt</value>
+  </data>
+  <data name="WelcomeView_InstallNow" xml:space="preserve">
+    <value>Cài đặt ngay</value>
+  </data>
+  <data name="WelcomeView_Installed" xml:space="preserve">
+    <value>Đã cài đặt</value>
+  </data>
+  <data name="WelcomeView_TidewardStart" xml:space="preserve">
+    <value>Tideward, Bắt đầu thôi!</value>
+  </data>
+  <data name="GameSelector_ClickToSelectOrSwitchGame" xml:space="preserve">
+    <value>Nhấp để chọn hoặc chuyển trò chơi.</value>
+  </data>
+  <data name="GameLauncherSettingDialog_UninstallGameUserDataFolderWarning" xml:space="preserve">
+    <value>Thư mục dữ liệu Tideward nằm trong thư mục trò chơi và sẽ bị xóa cùng với nó. Vui lòng thay đổi vị trí thư mục dữ liệu trong trang cài đặt và thử lại.</value>
+  </data>
+  <data name="GameLauncherSettingDialog_UninstallGameTidewardProgramFolderWarning" xml:space="preserve">
+    <value>Ứng dụng Tideward nằm trong thư mục trò chơi và sẽ bị xóa cùng với trò chơi. Vui lòng di chuyển chương trình ra khỏi thư mục trò chơi và thử lại.</value>
+  </data>
+  <data name="GameAccountSwitcher_TheCurrentlyLoggedInAccountIsNotSaved" xml:space="preserve">
+    <value>Thông tin đăng nhập của tài khoản hiện tại chưa được lưu.</value>
+  </data>
+  <data name="SettingPage_Toolbox" xml:space="preserve">
+    <value>Hộp công cụ</value>
+  </data>
+  <data name="GachaImportAndExportWindow_Import" xml:space="preserve">
+    <value>Nhập vào</value>
+  </data>
+  <data name="Common_Disabled" xml:space="preserve">
+    <value>Đã tắt</value>
+  </data>
+  <data name="Common_Enabled" xml:space="preserve">
+    <value>Đã bật</value>
+  </data>
+  <data name="GachaLogPage_ImportAndExport" xml:space="preserve">
+    <value>Nhập &amp; Xuất</value>
+  </data>
+  <data name="GachaLogPage_HideGachaBanners" xml:space="preserve">
+    <value>Ẩn banner Gacha</value>
+  </data>
+  <data name="DisplayInformation_MaxLuminance" xml:space="preserve">
+    <value>Cường độ sáng tối đa</value>
+  </data>
+  <data name="DisplayInformation_MonitorInformation" xml:space="preserve">
+    <value>Thông tin màn hình</value>
+  </data>
+  <data name="DisplayInformation_ColorSpace" xml:space="preserve">
+    <value>Không gian màu</value>
+  </data>
+  <data name="DisplayInformation_PeakLuminance" xml:space="preserve">
+    <value>Cường độ sáng cực đại</value>
+  </data>
+  <data name="DisplayInformation_MaxFullScreenLuminance" xml:space="preserve">
+    <value>Cường độ sáng toàn màn hình tối đa</value>
+  </data>
+  <data name="DisplayInformation_SDRWhiteLuminance" xml:space="preserve">
+    <value>Độ sáng trắng SDR</value>
+  </data>
+  <data name="WelcomeView_IfTidewardTakesALongTimeToStartItIsRecommendedToDisableSmartAppControlInWindowsSecurity" xml:space="preserve">
+    <value>Nếu Tideward khởi động chậm, bạn nên tắt tính năng Smart App Control trong Windows Security.</value>
+  </data>
+  <data name="WelcomeView_OpenWindowsSecurity" xml:space="preserve">
+    <value>Mở Windows Security</value>
+  </data>
+  <data name="WelcomeView_LearnMore" xml:space="preserve">
+    <value>Tìm hiểu thêm</value>
+  </data>
+  <data name="MainView_CheckSystemProxy_SystemProxyIsEnabled" xml:space="preserve">
+    <value>Đang sử dụng proxy hệ thống.</value>
+  </data>
+  <data name="InstallGameDialog_MappedNetworkDrivesAreNotSupportedPleaseUseANetworkSharePathStartingWithDoubleBackslashes" xml:space="preserve">
+    <value>Không hỗ trợ truy cập từ ổ đĩa mạng gắn thêm. Vui lòng dùng đường dẫn chia sẻ bắt đầu bằng hai dấu gạch chéo (\\).</value>
+  </data>
+  <data name="ScreenCaptureInfoWindow_ScreenshotSaved" xml:space="preserve">
+    <value>Ảnh chụp màn hình đã được lưu</value>
+  </data>
+  <data name="ScreenshotPage_ManageScreenshotFolders" xml:space="preserve">
+    <value>Quản lý thư mục ảnh chụp màn hình</value>
+  </data>
+  <data name="ScreenshotFolderManageDialog_AddFolder" xml:space="preserve">
+    <value>Thêm thư mục</value>
+  </data>
+  <data name="ScreenshotFolderManageDialog_BackingUp" xml:space="preserve">
+    <value>Đang sao lưu...</value>
+  </data>
+  <data name="Common_Remove" xml:space="preserve">
+    <value>Loại bỏ</value>
+  </data>
+  <data name="ScreenshotFolderManageDialog_FailedToBackupScreenshots" xml:space="preserve">
+    <value>Không thể sao lưu ảnh chụp màn hình.</value>
+  </data>
+  <data name="ScreenCaptureInfoWindow_ScreenshotFailed" xml:space="preserve">
+    <value>Chụp ảnh màn hình thất bại</value>
+  </data>
+  <data name="ScreenCaptureInfoWindow_CheckTheLogForMoreInformation" xml:space="preserve">
+    <value>Kiểm tra nhật ký để biết thêm thông tin.</value>
+  </data>
+  <data name="ScreenshotFolderManageDialog_ImagesFromTheFollowingFoldersWillBeDisplayedInTheGallery" xml:space="preserve">
+    <value>Các hình ảnh trong các thư mục dưới đây sẽ được hiển thị trong thư viện.</value>
+  </data>
+  <data name="ImageViewWindow2_OpenInExplorer" xml:space="preserve">
+    <value>Mở trong Explorer</value>
+  </data>
+  <data name="ImageViewWindow2_OpenWith" xml:space="preserve">
+    <value>Mở bằng</value>
+  </data>
+  <data name="ImageViewWindow2_Previous" xml:space="preserve">
+    <value>Trước</value>
+    <comment>Previous Image</comment>
+  </data>
+  <data name="ImageViewWindow2_Next" xml:space="preserve">
+    <value>Sau</value>
+    <comment>Next Image</comment>
+  </data>
+  <data name="ImageViewWindow2_ShowGallery" xml:space="preserve">
+    <value>Hiển thị Thư viện ảnh</value>
+  </data>
+  <data name="ImageViewWindow2_FitToWindow" xml:space="preserve">
+    <value>Vừa khít với Cửa sổ</value>
+    <comment>Zoom image fit to window</comment>
+  </data>
+  <data name="ImageViewWindow2_CopyFile" xml:space="preserve">
+    <value>Sao chép Tập tin</value>
+  </data>
+  <data name="ImageViewWindow2_CopyPath" xml:space="preserve">
+    <value>Sao chép đường dẫn</value>
+  </data>
+  <data name="ImageViewWindow2_CopyImage" xml:space="preserve">
+    <value>Sao chép Ảnh</value>
+  </data>
+  <data name="Common_Edit" xml:space="preserve">
+    <value>Chỉnh sửa</value>
+  </data>
+  <data name="ImageViewWindow2_SaveAs" xml:space="preserve">
+    <value>Lưu thành</value>
+  </data>
+  <data name="ImageViewWindow2_ImageInformation" xml:space="preserve">
+    <value>Thông tin Ảnh</value>
+  </data>
+  <data name="ImageViewWindow2_EditImage" xml:space="preserve">
+    <value>Chỉnh sửa Ảnh</value>
+  </data>
+  <data name="ImageViewWindow2_DisplayMode" xml:space="preserve">
+    <value>Chế độ hiển thị</value>
+  </data>
+  <data name="ImageViewWindow2_SDRMappedLuminance" xml:space="preserve">
+    <value>Độ Sáng Ánh Xạ SDR</value>
+  </data>
+  <data name="ImageViewWindow2_ExportImage" xml:space="preserve">
+    <value>Xuất Ảnh</value>
+  </data>
+  <data name="ImageViewWindow2_DeleteImageFile" xml:space="preserve">
+    <value>Xoá Tập tin Hình ảnh</value>
+  </data>
+  <data name="ImageViewWindow2_CopiedToClipboard" xml:space="preserve">
+    <value>Đã sao chép vào bộ nhớ tạm.</value>
+  </data>
+  <data name="ImageViewWindow2_FileDoesNotExist" xml:space="preserve">
+    <value>Tập tin không tồn tại.</value>
+  </data>
+  <data name="ImageViewWindow2_OpenWithDefaultApp" xml:space="preserve">
+    <value>Mở bằng Ứng dụng mặc định</value>
+  </data>
+  <data name="ImageViewWindow2_NoImageToDisplay" xml:space="preserve">
+    <value>Không có ảnh để Hiển thị</value>
+  </data>
+  <data name="Common_OpenFiles" xml:space="preserve">
+    <value>Mở tập tin</value>
+  </data>
+  <data name="ImageViewWindow2_OpenNewFiles" xml:space="preserve">
+    <value>Mở tập tin mới</value>
+  </data>
+  <data name="ImageViewWindow2_FailedToDisplayImage" xml:space="preserve">
+    <value>Hiện hình ảnh thất bại</value>
+  </data>
+  <data name="ImageViewWindow2_FailedToSaveImage" xml:space="preserve">
+    <value>Lưu ảnh thất bại</value>
+  </data>
+  <data name="ImageViewWindow2_FailedToDeleteImageFile" xml:space="preserve">
+    <value>Xoá file thất bại</value>
+  </data>
+  <data name="ImageViewWindow2_UnableToDeleteTheFile" xml:space="preserve">
+    <value>Không thể xoá file</value>
+  </data>
+  <data name="ImageViewWindow2_InsufficientPermissionsOrTheFileIsInUse" xml:space="preserve">
+    <value>Thiếu quyền hạn hoặc file đang được sử dụng.</value>
+  </data>
+  <data name="HotkeyInput_ClickToSetShortcutKeys" xml:space="preserve">
+    <value>Nhấn để đặt phím tắt</value>
+  </data>
+  <data name="HotkeyInput_PressTheShortcutKeys" xml:space="preserve">
+    <value>Nhấn phím tắt</value>
+  </data>
+  <data name="HotkeyManager_TheShortcutKeys0IsAlreadyInUse" xml:space="preserve">
+    <value>Phím tắt ({0}) đã được sử dụng.</value>
+  </data>
+  <data name="HotkeyManager_FailedToRegisterTheShortcutKeys0" xml:space="preserve">
+    <value>Gán phím tắt ({0}) thất bại.</value>
+  </data>
+  <data name="HotkeyManager_TheShortcutKeys0IsAlreadyInUsePleaseModifyItInSettingsPage" xml:space="preserve">
+    <value>Phím tắt ({0}) đã được sử dụng. Vui lòng chỉnh sửa trong trang Cài đặt.</value>
+  </data>
+  <data name="HotkeyManager_FailedToRegisterTheShortcutKeys0PleaseRetryInSettingsPage" xml:space="preserve">
+    <value>Gán phím tắt ({0}) thất bại. Vui lòng thử lại trong trang Cài đặt.</value>
+  </data>
+  <data name="ScreenshotSetting_ScreenshotShortcut" xml:space="preserve">
+    <value>Phím tắt Ảnh chụp màn hình</value>
+  </data>
+  <data name="HotkeySetting_OpenMainWindow" xml:space="preserve">
+    <value>Mở cửa sổ chính</value>
+  </data>
+  <data name="HotkeySetting_FailedToRegisterTheShortcutKeys" xml:space="preserve">
+    <value>Gán phím tắt thất bại.</value>
+  </data>
+  <data name="ScreenshotSetting_TheBuiltInScreenshotFeatureWillSaveImagesToTheFollowingFolder" xml:space="preserve">
+    <value>Tính năng chụp màn hình của ứng dụng sẽ lưu ảnh vào thư mục sau.</value>
+  </data>
+  <data name="Common_ChangeFolder" xml:space="preserve">
+    <value>Thay đổi thư mục</value>
+  </data>
+  <data name="HotkeySetting_SingleKeyShortcutsTips" xml:space="preserve">
+    <value>Khi đặt phím tắt một phím (F1–F12), hãy khởi chạy Tideward dưới quyền admin, vì nếu không thì phím tắt có thể bị vô hiệu trong game.</value>
+  </data>
+  <data name="SettingPage_KeyboardShortcuts" xml:space="preserve">
+    <value>Phím tắt</value>
+  </data>
+  <data name="SettingPage_ControllerEnhancement" xml:space="preserve">
+    <value>Cải thiện Tay cầm</value>
+  </data>
+  <data name="GamepadControlSetting_SimulateInput" xml:space="preserve">
+    <value>Mô phỏng nhập liệu</value>
+  </data>
+  <data name="GamepadControlSetting_GuideButton" xml:space="preserve">
+    <value>Nút Guide</value>
+  </data>
+  <data name="GamepadControlSetting_NoAction" xml:space="preserve">
+    <value>Không có hành động</value>
+  </data>
+  <data name="GamepadControlSetting_GameScreenshot" xml:space="preserve">
+    <value>Chụp ảnh màn hình trò chơi</value>
+  </data>
+  <data name="GamepadControlSetting_KeyboardKeys" xml:space="preserve">
+    <value>Phím bàn phím</value>
+  </data>
+  <data name="GamepadControlSetting_EnterKeyText" xml:space="preserve">
+    <value>Nhập tên phím</value>
+  </data>
+  <data name="GamepadControlSetting_ShareButton" xml:space="preserve">
+    <value>Nút chia sẻ</value>
+  </data>
+  <data name="GamepadControlSetting_ButtonMapping" xml:space="preserve">
+    <value>Gán nút</value>
+  </data>
+  <data name="GamepadControlSetting_UnrecognizedKey" xml:space="preserve">
+    <value>Phím chưa xác định</value>
+  </data>
+  <data name="GamepadControlSetting_OnlySupportXboxControllerProtocol" xml:space="preserve">
+    <value>Chỉ hỗ trợ tay cầm theo giao thức Xbox. Không đảm bảo tương thích với các loại tay cầm khác.</value>
+  </data>
+  <data name="GamepadControlSetting_SimulateInputDesc" xml:space="preserve">
+    <value>Mô phỏng nhập liệu bàn phím và chuột bằng tay cầm. Tính năng này cần Tideward chạy với quyền admin để hoạt động đúng trong game.</value>
+  </data>
+  <data name="GamepadControlSetting_LongPressGuideButtonDesc" xml:space="preserve">
+    <value>Nhấn và giữ nút Guide để mở cửa sổ chính của Tideward.</value>
+  </data>
+  <data name="GamepadControlSetting_BothThumbsticksDesc" xml:space="preserve">
+    <value>Nhấn đồng thời cả hai nút cần analog để kích hoạt mô phỏng bàn phím và chuột từ tay cầm.</value>
+  </data>
+  <data name="GamepadControlSetting_ButtonMappingGuideDesc" xml:space="preserve">
+    <value>• Khi ánh xạ nút Guide, phím tắt mặc định của Xbox Game Bar sẽ bị vô hiệu hóa. Các phần mềm khác (như Chế độ Steam Big Picture) cũng có thể phản hồi nút Guide. Nếu có xung đột, bạn phải tự tắt các tính năng đó.</value>
+  </data>
+  <data name="GamepadControlSetting_ButtonMappingKeyboardDesc" xml:space="preserve">
+    <value>• Khi gán sang phím bàn phím, nhập tên các phím như chúng xuất hiện trên bàn phím, cách nhau bởi dấu cách. Ví dụ: để gán một nút cho “Ctrl + Alt + F1”, nhập: "Ctrl Alt F1". Đối với phím số ở bàn phím numpad, thêm tiền tố Pad trước tên phím, ví dụ: Pad8, Pad+. Tính năng này cần Tideward chạy với quyền admin để hoạt động chính xác trong trò chơi.</value>
+  </data>
+  <data name="GamepadControlSetting_ButtonMappingShareDesc" xml:space="preserve">
+    <value>Nút Share vẫn kích hoạt chụp màn hình Xbox Game Bar và hiện tại chưa có giải pháp tốt.</value>
+  </data>
+  <data name="GamepadControlSetting_FailedToInitializeTheGameInputComponentControllerEnhancementIsUnavailable" xml:space="preserve">
+    <value>Không thể khởi tạo thành phần GameInput. Tính năng tăng cường tay cầm không khả dụng.</value>
+  </data>
+  <data name="SimulateInputTipsWindow_ControllerSimulatedInputIsActive" xml:space="preserve">
+    <value>Đầu vào mô phỏng từ tay cầm đang hoạt động.</value>
+  </data>
+  <data name="SimulateInputTipsWindow_ShowHideButtonHints" xml:space="preserve">
+    <value>Hiện / Ẩn Gợi Ý Nút</value>
+  </data>
+  <data name="SimulateInputTipsWindow_MouseMove" xml:space="preserve">
+    <value>Di Chuyển Chuột</value>
+  </data>
+  <data name="SimulateInputTipsWindow_MouseWheel" xml:space="preserve">
+    <value>Con Lăn Chuột</value>
+  </data>
+  <data name="SimulateInputTipsWindow_MouseLeftButton" xml:space="preserve">
+    <value>Nút Chuột Trái</value>
+  </data>
+  <data name="SimulateInputTipsWindow_MouseRightButton" xml:space="preserve">
+    <value>Nút Chuột Phải</value>
+  </data>
+  <data name="SimulateInputTipsWindow_KeyboardEscKey" xml:space="preserve">
+    <value>Phím Esc Trên Bàn Phím</value>
+  </data>
+  <data name="SimulateInputTipsWindow_KeyboardArrowKeys" xml:space="preserve">
+    <value>Phím Mũi Tên Trên Bàn Phím</value>
+  </data>
+  <data name="SimulateInputTipsWindow_LocateMousePointer" xml:space="preserve">
+    <value>Định Vị Con Trỏ Chuột</value>
+  </data>
+  <data name="SimulateInputTipsWindow_StopSimualteInput" xml:space="preserve">
+    <value>Dừng giả lập đầu vào</value>
+  </data>
+  <data name="ScreenshotSetting_TestScreenshot" xml:space="preserve">
+    <value>Thử Chụp ảnh</value>
+  </data>
+  <data name="ScreenshotSetting_AutoConvertToSDRImage" xml:space="preserve">
+    <value>Tự động chuyển đổi sang ảnh SDR</value>
+  </data>
+  <data name="ScreenshotSetting_WhenCapturingHDRImagesSDRVersionWillAlsoBeSaved" xml:space="preserve">
+    <value>Khi chụp ảnh HDR, phiên bản SDR cũng sẽ được lưu lại.</value>
+  </data>
+  <data name="ScreenshotSetting_ScreenshotFetureDescAndLimit" xml:space="preserve">
+    <value>Tính năng chụp ảnh màn hình chụp trò chơi đang chạy. Nếu có nhiều trò chơi đang chạy cùng lúc, tính năng sẽ xử lí cửa sổ trò chơi vừa được thao tác gần nhất. Lưu ý các giới hạn sau:
+• Không thể chụp cửa sổ trò chơi đang được thu nhỏ.
+• Phần cửa sổ trò chơi ở ngoài rìa màn hình sẽ không được chụp.
+• Trong một số trường hợp hiếm gặp, tính năng có thể chụp sang cửa sổ khác.</value>
+  </data>
+  <data name="ScreenshotSetting_ScreenshotWithGamepadSuggestion" xml:space="preserve">
+    <value>Nếu bạn muốn chụp ảnh màn hình bằng bộ điều khiển, vui lòng sử dụng chức năng Ánh xạ nút trong trang Cải thiện tay cầm.</value>
+  </data>
+  <data name="SimulateInputTipsWindow_SwitchWindows" xml:space="preserve">
+    <value>Chuyển Đổi Cửa Sổ</value>
+  </data>
+  <data name="ScreenshotSetting_AutoCopyScreenshotFile" xml:space="preserve">
+    <value>Tự động sao chép tệp tin chụp màn hình</value>
+  </data>
+  <data name="ToolboxSetting_ImageViewer" xml:space="preserve">
+    <value>Trình Xem Ảnh</value>
+  </data>
+  <data name="ToolboxSetting_ViewOrEditImage" xml:space="preserve">
+    <value>Xem / Chỉnh sửa ảnh</value>
+  </data>
+  <data name="GamepadControlSetting_GameInputRedistOutdate" xml:space="preserve">
+    <value>Một thành phần Microsoft GameInput đã lỗi thời đang được cài đặt. Vui lòng gỡ cài đặt hoặc cập nhật nó.</value>
+  </data>
+  <data name="GamepadControlSetting_NeedInstallGameInputRedistOnWin10" xml:space="preserve">
+    <value>Trên Windows 10, thành phần Microsoft GameInput phải được cài đặt để tính năng tăng cường tay cầm hoạt động đúng cách.</value>
+  </data>
+  <data name="GamepadControlSetting_ClickToDownload" xml:space="preserve">
+    <value>Nhấn để tải.</value>
+  </data>
+  <data name="ImageViewWindow2_CopyAsJPG" xml:space="preserve">
+    <value>Sao chép dưới dạng JPG</value>
+  </data>
+  <data name="ScreenshotPage_MultiSelect" xml:space="preserve">
+    <value>Chọn nhiều</value>
+  </data>
+  <data name="ScreenshotPage_Total0Files" xml:space="preserve">
+    <value>Tổng cộng {0} tệp.</value>
+  </data>
+  <data name="SimulateInputTipsWindow_KeyboardEnterKey" xml:space="preserve">
+    <value>Phím Enter Trên Bàn Phím</value>
+  </data>
+  <data name="ScreenshotSetting_OtherOptions" xml:space="preserve">
+    <value>Các tuỳ chọn khác</value>
+  </data>
+  <data name="ScreenshotSetting_Lossless" xml:space="preserve">
+    <value>Không Mất Dữ Liệu</value>
+  </data>
+  <data name="ScreenshotSetting_FormatAndQuality" xml:space="preserve">
+    <value>Định dạng và Chất lượng</value>
+  </data>
+  <data name="ScreenCaptureInfoWindow_ProcessingImage" xml:space="preserve">
+    <value>Đang xử lý ảnh</value>
+  </data>
+  <data name="ScreenshotPage_BatchConvert" xml:space="preserve">
+    <value>Chuyển đổi theo lô</value>
+  </data>
+  <data name="ImageBatchConvertWindow_Quality" xml:space="preserve">
+    <value>Chất lượng</value>
+  </data>
+  <data name="ImageBatchConvertWindow_StartConvert" xml:space="preserve">
+    <value>Bắt đầu chuyển đổi</value>
+  </data>
+  <data name="Common_Clear" xml:space="preserve">
+    <value>Xoá</value>
+  </data>
+  <data name="ImageBatchConvertWindow_OutputFolder" xml:space="preserve">
+    <value>Thư mục xuất ra</value>
+  </data>
+  <data name="ImageBatchConvertWindow_OriginalFileFolder" xml:space="preserve">
+    <value>Thư mục của tệp tin gốc</value>
+  </data>
+  <data name="ImageBatchConvertWindow_SelectOutputFormat" xml:space="preserve">
+    <value>Chọn định dạng xuất</value>
+  </data>
+  <data name="ImageBatchConvertWindow_NoReadOrWritePermission" xml:space="preserve">
+    <value>Không có quyền đọc hoặc ghi</value>
+  </data>
+  <data name="ImageBatchConvertWindow_ConvertFailed" xml:space="preserve">
+    <value>Chuyển đổi thất bại</value>
+  </data>
+  <data name="ImageBatchConvertWindow_IfOutputFileExists" xml:space="preserve">
+    <value>Nếu tếp tin xuất ra đã tồn tại</value>
+  </data>
+  <data name="ImageBatchConvertWindow_SkipDefault" xml:space="preserve">
+    <value>Bỏ qua (Mặc định)</value>
+  </data>
+  <data name="ImageBatchConvertWindow_Overwrite" xml:space="preserve">
+    <value>Ghi đè</value>
+  </data>
+  <data name="ImageBatchConvertWindow_Rename" xml:space="preserve">
+    <value>Đổi tên</value>
+  </data>
+  <data name="Common_Success" xml:space="preserve">
+    <value>Thành công</value>
+  </data>
+  <data name="Common_Failed" xml:space="preserve">
+    <value>Thât bại</value>
+  </data>
+  <data name="ImageBatchConvertWindow_ImageBatchConvert" xml:space="preserve">
+    <value>Chuyển đổi ảnh theo lô</value>
+  </data>
+  <data name="ScreenshotSetting_ClearThumbnailCache" xml:space="preserve">
+    <value>Xóa bộ nhớ đệm Thumbnail</value>
+  </data>
+  <data name="ScreenshotSetting_ClearSuccessfully" xml:space="preserve">
+    <value>Xoá hoàn tất</value>
+  </data>
+  <data name="ScreenshotSetting_ClearFailed" xml:space="preserve">
+    <value>Xoá thất bại</value>
+  </data>
+  <data name="ScreenshotSetting_HighQualityAVIFAndJPEGXLImageFormatsSaveApproximately85OfStorageSpace" xml:space="preserve">
+    <value>Định dạng hình ảnh AVIF và JPEG XL chất lượng cao giúp tiết kiệm khoảng 85% dung lượng lưu trữ.</value>
+  </data>
+  <data name="Common_CopiedToClipboard" xml:space="preserve">
+    <value>Đã sao chép vào bộ nhớ tạm.</value>
+  </data>
+  <data name="GameLauncherSettingDialog_LaunchGameUsingCMD" xml:space="preserve">
+    <value>Khởi động game bằng CMD</value>
+  </data>
+  <data name="UpdateWindow_FullPackage" xml:space="preserve">
+    <value>Gói đầy đủ</value>
+  </data>
+  <data name="ItIsRecommendedToInstallTheVP9VideoExtensionsToReduceCPUUsage" xml:space="preserve">
+    <value>Khuyến nghị cài đặt Phần Mở rộng Video VP9 để giảm tải cho CPU.</value>
+  </data>
+  <data name="GameLauncherPage_PlayPause" xml:space="preserve">
+    <value>Phát / Tạm dừng</value>
+  </data>
+  <data name="GameLauncherPage_Gallery" xml:space="preserve">
+    <value>Thư viện</value>
+  </data>
+  <data name="BackgroundViewPage_DeleteDuplicateFiles" xml:space="preserve">
+    <value>Xoá tệp trùng lặp</value>
+  </data>
+  <data name="BackgroundViewPage_0DuplicateFileSHasBeenDeleted" xml:space="preserve">
+    <value>{0} tệp trùng lặp đã bị xóa.</value>
+  </data>
+  <data name="Common_All" xml:space="preserve">
+    <value>Tất cả</value>
+  </data>
+  <data name="Common_Video" xml:space="preserve">
+    <value>Đoạn phim</value>
+  </data>
+  <data name="Common_Time" xml:space="preserve">
+    <value>Thời gian</value>
+  </data>
+  <data name="Common_FileSize" xml:space="preserve">
+    <value>Kích thước tệp</value>
+  </data>
+  <data name="Common_Filter" xml:space="preserve">
+    <value>Bộ lọc</value>
+  </data>
+  <data name="Common_Sort" xml:space="preserve">
+    <value>Sắp xếp</value>
+  </data>
+  <data name="BackgroundViewPage_DeleteDuplicateFilesTip" xml:space="preserve">
+    <value>Các tệp trùng lặp được xác định dựa trên dữ liệu tệp. Một số hình ảnh giống nhau về mặt thị giác sẽ không bị xóa.</value>
+  </data>
+  <data name="BackgroundViewPage_VP9VideoExtensionsTip" xml:space="preserve">
+    <value>Tiện ích mở rộng video VP9 không hỗ trợ một số định dạng nhất định, điều này có thể gây cản trở việc tạo thumbnail hoặc phát lại video đúng cách.</value>
+  </data>
+  <data name="AppBackground_ImageDecodingFailed" xml:space="preserve">
+    <value>Giải mã hình ảnh thất bại</value>
+  </data>
+  <data name="AppBackground_PleaseInstallTheWebPImageExtension" xml:space="preserve">
+    <value>Vui lòng cài đặt tiện ích mở rộng hình ảnh WebP.</value>
+  </data>
+  <data name="AppBackground_VideoDecodingFailed" xml:space="preserve">
+    <value>Giải mã video thất bại</value>
+  </data>
+  <data name="AppBackground_VideoDecodingFailedPleaseInstallTheVP9VideoExtensions" xml:space="preserve">
+    <value>Quá trình giải mã video thất bại. Vui lòng cài đặt tiện ích mở rộng video VP9.</value>
+  </data>
+  <data name="AppConfig_AnUnknownIssueOccurredDuringInitialization" xml:space="preserve">
+    <value>Đã xảy ra lỗi không xác định trong quá trình khởi tạo.</value>
+  </data>
+  <data name="NoPermissionWindow_NoPermissionToFolderRestartOrClose" xml:space="preserve">
+    <value>Chương trình không có quyền truy cập thư mục sau. Vui lòng khởi động lại với quyền quản trị viên hoặc di chuyển thư mục.</value>
+  </data>
+  <data name="NoPermissionWindow_RestartAsAdministrator" xml:space="preserve">
+    <value>Khởi Động Lại Với Quyền Quản Trị Viên</value>
+  </data>
+  <data name="ScreenshotSetting_ColorManagement" xml:space="preserve">
+    <value>Quản lý màu sắc</value>
+  </data>
+  <data name="GameLauncherPage_LaunchWithDX11" xml:space="preserve">
+    <value>Khởi chạy với DX11</value>
+  </data>
+  <data name="FileManageSetting_LauncherBackground" xml:space="preserve">
+    <value>Nền trình khởi chạy</value>
+  </data>
+  <data name="FileManageSetting_CleanUpLauncherBackgroundFiles" xml:space="preserve">
+    <value>Dọn dẹp tệp nền trình khởi chạy</value>
+  </data>
+  <data name="PlayTimeStatsDialog_PlaytimeStatistics" xml:space="preserve">
+    <value>Thống kê thời gian chơi</value>
+  </data>
+  <data name="PlayTimeStatsDialog_Total" xml:space="preserve">
+    <value>Tổng cộng</value>
+  </data>
+  <data name="PlayTimeStatsDialog_TotalPlaytime" xml:space="preserve">
+    <value>Tổng thời gian chơi</value>
+  </data>
+  <data name="PlayTimeStatsDialog_LongestDailyPlaytime" xml:space="preserve">
+    <value>Thời gian chơi dài nhất trong ngày</value>
+  </data>
+  <data name="PlayTimeStatsDialog_Last15Days" xml:space="preserve">
+    <value>15 ngày qua</value>
+  </data>
+  <data name="PlayTimeStatsDialog_Last12Weeks" xml:space="preserve">
+    <value>12 tuần qua</value>
+  </data>
+  <data name="PlayTimeStatsDialog_Last12Months" xml:space="preserve">
+    <value>12 tháng qua</value>
+  </data>
+  <data name="PlayTimeStatsDialog_LongestStreak" xml:space="preserve">
+    <value>Chuỗi ngày chơi dài nhất</value>
+  </data>
+  <data name="PlayTimeStatsDialog_LongestSession" xml:space="preserve">
+    <value>Phiên chơi dài nhất</value>
+  </data>
+  <data name="PlayTimeStatsDialog_0Days" xml:space="preserve">
+    <value>{0} ngày</value>
+  </data>
+  <data name="PlayTimeStatsDialog_Started0Times" xml:space="preserve">
+    <value>Đã khởi động {0} lần</value>
+  </data>
+  <data name="PlayTimeStatsDialog_PlayedFor0Days" xml:space="preserve">
+    <value>Đã chơi {0} ngày</value>
+  </data>
+  <data name="PlayTimeStatsDialog_AverageDailyPlaytime" xml:space="preserve">
+    <value>Thời gian chơi trung bình mỗi ngày</value>
+  </data>
+  <data name="PlayTimeStatsDialog_StatsTip" xml:space="preserve">
+    <value>Thống kê dựa trên thời gian chạy của trò chơi, không phải thời gian chơi thực tế, và chỉ mang tính chất tham khảo.</value>
+  </data>
+  <data name="GachaLogPage_Times" xml:space="preserve">
+    <value>lần</value>
+  </data>
+  <data name="GameLauncherPage_DetailsGt" xml:space="preserve">
+    <value>Chi tiết &gt;</value>
+  </data>
+  <data name="DX11IntroDialog_Title" xml:space="preserve">
+    <value>Wuthering Waves: khởi chạy bằng DirectX 11</value>
+  </data>
+  <data name="DX11IntroDialog_Launch" xml:space="preserve">
+    <value>Wuthering Waves mặc định sử dụng DirectX 12. Chọn «Khởi chạy bằng DX11» để yêu cầu DirectX 11, hoặc bỏ chọn để sử dụng chế độ mặc định của trò chơi.</value>
+  </data>
+  <data name="DX11IntroDialog_Requirements" xml:space="preserve">
+    <value>Chọn tùy chọn này khi trò chơi gặp sự cố. Nếu việc biên dịch shader gây giật kéo dài hoặc ảnh hưởng đến trải nghiệm, Kuro khuyên bạn đóng trò chơi rồi thử DX11.</value>
+  </data>
+  <data name="DX11IntroDialog_Arguments" xml:space="preserve">
+    <value>Chế độ kết xuất được chỉ định rõ trong tham số khởi chạy tùy chỉnh được ưu tiên hơn tùy chọn này.</value>
+  </data>
+  <data name="DX11IntroDialog_OfficialSource" xml:space="preserve">
+    <value>Thông báo cập nhật trình khởi chạy chính thức</value>
+  </data>
+  <data name="DX11IntroDialog_OfficialSourceUrl" xml:space="preserve">
+    <value>https://wutheringwaves.kurogames.com/en/main/news/detail/1320</value>
+  </data>
+  <data name="GachaLogPage_AuthkeyTimeoutAlwaysOccurs" xml:space="preserve">
+    <value>Authkey Timeout luôn xảy ra?</value>
+  </data>
+  <data name="GachaLogPage_RestartGameAfterDeletingTheCacheFolder" xml:space="preserve">
+    <value>Khởi động lại trò chơi sau khi xóa thư mục bộ nhớ đệm.</value>
+  </data>
+  <data name="GachaLogPage_DeleteCacheFolder" xml:space="preserve">
+    <value>Xóa thư mục bộ nhớ đệm</value>
+  </data>
+  <data name="GachaLogPage_CacheFolderNotFound" xml:space="preserve">
+    <value>Không tìm thấy thư mục bộ nhớ đệm web. Hãy mở lịch sử trong trò chơi trước.</value>
+  </data>
+  <data name="GachaLogPage_RequestTimedOut" xml:space="preserve">
+    <value>Yêu cầu lịch sử đã hết thời gian chờ</value>
+  </data>
+  <data name="Common_Apply" xml:space="preserve">
+    <value>Áp dụng</value>
+  </data>
+  <data name="GachaLogPage_0GachaItemsHaveBeenChangedToLanguage1" xml:space="preserve">
+    <value>Ngôn ngữ của {0} bản ghi gacha đã được chuyển thành ({1}).</value>
+    </data>
+  <data name="SettingPage_CheckForUpdate" xml:space="preserve">
+    <value>Kiểm tra cập nhật</value>
+  </data>
+  <data name="AboutSetting_UpdatedToTheLatestVersion" xml:space="preserve">
+    <value>Đã cập nhật phiên bản mới nhất.</value>
+  </data>
+  <data name="SettingPage_ProjectHomepage" xml:space="preserve">
+    <value>Trang chủ</value>
+  </data>
+  <data name="SettingPage_ReportIssue" xml:space="preserve">
+    <value>Báo lỗi</value>
+  </data>
+  <data name="SettingPage_ReleaseHistroy" xml:space="preserve">
+    <value>Lịch sử phát hành</value>
+  </data>
+</root>

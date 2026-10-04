@@ -1,0 +1,59 @@
+
+name: Build
+
+on:
+  push:
+    branches: [ "main", "dev/*" ]
+  pull_request:
+    branches: [ "main", "dev/*" ]
+
+permissions:
+  contents: read
+
+
+jobs:
+
+  build:
+    runs-on: windows-2025-vs2026
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+        platform: [x64, arm64]
+
+    env:
+      Configuration: ${{ matrix.configuration }}
+      Platform: ${{ matrix.platform }}
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+
+    - name: Install .NET
+      uses: actions/setup-dotnet@v5
+      with:
+        global-json-file: global.json
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v3
+
+    - name: SHA
+      id: sha
+      run: "'sha=' + $env:GITHUB_SHA.Substring(0, 7) >> $env:GITHUB_OUTPUT"
+
+    - name: Build
+      run: |
+        $sha = "${{ steps.sha.outputs.sha }}"
+        New-Item -Path "build/Tideward/" -Type Directory
+        msbuild src/Tideward.Launcher "-property:Configuration=$env:Configuration;Platform=$env:Platform;OutDir=$(Resolve-Path "build/Tideward/")"
+        if ($LASTEXITCODE -ne 0) { throw 'Launcher build failed.' }
+        dotnet publish src/Tideward -c $env:Configuration -r "win-$env:Platform" --self-contained true -o "build/Tideward/app-build.$sha" -p:Platform=$env:Platform -p:Version="0.0.1-build.$sha" -p:DisableUpdateCheck=true -p:PublishTrimmed=false -p:PublishReadyToRun=false -p:CsWinRTAotOptimizerEnabled=false
+        if ($LASTEXITCODE -ne 0) { throw 'Application build failed.' }
+        Set-Content "build/Tideward/version.ini" -Value "version=build.$sha" -Encoding utf8NoBOM
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v7
+      with:
+        name: Tideward_${{ matrix.configuration }}_${{ matrix.platform }}_${{ steps.sha.outputs.sha }}
+        path: build/Tideward/
+        if-no-files-found: error
+        retention-days: 7

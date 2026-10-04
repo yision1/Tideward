@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentDialog x:Class="Tideward.Features.GameLauncher.DX11IntroDialog"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:lang="using:Tideward.Language"
+               x:DefaultBindMode="OneWay"
+               Background="{ThemeResource CustomAcrylicBrush}"
+               BorderThickness="0"
+               CornerRadius="8"
+               Style="{ThemeResource DefaultContentDialogStyle}">
+    <ContentDialog.Resources>
+        <x:Double x:Key="ContentDialogMaxWidth">1200</x:Double>
+        <Thickness x:Key="ContentDialogPadding">0</Thickness>
+        <StaticResource x:Key="ContentDialogSmokeFill" ResourceKey="ControlFillColorTransparentBrush" />
+        <StaticResource x:Key="ContentDialogTopOverlay" ResourceKey="ControlFillColorTransparentBrush" />
+    </ContentDialog.Resources>
+
+    <Grid MaxWidth="680" Padding="24">
+        <StackPanel Spacing="20">
+            <TextBlock FontSize="20" FontWeight="Bold" Text="{x:Bind lang:Lang.DX11IntroDialog_Title}" />
+            <TextBlock FontSize="16" Text="{x:Bind lang:Lang.DX11IntroDialog_Launch}" TextWrapping="Wrap" />
+            <TextBlock FontSize="16" Text="{x:Bind lang:Lang.DX11IntroDialog_Requirements}" TextWrapping="Wrap" />
+            <TextBlock FontSize="16" Text="{x:Bind lang:Lang.DX11IntroDialog_Arguments}" TextWrapping="Wrap"
+                       Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+            <HyperlinkButton x:Name="OfficialSourceLink" FontSize="16"
+                             Content="{x:Bind lang:Lang.DX11IntroDialog_OfficialSource}"
+                             NavigateUri="{x:Bind OfficialSourceUri}"
+                             HorizontalAlignment="Left" Padding="0" />
+        </StackPanel>
+
+        <Button x:Name="CloseButton" Width="32" Height="32" Margin="-20" Padding="0"
+                HorizontalAlignment="Right" VerticalAlignment="Top" BorderThickness="0" CornerRadius="8"
+                Click="CloseButton_Click" Style="{ThemeResource DateTimePickerFlyoutButtonStyle}"
+                ToolTipService.ToolTip="{x:Bind lang:Lang.DownloadGamePage_Close}"
+                AutomationProperties.Name="{x:Bind lang:Lang.DownloadGamePage_Close}">
+            <FontIcon FontSize="16" Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                      Glyph="&#xE711;" IsTextScaleFactorEnabled="False" />
+        </Button>
+    </Grid>
+</ContentDialog>

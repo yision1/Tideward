@@ -1,0 +1,66 @@
+name: Publish Preview
+
+on:
+  push:
+    tags: ["[0-9]*"]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    if: github.repository == 'yision1/Tideward'
+    runs-on: windows-2025-vs2026
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: [x64, arm64]
+    env:
+      Version: ${{ github.ref_name }}
+      Arch: ${{ matrix.arch }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-dotnet@v5
+        with:
+          global-json-file: global.json
+      - uses: microsoft/setup-msbuild@v3
+      - name: Build setup and launcher resources
+        run: dotnet run publish.cs -- res --version $env:Version --arch $env:Arch
+      - name: Compile App (Single Arch)
+        run: dotnet run publish.cs -- compile --version $env:Version --arch $env:Arch
+      - name: Pack (Single Arch, Skip Compile)
+        run: dotnet run publish.cs -- pack --version $env:Version --arch $env:Arch
+      - uses: actions/upload-artifact@v7
+        with:
+          name: package_${{ env.Version }}_${{ env.Arch }}
+          path: |
+            publish/release/package/Tideward_Setup_${{ env.Version }}_${{ env.Arch }}.exe
+            publish/release/package/Tideward_Portable_${{ env.Version }}_${{ env.Arch }}.7z
+          if-no-files-found: error
+          retention-days: 7
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      Version: ${{ github.ref_name }}
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          pattern: package_${{ env.Version }}_*
+          merge-multiple: true
+          path: publish/release/package
+      - name: Create preview draft
+        uses: softprops/action-gh-release@v3
+        with:
+          draft: true
+          prerelease: true
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+          files: |
+            publish/release/package/Tideward_Setup_${{ env.Version }}_x64.exe
+            publish/release/package/Tideward_Portable_${{ env.Version }}_x64.7z
+            publish/release/package/Tideward_Setup_${{ env.Version }}_arm64.exe
+            publish/release/package/Tideward_Portable_${{ env.Version }}_arm64.7z

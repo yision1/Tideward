@@ -1,0 +1,174 @@
+<sf:PageBase x:Class="Tideward.Features.KuroGameRecord.KuroGameRecordPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:sf="using:Tideward.Frameworks"
+             xmlns:sc="using:Tideward.Controls"
+             xmlns:sh="using:Tideward.Helpers"
+             xmlns:core="using:Tideward.Core.Games"
+             xmlns:cc="using:CommunityToolkit.WinUI.Controls"
+             xmlns:local="using:Tideward.Features.GameLauncher">
+    <sf:PageBase.Resources>
+        <DataTemplate x:Key="CompactStatTemplate" x:DataType="local:KuroDailyNoteStatView">
+            <Grid ColumnSpacing="8" ToolTipService.ToolTip="{x:Bind Description}">
+                <Grid.ColumnDefinitions><ColumnDefinition /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                <TextBlock Text="{x:Bind Label}" TextWrapping="Wrap" Foreground="{ThemeResource TextFillColorSecondaryBrush}" VerticalAlignment="Center" />
+                <TextBlock Grid.Column="1" Text="{x:Bind Amount}" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="OverviewStatTemplate" x:DataType="local:KuroDailyNoteStatView">
+            <StackPanel Spacing="6" ToolTipService.ToolTip="{x:Bind Description}">
+                <TextBlock Text="{x:Bind Amount}" FontSize="28" FontWeight="SemiBold" Foreground="#BDA757" HorizontalAlignment="Center" />
+                <TextBlock Text="{x:Bind Label}" TextAlignment="Center" TextWrapping="Wrap" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="ProfileStatTemplate" x:DataType="local:KuroDailyNoteStatView">
+            <StackPanel Spacing="6" ToolTipService.ToolTip="{x:Bind Description}">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="8">
+                    <Image Width="26" Height="26" Source="{x:Bind Icon}" />
+                    <TextBlock Text="{x:Bind Amount}" FontSize="24" FontWeight="SemiBold" VerticalAlignment="Center" />
+                </StackPanel>
+                <TextBlock Text="{x:Bind Label}" TextAlignment="Center" TextWrapping="Wrap" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="ResourceStatTemplate" x:DataType="local:KuroDailyNoteStatView">
+            <Grid ColumnSpacing="8" ToolTipService.ToolTip="{x:Bind Description}">
+                <Grid.ColumnDefinitions><ColumnDefinition Width="32" /><ColumnDefinition /></Grid.ColumnDefinitions>
+                <Image Width="32" Height="32" Source="{x:Bind Icon}" />
+                <StackPanel Grid.Column="1" Spacing="2">
+                    <TextBlock Text="{x:Bind Label}" FontSize="12" TextWrapping="Wrap" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                    <TextBlock Text="{x:Bind Amount}" FontSize="16" FontWeight="SemiBold" />
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+        <Style x:Key="RecordPanelStyle" TargetType="Border">
+            <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}" />
+            <Setter Property="Padding" Value="20" /><Setter Property="CornerRadius" Value="8" />
+            <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}" /><Setter Property="BorderThickness" Value="1" />
+        </Style>
+        <DataTemplate x:Key="RecordAvatarTemplate" x:DataType="core:KuroRecordAvatar">
+            <StackPanel Width="64" Spacing="4">
+                <sc:CachedImage Width="64" Height="64" CornerRadius="4" Source="{x:Bind Icon}" />
+                <TextBlock Text="{x:Bind Name}" FontSize="12" TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" Visibility="{Binding Text, RelativeSource={RelativeSource Self}, Converter={StaticResource WhiteSpaceStringToVisibilityConverter}}" />
+            </StackPanel>
+        </DataTemplate>
+    </sf:PageBase.Resources>
+    <NavigationView x:Name="RecordNavigation" OpenPaneLength="248" PaneDisplayMode="Left"
+                    IsBackButtonVisible="Collapsed" IsPaneToggleButtonVisible="False" IsSettingsVisible="False"
+                    SelectionChanged="RecordNavigation_SelectionChanged">
+        <NavigationView.Resources><SolidColorBrush x:Key="NavigationViewContentBackground" Color="Transparent" /></NavigationView.Resources>
+        <NavigationView.PaneCustomContent>
+            <Grid Height="56" HorizontalAlignment="Stretch" ColumnSpacing="8">
+                <Grid.ColumnDefinitions><ColumnDefinition Width="64" /><ColumnDefinition /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                <Grid x:Name="AvatarButton" Width="56" Height="56" Margin="8,0,0,0" Background="Transparent"
+                      Tapped="AvatarButton_Tapped" ToolTipService.ToolTip="收起侧栏" AutomationProperties.Name="收起工具箱侧栏">
+                    <sc:CachedImage x:Name="RoleAvatarImage" Margin="6" Background="Transparent" CornerRadius="100"
+                                    sh:PointerCursor.CursorShape="Hand" Source="ms-appx:///Assets/Kuro/community.png" />
+                </Grid>
+                <Border x:Name="CompactAvatarButton" Width="48" Height="48" Margin="0,4,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Background="Transparent" Visibility="Collapsed" Tapped="CompactAvatarButton_Tapped"
+                        ToolTipService.ToolTip="展开侧栏" AutomationProperties.Name="展开工具箱侧栏">
+                    <sc:CachedImage x:Name="CompactRoleAvatarImage" Width="40" Height="40" Margin="2,0,0,0" Background="Transparent" CornerRadius="100"
+                                    sh:PointerCursor.CursorShape="Hand" Source="ms-appx:///Assets/Kuro/community.png" />
+                </Border>
+                <StackPanel x:Name="HeaderRoleInfo" Grid.Column="1" VerticalAlignment="Center" Spacing="2" Visibility="Collapsed">
+                    <TextBlock x:Name="RoleNameText" TextTrimming="CharacterEllipsis" />
+                    <TextBlock x:Name="RoleInfoText" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextTrimming="CharacterEllipsis" />
+                </StackPanel>
+                <Button x:Name="ConnectButton" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,12,0" BorderThickness="0" Content="登录" Style="{ThemeResource AccentButtonStyle}">
+                    <Button.Flyout><MenuFlyout Placement="BottomEdgeAlignedLeft">
+                        <MenuFlyoutItem Text="网页登录" Click="ConnectButton_Click"><MenuFlyoutItem.Icon><FontIcon Glyph="&#xE774;" /></MenuFlyoutItem.Icon></MenuFlyoutItem>
+                        <MenuFlyoutItem Text="输入 Token" Click="ManualConnectButton_Click"><MenuFlyoutItem.Icon><FontIcon Glyph="&#xE70F;" /></MenuFlyoutItem.Icon></MenuFlyoutItem>
+                    </MenuFlyout></Button.Flyout>
+                </Button>
+                <Button x:Name="RoleSelectorButton" Grid.Column="2" Width="28" Height="44" Margin="0,0,12,0" Padding="0" Visibility="Collapsed"
+                        ToolTipService.ToolTip="选择角色" AutomationProperties.Name="选择库街区角色" Style="{ThemeResource DateTimePickerFlyoutButtonStyle}">
+                    <StackPanel Spacing="-6"><FontIcon FontSize="16" Glyph="&#xE70E;" Foreground="{ThemeResource TextFillColorSecondaryBrush}" /><FontIcon FontSize="16" Glyph="&#xE70D;" Foreground="{ThemeResource TextFillColorSecondaryBrush}" /></StackPanel>
+                    <Button.Flyout>
+                        <Flyout x:Name="RoleFlyout" Placement="BottomEdgeAlignedRight" Opened="RoleFlyout_Opened">
+                            <Flyout.FlyoutPresenterStyle><Style BasedOn="{StaticResource DefaultFlyoutPresenterStyle}" TargetType="FlyoutPresenter"><Setter Property="Background" Value="{ThemeResource CustomAcrylicBrush}" /><Setter Property="BorderThickness" Value="0" /><Setter Property="Padding" Value="4" /></Style></Flyout.FlyoutPresenterStyle>
+                            <StackPanel MinWidth="248" MaxWidth="280" Padding="0,8" Spacing="4">
+                                <Grid><Grid.ColumnDefinitions><ColumnDefinition /><ColumnDefinition /></Grid.ColumnDefinitions>
+                                    <Button x:Name="RefreshRolesButton" Margin="4,0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Click="RefreshRolesButton_Click" Style="{ThemeResource DateTimePickerFlyoutButtonStyle}"><StackPanel Orientation="Horizontal" Spacing="12"><FontIcon FontSize="16" Glyph="&#xE72C;" /><TextBlock Text="刷新信息" /></StackPanel></Button>
+                                    <Button Grid.Column="1" Margin="4,0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Style="{ThemeResource DateTimePickerFlyoutButtonStyle}">
+                                        <StackPanel Orientation="Horizontal" Spacing="12"><FontIcon FontSize="16" Glyph="&#xE710;" /><TextBlock Text="登录" /></StackPanel>
+                                        <Button.Flyout><MenuFlyout Placement="RightEdgeAlignedTop">
+                                            <MenuFlyoutItem Text="网页登录" Click="ConnectButton_Click"><MenuFlyoutItem.Icon><FontIcon Glyph="&#xE774;" /></MenuFlyoutItem.Icon></MenuFlyoutItem>
+                                            <MenuFlyoutItem Text="输入 Token" Click="ManualConnectButton_Click"><MenuFlyoutItem.Icon><FontIcon Glyph="&#xE70F;" /></MenuFlyoutItem.Icon></MenuFlyoutItem>
+                                        </MenuFlyout></Button.Flyout>
+                                    </Button>
+                                </Grid>
+                                <MenuFlyoutSeparator />
+                                <ListView x:Name="RoleList" MaxHeight="320" SelectionMode="Single" SelectionChanged="RoleList_SelectionChanged">
+                                    <ListView.ItemTemplate><DataTemplate x:DataType="core:KuroDailyNoteRole">
+                                        <Grid Padding="0,6" ColumnSpacing="8"><Grid.ColumnDefinitions><ColumnDefinition /><ColumnDefinition Width="32" /></Grid.ColumnDefinitions>
+                                            <StackPanel VerticalAlignment="Center" Spacing="6"><TextBlock Text="{x:Bind Name}" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" /><TextBlock Text="{x:Bind RoleInfo}" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}" /></StackPanel>
+                                            <Button Grid.Column="1" Width="32" Height="32" Padding="0" BorderThickness="0" VerticalAlignment="Top" AutomationProperties.Name="角色操作" ToolTipService.ToolTip="角色操作" Style="{ThemeResource DateTimePickerFlyoutButtonStyle}">
+                                                <FontIcon Glyph="&#xE712;" FontSize="14" />
+                                                <Button.Flyout><MenuFlyout Placement="RightEdgeAlignedTop" Opening="RoleMenuFlyout_Opening">
+                                                    <MenuFlyoutItem Text="复制 Token" Tag="{x:Bind}" Click="CopyRoleToken_Click"><MenuFlyoutItem.Icon><FontIcon Glyph="&#xE8C8;" /></MenuFlyoutItem.Icon></MenuFlyoutItem>
+                                                    <MenuFlyoutItem Text="删除游戏角色" Tag="{x:Bind}" Click="DeleteRole_Click" ToolTipService.ToolTip="删除此角色在本机的连接，不影响库街区绑定。"><MenuFlyoutItem.Icon><FontIcon Glyph="&#xE74D;" /></MenuFlyoutItem.Icon></MenuFlyoutItem>
+                                                </MenuFlyout></Button.Flyout>
+                                            </Button>
+                                        </Grid>
+                                    </DataTemplate></ListView.ItemTemplate>
+                                </ListView>
+                                <TextBlock x:Name="RoleListStatusText" Margin="12,4" FontSize="12" TextWrapping="Wrap" Visibility="{Binding Text, RelativeSource={RelativeSource Self}, Converter={StaticResource WhiteSpaceStringToVisibilityConverter}}" />
+                                <Button x:Name="DisconnectAccountButton" Margin="4,0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Visibility="Collapsed" Click="DisconnectButton_Click" Style="{ThemeResource DateTimePickerFlyoutButtonStyle}"><StackPanel Orientation="Horizontal" Spacing="12"><FontIcon Glyph="&#xE74D;" FontSize="16" /><TextBlock Text="退出登录" /></StackPanel></Button>
+                            </StackPanel>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+            </Grid>
+        </NavigationView.PaneCustomContent>
+        <NavigationView.MenuItems>
+            <NavigationViewItemSeparator />
+            <NavigationViewItem x:Name="BattleChronicleItem" Tag="battle-chronicle" SelectsOnInvoked="False" Tapped="BattleChronicleItem_Tapped" ToolTipService.ToolTip="战绩"><NavigationViewItem.Content><Grid Margin="{x:Bind NavigationViewItemContentMargin, Mode=OneWay}" ColumnSpacing="12"><Grid.ColumnDefinitions><ColumnDefinition Width="22" /><ColumnDefinition /></Grid.ColumnDefinitions><Image Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" Source="ms-appx:///Assets/Kuro/battle-chronicle.png" /><TextBlock Grid.Column="1" Text="战绩" /></Grid></NavigationViewItem.Content></NavigationViewItem>
+            <NavigationViewItem x:Name="OverviewItem" Tag="overview" ToolTipService.ToolTip="资料"><NavigationViewItem.Content><Grid Margin="{x:Bind NavigationViewItemContentMargin, Mode=OneWay}" ColumnSpacing="12"><Grid.ColumnDefinitions><ColumnDefinition Width="22" /><ColumnDefinition /></Grid.ColumnDefinitions><Image Width="18" Height="18" HorizontalAlignment="Center" VerticalAlignment="Center" Source="ms-appx:///Assets/Kuro/record.png" /><TextBlock Grid.Column="1" Text="资料" /></Grid></NavigationViewItem.Content></NavigationViewItem>
+            <NavigationViewItem x:Name="CalendarItem" Tag="calendar" ToolTipService.ToolTip="资源简报"><NavigationViewItem.Content><Grid Margin="{x:Bind NavigationViewItemContentMargin, Mode=OneWay}" ColumnSpacing="12"><Grid.ColumnDefinitions><ColumnDefinition Width="22" /><ColumnDefinition /></Grid.ColumnDefinitions><Image Width="22" Height="22" Source="ms-appx:///Assets/Kuro/resource-briefing.png" /><TextBlock Grid.Column="1" Text="资源简报" /></Grid></NavigationViewItem.Content></NavigationViewItem>
+            <NavigationViewItem x:Name="ChallengeItem" Tag="challenge" ToolTipService.ToolTip="逆境深塔"><NavigationViewItem.Content><Grid Margin="{x:Bind NavigationViewItemContentMargin, Mode=OneWay}" ColumnSpacing="12"><Grid.ColumnDefinitions><ColumnDefinition Width="22" /><ColumnDefinition /></Grid.ColumnDefinitions><Image Width="22" Height="22" Source="ms-appx:///Assets/Kuro/tower.png" /><TextBlock Grid.Column="1" Text="逆境深塔" /></Grid></NavigationViewItem.Content></NavigationViewItem>
+            <NavigationViewItem x:Name="SlashItem" Tag="slash" ToolTipService.ToolTip="冥歌海墟"><NavigationViewItem.Content><Grid Margin="{x:Bind NavigationViewItemContentMargin, Mode=OneWay}" ColumnSpacing="12"><Grid.ColumnDefinitions><ColumnDefinition Width="22" /><ColumnDefinition /></Grid.ColumnDefinitions><Image Width="22" Height="22" Source="ms-appx:///Assets/Kuro/slash.png" /><TextBlock Grid.Column="1" Text="冥歌海墟" /></Grid></NavigationViewItem.Content></NavigationViewItem>
+            <NavigationViewItem x:Name="MatrixItem" Tag="matrix" ToolTipService.ToolTip="终焉矩阵"><NavigationViewItem.Content><Grid Margin="{x:Bind NavigationViewItemContentMargin, Mode=OneWay}" ColumnSpacing="12"><Grid.ColumnDefinitions><ColumnDefinition Width="22" /><ColumnDefinition /></Grid.ColumnDefinitions><Image Width="22" Height="22"><Image.Source><SvgImageSource UriSource="ms-appx:///Assets/Kuro/matrix.svg" /></Image.Source></Image><TextBlock Grid.Column="1" Text="终焉矩阵" /></Grid></NavigationViewItem.Content></NavigationViewItem>
+        </NavigationView.MenuItems>
+
+        <NavigationView.PaneFooter>
+            <NavigationViewItem x:Name="UpdateDeviceInfoItem" Margin="-2,0,0,-4"
+                                Content="更新设备指纹" Tapped="UpdateDeviceInfoItem_Tapped">
+                <NavigationViewItem.Icon><FontIcon Glyph="&#xE928;" /></NavigationViewItem.Icon>
+            </NavigationViewItem>
+        </NavigationView.PaneFooter>
+
+        <Grid>
+            <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition /></Grid.ColumnDefinitions>
+            <StackPanel Margin="0,24,0,24" Spacing="12">
+                <Button x:Name="RefreshButton" Height="36" HorizontalAlignment="Left" BorderThickness="0" CornerRadius="0,18,18,0" Click="RefreshButton_Click" Style="{ThemeResource AccentButtonStyle}"><StackPanel Margin="4,0" Orientation="Horizontal" Spacing="8"><FontIcon FontSize="16" Glyph="&#xE72C;" /><TextBlock Text="刷新" /></StackPanel></Button>
+                <ListView x:Name="GroupList" Width="144" Padding="12,0" SelectionChanged="GroupList_SelectionChanged" SelectionMode="Single" Visibility="Collapsed" AutomationProperties.Name="挑战难度、模式或资源简报月份">
+                    <ListView.ItemContainerStyle><Style TargetType="ListViewItem" BasedOn="{StaticResource DefaultListViewItemStyle}"><Setter Property="Margin" Value="0,4" /><Setter Property="Padding" Value="4,0" /><Setter Property="HorizontalContentAlignment" Value="Stretch" /></Style></ListView.ItemContainerStyle>
+                </ListView>
+            </StackPanel>
+            <ScrollViewer x:Name="DetailScrollViewer" Grid.Column="1" HorizontalScrollBarVisibility="Disabled" HorizontalScrollMode="Disabled" SizeChanged="DetailScrollViewer_SizeChanged">
+                <StackPanel Margin="24" Spacing="8">
+                    <Grid ColumnSpacing="16"><Grid.ColumnDefinitions><ColumnDefinition /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                        <TextBlock x:Name="PeriodText" VerticalAlignment="Center" Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" />
+                        <TextBlock x:Name="PageTitleText" Grid.Column="1" Text="资料" FontWeight="SemiBold" VerticalAlignment="Center" />
+                    </Grid>
+                    <TextBlock x:Name="StatusText" TextWrapping="Wrap" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Visibility="{Binding Text, RelativeSource={RelativeSource Self}, Converter={StaticResource WhiteSpaceStringToVisibilityConverter}}" />
+                    <Border x:Name="StatsArea" Padding="12,8" MinHeight="40" Background="{ThemeResource CustomOverlayAcrylicBrush}" CornerRadius="8" Shadow="{ThemeResource ThemeShadow}" Translation="0,0,16" Visibility="Collapsed">
+                        <ItemsRepeater x:Name="RecordStatsRepeater">
+                            <ItemsRepeater.Layout><UniformGridLayout x:Name="StatsLayout" MaximumRowsOrColumns="3" MinItemWidth="220" MinColumnSpacing="12" MinRowSpacing="12" ItemsStretch="Fill" Orientation="Horizontal" /></ItemsRepeater.Layout>
+                        </ItemsRepeater>
+                    </Border>
+                    <ItemsControl x:Name="DetailItems" Margin="0,12,0,0" HorizontalAlignment="Center">
+                        <ItemsControl.ItemsPanel><ItemsPanelTemplate><cc:WrapPanel HorizontalSpacing="12" VerticalSpacing="12" /></ItemsPanelTemplate></ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </StackPanel>
+            </ScrollViewer>
+
+            <StackPanel x:Name="EmptyState" Grid.Column="1" Margin="24" Spacing="16" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
+                <Image Width="160" Height="160" Source="ms-appx:///Assets/Kuro/record-empty.png" />
+                <TextBlock x:Name="EmptyStateText" Text="暂无挑战记录" FontSize="16" Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextAlignment="Center" TextWrapping="Wrap" MaxWidth="420" />
+                <TextBlock x:Name="EmptyStateDescriptionText" Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextAlignment="Center" TextWrapping="Wrap" MaxWidth="420" Visibility="{Binding Text, RelativeSource={RelativeSource Self}, Converter={StaticResource WhiteSpaceStringToVisibilityConverter}}" />
+            </StackPanel>
+            <ProgressRing x:Name="LoadingRing" Grid.Column="1" Width="32" Height="32" IsActive="False" Visibility="Collapsed" />
+        </Grid>
+    </NavigationView>
+</sf:PageBase>
