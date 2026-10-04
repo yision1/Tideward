@@ -45,6 +45,7 @@ List<Architecture> targetArchitectures = archOption switch
 
 if (command == "res")
 {
+    Directory.CreateDirectory("src/Tideward.Setup/Assets");
     File.Delete("src/Tideward.Setup/Assets/Tideward.7z");
     foreach (var arch in targetArchitectures)
     {
