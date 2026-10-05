@@ -27,9 +27,10 @@ public sealed record KuroGachaLink(GameBiz Region, long PlayerId, string ServerI
         string Need(string key) => values.TryGetValue(key, out var value) && !string.IsNullOrWhiteSpace(value) ? value : throw new FormatException("唤取链接参数不完整。");
         if (!long.TryParse(Need("player_id"), out long uid) || uid <= 0) throw new FormatException("玩家 ID 无效。");
         var area = Need("svr_area");
-        if ((region == GameBiz.wuwa_cn && area != "cn") || (region == GameBiz.wuwa_global && area != "global" && area != "os"))
+        bool mainland = region.IsChinaServer() || region.IsBilibili();
+        if ((mainland && area != "cn") || (region.IsGlobalServer() && area != "global" && area != "os"))
             throw new FormatException("唤取链接区服与当前选择不一致。");
-        if (uri.Host.EndsWith(".com") != (region == GameBiz.wuwa_cn)) throw new FormatException("唤取链接域名与区服不一致。");
+        if (uri.Host.EndsWith(".com") != mainland) throw new FormatException("唤取链接域名与区服不一致。");
         return new(region, uid, Need("svr_id"), Need("record_id"), Need("resources_id"), Need("lang"));
     }
 }
@@ -54,7 +55,7 @@ public sealed class KuroGachaClient(HttpClient? client = null)
 
     public async Task<List<GachaLogItem>> FetchAsync(KuroGachaLink link, IProgress<string>? progress = null, CancellationToken token = default)
     {
-        string endpoint = link.Region == GameBiz.wuwa_cn ? "https://gmserver-api.aki-game2.com/gacha/record/query" : "https://gmserver-api.aki-game2.net/gacha/record/query";
+        string endpoint = link.Region.IsGlobalServer() ? "https://gmserver-api.aki-game2.net/gacha/record/query" : "https://gmserver-api.aki-game2.com/gacha/record/query";
         var result = new List<GachaLogItem>();
         foreach (var type in Types)
         {

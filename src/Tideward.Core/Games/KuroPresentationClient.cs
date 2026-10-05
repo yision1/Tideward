@@ -14,6 +14,7 @@ public sealed class KuroPresentationClient(HttpClient? client = null)
     private static (string Host, string Slug, string Language) Region(GameBiz region) => region.Value switch
     {
         GameBiz.wuwa_cn => ("https://prod-cn-alicdn-gamestarter.kurogame.com", "10003_Y8xXrXk65DqFHEDgApn3cpK5lfczpFx5/G152", "zh-Hans"),
+        GameBiz.wuwa_bilibili => ("https://prod-cn-alicdn-gamestarter.kurogame.com", "10004_j5GWFuUFlb8N31Wi2uS3ZAVHcb7ZGN7y/G152", "zh-Hans"),
         GameBiz.wuwa_global => ("https://prod-alicdn-gamestarter.kurogame.com", "50004_obOHXFrFanqsaIEOmuKroCcbZkQRBC7c/G153", "en"),
         _ => throw new ArgumentException("Unknown Wuthering Waves region.")
     };

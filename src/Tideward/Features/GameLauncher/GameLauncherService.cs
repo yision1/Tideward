@@ -101,7 +101,7 @@ internal partial class GameLauncherService
     {
         string? name = gameBiz.Value switch
         {
-            GameBiz.wuwa_cn or GameBiz.wuwa_global => WutheringWavesRuntime.LauncherExecutableName,
+            GameBiz.wuwa_cn or GameBiz.wuwa_global or GameBiz.wuwa_bilibili => WutheringWavesRuntime.LauncherExecutableName,
             _ => null,
         };
         return name;

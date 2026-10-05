@@ -123,4 +123,7 @@
   <data name="GameServer_GlobalServer" xml:space="preserve">
     <value>글로벌 서버</value>
   </data>
+  <data name="GameServer_Bilibili" xml:space="preserve">
+    <value>Bilbili 서버</value>
+  </data>
 </root>

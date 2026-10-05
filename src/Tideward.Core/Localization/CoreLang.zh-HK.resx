@@ -123,4 +123,7 @@
   <data name="GameServer_GlobalServer" xml:space="preserve">
     <value>國際版 server</value>
   </data>
+  <data name="GameServer_Bilibili" xml:space="preserve">
+    <value>嗶哩嗶哩</value>
+  </data>
 </root>

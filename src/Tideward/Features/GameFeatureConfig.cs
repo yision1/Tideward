@@ -25,13 +25,23 @@ internal partial class GameFeatureConfig
 
     public static GameFeatureConfig FromGameId(GameId? gameId)
     {
-        return gameId?.GameBiz.IsKnown() == true ? WutheringWaves : None;
+        return gameId?.GameBiz.Value switch
+        {
+            GameBiz.wuwa_bilibili => WutheringWavesBilibili,
+            GameBiz.wuwa_cn or GameBiz.wuwa_global => WutheringWaves,
+            _ => None,
+        };
     }
 
     private static readonly GameFeatureConfig WutheringWaves = new()
     {
         SupportedPages = [nameof(GameLauncherPage), nameof(ScreenshotPage), nameof(GachaLogPage), nameof(KuroGameRecordPage)],
         SupportGameAccountSwitcher = true,
+    };
+
+    private static readonly GameFeatureConfig WutheringWavesBilibili = new()
+    {
+        SupportedPages = [nameof(GameLauncherPage), nameof(ScreenshotPage), nameof(GachaLogPage)],
     };
 
     private static readonly GameFeatureConfig None = new();

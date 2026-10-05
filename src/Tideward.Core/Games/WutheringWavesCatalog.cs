@@ -8,6 +8,7 @@ public static class WutheringWavesCatalog
     {
         new WutheringWavesProfile("wuwa-cn", GameBiz.wuwa_cn, new Uri("https://mc.kurogames.com/")),
         new WutheringWavesProfile("wuwa-global", GameBiz.wuwa_global, new Uri("https://wutheringwaves.kurogames.com/")),
+        new WutheringWavesProfile("wuwa-bilibili", GameBiz.wuwa_bilibili, new Uri("https://www.biligame.com/detail/?id=108820")),
     });
 
     public static WutheringWavesProfile? Find(GameBiz gameBiz) => All.FirstOrDefault(x => x.GameBiz == gameBiz);

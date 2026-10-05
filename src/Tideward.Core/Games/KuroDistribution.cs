@@ -68,13 +68,14 @@ public sealed class KuroDistribution
 
     public static string AppId(GameBiz region) => region.Value switch
     {
-        GameBiz.wuwa_cn => "10003", GameBiz.wuwa_global => "50004",
+        GameBiz.wuwa_cn => "10003", GameBiz.wuwa_global => "50004", GameBiz.wuwa_bilibili => "10004",
         _ => throw new ArgumentException("Unknown Wuthering Waves region.")
     };
 
     public static Uri IndexUri(GameBiz region) => region.Value switch
     {
         GameBiz.wuwa_cn => new("https://prod-cn-alicdn-gamestarter.kurogame.com/launcher/game/G152/10003_Y8xXrXk65DqFHEDgApn3cpK5lfczpFx5/index.json"),
+        GameBiz.wuwa_bilibili => new("https://prod-cn-alicdn-gamestarter.kurogame.com/launcher/game/G152/10004_j5GWFuUFlb8N31Wi2uS3ZAVHcb7ZGN7y/index.json"),
         GameBiz.wuwa_global => new("https://prod-alicdn-gamestarter.kurogame.com/launcher/game/G153/50004_obOHXFrFanqsaIEOmuKroCcbZkQRBC7c/index.json"),
         _ => throw new ArgumentException("Unknown Wuthering Waves region.")
     };

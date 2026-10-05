@@ -81,6 +81,7 @@
         <Content Include="$(PkgStarward_Assets)/contentFiles/any/any/Assets/Font/*.ttf" Link="Assets/Font/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
         <Content Include="$(PkgStarward_Assets)/contentFiles/any/any/Assets/CSS/*.css" Link="Assets/CSS/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
         <Content Include="$(PkgStarward_Assets)/contentFiles/any/any/Assets/Image/Transparent.png" Link="Assets/Image/Transparent.png" CopyToOutputDirectory="PreserveNewest" />
+        <Content Include="$(PkgStarward_Assets)/contentFiles/any/any/Assets/Image/gameicon_bilibili.png" Link="Assets/Image/gameicon_bilibili.png" CopyToOutputDirectory="PreserveNewest" />
         <Content Include="$(PkgStarward_Assets)/contentFiles/any/any/Assets/Image/alert.png" Link="Assets/Image/alert.png" CopyToOutputDirectory="PreserveNewest" />
 		<Content Update="Assets\**">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>

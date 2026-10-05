@@ -40,7 +40,6 @@
                     BorderThickness="0"
                     Command="{x:Bind ShowFullBackgroundCommand}"
                     CornerRadius="8"
-                    ToolTipService.ToolTip="{x:Bind CurrentGameBizIcon.ServerName}"
                     Style="{ThemeResource DateTimePickerFlyoutButtonStyle}">
                 <Grid>
                     <FontIcon HorizontalAlignment="Center"
@@ -52,6 +51,13 @@
                     <sc:CachedImage Width="40"
                                     Height="40"
                                     Source="{x:Bind CurrentGameBizIcon.GameIcon, FallbackValue={x:Null}}"
+                                    Style="{ThemeResource NoAnimationImageExStyle}"
+                                    Visibility="{x:Bind IsPinned, Converter={StaticResource BoolToVisibilityReversedConverter}}" />
+                    <sc:CachedImage Width="20"
+                                    Height="20"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Bottom"
+                                    Source="{x:Bind CurrentGameBizIcon.ServerIcon, FallbackValue={x:Null}}"
                                     Style="{ThemeResource NoAnimationImageExStyle}"
                                     Visibility="{x:Bind IsPinned, Converter={StaticResource BoolToVisibilityReversedConverter}}" />
                 </Grid>
@@ -475,6 +481,17 @@
                             <sc:CachedImage Width="40"
                                             Height="40"
                                             Source="{x:Bind GameIcon}" />
+                            <Image Width="20"
+                                   Height="20"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Bottom">
+                                <Image.Source>
+                                    <BitmapImage DecodePixelHeight="20"
+                                                 DecodePixelType="Logical"
+                                                 DecodePixelWidth="20"
+                                                 UriSource="{x:Bind ServerIcon}" />
+                                </Image.Source>
+                            </Image>
                             <Border Background="#60000000" Opacity="{x:Bind MaskOpacity}">
                                 <Border.OpacityTransition>
                                     <ScalarTransition />

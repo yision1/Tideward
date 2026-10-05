@@ -13,7 +13,7 @@ public static class KuroGachaLogReader
     public static string? FindWebCacheFolder(GameBiz region, string gameDirectory)
     {
         _ = KuroDistribution.AppId(region);
-        string sdk = region == GameBiz.wuwa_cn ? "KrPcSdk_Mainland" : "KrPcSdk_Global";
+        string sdk = region.IsGlobalServer() ? "KrPcSdk_Global" : "KrPcSdk_Mainland";
         foreach (string relative in new[]
         {
             $"Client/Binaries/Win64/ThirdParty/{sdk}/KRSDKRes/KRSDKWebView/Cache",
@@ -29,7 +29,7 @@ public static class KuroGachaLogReader
     public static string? FindLatest(GameBiz region, string gameDirectory)
     {
         _ = KuroDistribution.AppId(region);
-        string sdk = region == GameBiz.wuwa_cn ? "KrPcSdk_Mainland" : "KrPcSdk_Global";
+        string sdk = region.IsGlobalServer() ? "KrPcSdk_Global" : "KrPcSdk_Mainland";
         string[] paths =
         [
             Path.Combine(gameDirectory, "Client/Saved/Logs/Client.log"),

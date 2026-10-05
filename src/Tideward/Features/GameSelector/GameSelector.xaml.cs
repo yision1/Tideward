@@ -448,7 +448,7 @@ public sealed partial class GameSelector : UserControl
             foreach (var item in list)
             {
                 string game = item.GameInfo.GameBiz.Game;
-                foreach (string suffix in (string[])["_cn", "_global"])
+                foreach (string suffix in (string[])["_cn", "_global", "_bilibili"])
                 {
                     GameBiz biz = game + suffix;
                     if (biz.IsKnown())

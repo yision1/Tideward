@@ -62,7 +62,12 @@ internal sealed class WutheringWavesGachaService : GachaLogService
     {
         _ = KuroDistribution.AppId(region);
         CurrentGameBiz = region;
-        GachaTableName = region == GameBiz.wuwa_cn ? "WuwaCnGachaItem" : "WuwaGlobalGachaItem";
+        GachaTableName = region.Value switch
+        {
+            GameBiz.wuwa_cn => "WuwaCnGachaItem",
+            GameBiz.wuwa_bilibili => "WuwaBilibiliGachaItem",
+            _ => "WuwaGlobalGachaItem",
+        };
         using var db = DatabaseService.CreateConnection();
         db.Execute($"""
             CREATE TABLE IF NOT EXISTS {GachaTableName} (

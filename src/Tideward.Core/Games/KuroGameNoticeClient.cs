@@ -15,7 +15,7 @@ public sealed class KuroGameNoticeClient(HttpClient? client = null)
     public const string PublicServer = "e7e8965f8a6ff61b8d10b7dcc742afd5";
     private readonly HttpClient http = client ?? new(new HttpClientHandler { AutomaticDecompression = DecompressionMethods.All });
 
-    public static string Language(GameBiz region, string culture) => region == GameBiz.wuwa_cn ? "zh-Hans" : culture switch
+    public static string Language(GameBiz region, string culture) => region.IsChinaServer() || region.IsBilibili() ? "zh-Hans" : culture switch
     {
         "zh-CN" => "zh-Hans", "zh-TW" or "zh-HK" => "zh-Hant", "ja-JP" => "ja", "ko-KR" => "ko",
         "de-DE" => "de", "fr-FR" => "fr", "es-ES" => "es", "ru-RU" => "ru", _ => "en",
@@ -24,23 +24,24 @@ public sealed class KuroGameNoticeClient(HttpClient? client = null)
     public static Uri PageUri(GameBiz region, string culture, string? roleId = null)
     {
         _ = KuroDistribution.AppId(region);
-        if (region != GameBiz.wuwa_cn) throw new NotSupportedException("国际服游戏公告入口尚未验证，请暂用官网公告。");
-        string root = region == GameBiz.wuwa_cn ? "https://aki-gm-resources.aki-game.com" : "https://aki-gm-resources-oversea.aki-game.net";
-        string game = region == GameBiz.wuwa_cn ? "G152" : "G153";
+        if (region.IsGlobalServer()) throw new NotSupportedException("国际服游戏公告入口尚未验证，请暂用官网公告。");
+        string root = "https://aki-gm-resources.aki-game.com";
+        string game = "G152";
         string role = string.IsNullOrEmpty(roleId) ? "" : roleId.All(char.IsAsciiDigit) ? roleId : throw new ArgumentException("Invalid notice role.");
-        return new($"{root}/aki/announcement/index.html?game_id={game}&server_id={PublicServer}&lang={Language(region, culture)}&platform=PC&channel=0&user_id=before_login&role_id={role}");
+        int channel = region.IsBilibili() ? 46 : 0;
+        return new($"{root}/aki/announcement/index.html?game_id={game}&server_id={PublicServer}&lang={Language(region, culture)}&platform=PC&channel={channel}&user_id=before_login&role_id={role}");
     }
 
     public async Task<List<KuroGameNotice>> GetAsync(GameBiz region, string culture, string? roleId, CancellationToken token = default, bool publicView = false)
     {
         _ = PageUri(region, culture, roleId);
-        string host = region == GameBiz.wuwa_cn ? "aki-gm-resources-back.aki-game.com" : "aki-gm-resources-back.aki-game.net";
-        string game = region == GameBiz.wuwa_cn ? "G152" : "G153";
+        string host = "aki-gm-resources-back.aki-game.com";
+        string game = "G152";
         string json = await http.GetStringAsync($"https://{host}/gamenotice/{game}/{PublicServer}/{Language(region, culture)}.json", token);
-        return Parse(json, roleId, DateTimeOffset.UtcNow, publicView);
+        return Parse(json, roleId, DateTimeOffset.UtcNow, publicView, region.IsBilibili() ? 46 : 0);
     }
 
-    public static List<KuroGameNotice> Parse(string json, string? roleId, DateTimeOffset now, bool publicView = false)
+    public static List<KuroGameNotice> Parse(string json, string? roleId, DateTimeOffset now, bool publicView = false, int channel = 0)
     {
         using var doc = JsonDocument.Parse(json);
         var result = new List<KuroGameNotice>();
@@ -55,7 +56,7 @@ public sealed class KuroGameNoticeClient(HttpClient? client = null)
                 var whitelist = item.TryGetProperty("whiteList", out var list) ? list.EnumerateArray().Select(x => x.ToString()).ToArray() : [];
                 if (whitelist.Length > 0 ? !whitelist.Contains(roleId) : !publicView && !permanent && string.IsNullOrEmpty(roleId)) continue;
                 if (!item.TryGetProperty("platform", out var platform) || !platform.EnumerateArray().Any(x => x.ToString() == "1")) continue;
-                if (item.TryGetProperty("channel", out var channels) && channels.GetArrayLength() > 0 && !channels.EnumerateArray().Any(x => x.ToString() == "0")) continue;
+                if (item.TryGetProperty("channel", out var channels) && channels.GetArrayLength() > 0 && !channels.EnumerateArray().Any(x => x.ToString() == channel.ToString(System.Globalization.CultureInfo.InvariantCulture))) continue;
                 string id = item.GetProperty("id").ToString();
                 if (id.Length > 0) result.Add(new(id, Number(item, "red") == 1 && !permanent && !string.IsNullOrEmpty(roleId))
                 {

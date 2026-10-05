@@ -19,6 +19,8 @@ public partial class GameBizIcon : ObservableObject, IEquatable<GameBizIcon>
 
     public string GameName { get; set => SetProperty(ref field, value); }
 
+    public string ServerIcon { get; set => SetProperty(ref field, value); }
+
     public string ServerName { get; set => SetProperty(ref field, value); }
 
     public double MaskOpacity { get; set => SetProperty(ref field, value); } = 1.0;
@@ -46,6 +48,7 @@ public partial class GameBizIcon : ObservableObject, IEquatable<GameBizIcon>
         GameBiz = gameBiz;
         GameId = GameId.FromGameBiz(gameBiz)!;
         GameIcon = GameBizToIcon(gameBiz);
+        ServerIcon = GameBizToServerIcon(gameBiz);
         GameName = gameBiz.ToGameName();
         ServerName = gameBiz.ToGameServerName();
     }
@@ -55,6 +58,7 @@ public partial class GameBizIcon : ObservableObject, IEquatable<GameBizIcon>
         GameId = gameInfo;
         GameBiz = gameInfo.GameBiz;
         GameIcon = gameInfo.Display.Icon.Url;
+        ServerIcon = GameBizToServerIcon(gameInfo.GameBiz);
         GameName = gameInfo.Display.Name;
         ServerName = gameInfo.GameBiz.ToGameServerName();
     }
@@ -62,6 +66,7 @@ public partial class GameBizIcon : ObservableObject, IEquatable<GameBizIcon>
     public void UpdateInfo()
     {
         GameIcon = GameBizToIcon(GameBiz);
+        ServerIcon = GameBizToServerIcon(GameBiz);
         GameName = GameBiz.ToGameName();
         ServerName = GameBiz.ToGameServerName();
     }
@@ -69,6 +74,7 @@ public partial class GameBizIcon : ObservableObject, IEquatable<GameBizIcon>
     public void UpdateInfo(GameInfo gameInfo)
     {
         GameIcon = gameInfo.Display.Icon.Url;
+        ServerIcon = GameBizToServerIcon(gameInfo.GameBiz);
         GameName = gameInfo.Display.Name;
         ServerName = gameInfo.GameBiz.ToGameServerName();
     }
@@ -76,6 +82,15 @@ public partial class GameBizIcon : ObservableObject, IEquatable<GameBizIcon>
     private static string GameBizToIcon(GameBiz gameBiz)
     {
         return KuroPresentationClient.GameIcon;
+    }
+
+    private static string GameBizToServerIcon(GameBiz gameBiz)
+    {
+        return gameBiz.Server switch
+        {
+            "bilibili" => "ms-appx:///Assets/Image/gameicon_bilibili.png",
+            _ => "ms-appx:///Assets/Image/Transparent.png",
+        };
     }
 
     public bool Equals(GameBizIcon? other)
