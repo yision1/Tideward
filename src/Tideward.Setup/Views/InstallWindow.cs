@@ -441,7 +441,7 @@ public class InstallWindow : WindowBase
     {
         Process.Start(new ProcessStartInfo
         {
-            FileName = "https://github.com/Scighost/Starward/blob/main/docs/Privacy.md",
+            FileName = "https://github.com/yision1/Tideward/blob/main/docs/Privacy.md",
             UseShellExecute = true,
         });
     }
